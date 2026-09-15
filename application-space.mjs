@@ -40,11 +40,11 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   function animatePanel(card, arriving = true) {
     const face = card?.querySelector('.space-projection-card');
     if (!face) return;
-    const start = face.style.transform || (arriving ? 'translateY(12px) scale(.97,.94)' : 'scale(.99)');
+    const start = face.style.transform || ('translateY(6px)');
     face.style.removeProperty('transform');
     playAnimation(face, [
       { transform:start },
-      { transform:'translateY(0) scale(1)' }
+      { transform:'translateY(0)' }
     ], { duration:arriving ? 1100 : 800, easing:'cubic-bezier(.2,.7,.2,1)' });
   }
 
@@ -60,8 +60,8 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   function unfoldSurface(surface, origin = { x:50, y:20, clip:'inset(8% 12% 35% 12% round 18px)' }) {
     surface.style.transformOrigin = `${origin.x}% ${origin.y}%`;
     playAnimation(surface, [
-      { clipPath:origin.clip, opacity:.08, transform:'scale(.94)' },
-      { clipPath:'inset(0% 0% 0% 0% round 17px)', opacity:1, transform:'scale(1)' }
+      { opacity:0, filter:'blur(12px)', transform:'translateY(8px)' },
+      { opacity:1, filter:'blur(0px)', transform:'translateY(0)' }
     ], { duration:1100, easing:'cubic-bezier(.2,.65,.2,1)' });
   }
 
@@ -205,9 +205,9 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
     inspectorSurface.scrollTop = selected ? 0 : workListScroll;
     if (panelShowingWorks) {
       playAnimation(inspector, [
-        { opacity:0, transform:'translateY(10px) scale(.98)', offset:0 },
-        { opacity:.08, transform:'translateY(8px) scale(.985)', offset:.16 },
-        { opacity:1, transform:'translateY(0) scale(1)', offset:1 }
+        { opacity:0, transform:'translateY(6px)', offset:0 },
+        { opacity:.08, transform:'translateY(4px)', offset:.16 },
+        { opacity:1, transform:'translateY(0)', offset:1 }
       ], { duration:1000, easing:'cubic-bezier(.2,.6,.2,1)' });
     }
   }
