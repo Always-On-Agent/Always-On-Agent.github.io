@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#182439">
+  <title>Always-On Personal AI — A Continuing and Self-Evolving Loop</title>
+  <meta name="description" content="A roadmap for always-on personal AI: Sensing, Memory, Action, five coupling channels, levels of loop closure, and HALO for evidence-based oversight.">
+  <link rel="canonical" href="https://always-on-agent.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Always-On Personal AI">
+  <meta property="og:description" content="A Roadmap towards a Continuing and Self-Evolving Loop. Explore the survey, functional framework, and HALO oversight protocol.">
+  <meta property="og:url" content="https://always-on-agent.github.io/">
+  <meta property="og:image" content="https://always-on-agent.github.io/assets/icon.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="Always-On Personal AI home"><img src="assets/icon.webp" width="36" height="36" alt=""><span>Always-On<span class="brand-light"> Agent</span></span></a>
+      <nav aria-label="Main navigation">
+        <a href="#overview">Overview</a><a href="#framework">Framework</a><a href="#closure">Roadmap</a><a href="#halo">HALO</a><a href="#applications">Applications</a><a href="#cite">Cite</a>
+      </nav>
+      <a class="nav-github" href="https://github.com/Always-On-Agent" aria-label="Always-On-Agent on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.57.1.78-.25.78-.55v-2.1c-3.17.69-3.84-1.35-3.84-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.09 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.72-1.54-2.53-.29-5.2-1.27-5.2-5.63 0-1.24.45-2.26 1.18-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.17a10.9 10.9 0 0 1 5.71 0c2.18-1.48 3.13-1.17 3.13-1.17.63 1.57.24 2.73.12 3.02.74.8 1.18 1.82 1.18 3.06 0 4.37-2.67 5.34-5.22 5.62.41.36.77 1.05.77 2.12v3.11c0 .3.21.66.78.55A11.4 11.4 0 0 0 12 .8Z"/></svg></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="paper-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> SURVEY &amp; RESEARCH ROADMAP <span class="eyebrow-divider">/</span> 2026</div>
+        <div class="hero-heading"><img class="hero-icon" src="assets/icon.webp" width="88" height="88" alt="Always-On Agent AO loop logo"><h1 id="paper-title"><span>Always-On</span> Personal AI</h1></div>
+        <p class="paper-subtitle">A Roadmap towards a Continuing<br class="desktop-break"> and Self-Evolving Loop</p>
+        <p class="hero-thesis">Personal AI must carry context and commitments beyond a single request.<br class="desktop-break"> We study the continuing loop that makes this possible—and the evidence needed to improve it.</p>
+        <div class="authors" aria-label="Authors">
+          <a href="https://www.choiszt.com/">Shuai Liu</a><span>Weiyang Jin</span><span>Shulin Tian</span><span>Kairui Hu</span><span>Yuhao Dong</span><span>Lingdong Kong</span><span>Siyao Li</span><span>Kaichen Zhang</span><a href="https://jingkangyang.com/">Jingkang Yang</a><span>Ziwei Liu</span>
+        </div>
+        <p class="collaboration">An MMLab@NTU-led collaboration</p>
+        <div class="hero-actions">
+          <a class="button primary" href="assets/always-on-personal-ai.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8m-5-5 5 5m-5-5v5h5M8 13h8m-8 4h6"/></svg>Read the paper <span class="button-note">PDF</span></a>
+          <a class="button secondary" href="https://github.com/Always-On-Agent/Always-On-Agent.github.io/blob/main/reading-list.md">Reading list <span aria-hidden="true">↗</span></a>
+          <a class="button text-button" href="#cite">BibTeX <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="draft-note">Working draft · September 2026</p>
+        <a class="hero-scroll" href="#overview">Explore the continuing loop <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="section overview" id="overview" aria-labelledby="overview-title">
+      <div class="container">
+        <div class="section-heading"><span class="section-number">01 / THE PERSPECTIVE</span><h2 id="overview-title">Assistance continues.<br><span class="muted">The request does not have to.</span></h2></div>
+        <div class="intro-grid">
+          <p class="lead">Always-on personal AI sustains assistance between explicit requests, under a declared schedule and availability contract, while retaining usable user-specific state across interactions.</p>
+          <p>It carries unresolved commitments forward and chooses when to observe, remember, communicate, prepare, act—or remain silent. Self-evolution extends this baseline: attributed outcomes must justify policy changes that are validated and retained.</p>
+        </div>
+        <div class="comparison">
+          <article><span class="comparison-label">LONG-HORIZON TASK EXECUTION</span><h3>How far can a task go?</h3><p>Sustain planning and execution through many steps towards a task objective.</p><div class="task-track" aria-hidden="true"><span>Request</span><i></i><b>Steps</b><i></i><span>Completion</span></div></article>
+          <article class="always-on-comparison"><span class="comparison-label">ALWAYS-ON PERSONAL ASSISTANCE</span><h3>What continues between tasks?</h3><p>Maintain decision opportunities, personal state, and commitments across interactions.</p><div class="continuity-track" aria-hidden="true"><span>Observe</span><span>Retain</span><span>Decide</span><span>Continue ↻</span></div></article>
+          <p class="comparison-footnote">These dimensions can overlap. A long task alone does not establish an always-on service; continuous operation does not require continuous recording or constant intervention.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section framework" id="framework" aria-labelledby="framework-title">
+      <div class="container">
+        <div class="section-heading"><span class="section-number">02 / THE FRAMEWORK</span><h2 id="framework-title">Three modules. Five connections.<br><span class="muted">One continuing loop.</span></h2><p class="section-deck">We organize the field around what a personal assistant senses, retains, and does—and how these decisions depend on one another.</p></div>
+        <figure class="paper-figure"><a href="assets/framework.png" aria-label="Open the full-resolution survey framework"><img src="assets/framework.webp" width="2600" height="989" alt="Survey framework connecting Sensing, Memory, and Action through five coupling channels, shared operating conditions, applications, and HALO oversight." loading="lazy"></a><figcaption><span>THE SURVEY AT A GLANCE</span> Functional architecture, applications, and evidence-based oversight. <a href="assets/framework.png">Full resolution ↗</a></figcaption></figure>
+        <div class="module-grid">
+          <article class="module sensing"><span class="module-letter">S</span><h3>Sensing</h3><p>Acquire and interpret timely evidence. Decide what to observe, when to sample, and what uncertainty remains.</p></article>
+          <article class="module memory"><span class="module-letter">M</span><h3>Memory</h3><p>Maintain usable personal state. Admit, consolidate, retrieve, correct, and forget information across interactions.</p></article>
+          <article class="module action"><span class="module-letter">A</span><h3>Action</h3><p>Choose the right intervention. Communicate, prepare, execute, wait, or stay silent within the user’s authority.</p></article>
+        </div>
+        <div class="channel-explorer">
+          <div class="channel-header"><h3>Follow the connections</h3><p>Select a channel to see the dependency it carries.</p></div>
+          <div class="channel-tabs" role="tablist" aria-label="Coupling channels">
+            <button id="tab-sm" type="button" role="tab" aria-selected="true" aria-controls="panel-sm" data-channel="sm">S <span>→</span> M</button><button id="tab-ma" type="button" role="tab" aria-selected="false" aria-controls="panel-ma" tabindex="-1" data-channel="ma">M <span>→</span> A</button><button id="tab-as" type="button" role="tab" aria-selected="false" aria-controls="panel-as" tabindex="-1" data-channel="as">A <span>→</span> S</button><button id="tab-ms" type="button" role="tab" aria-selected="false" aria-controls="panel-ms" tabindex="-1" data-channel="ms">M <span>→</span> S</button><button id="tab-am" type="button" role="tab" aria-selected="false" aria-controls="panel-am" tabindex="-1" data-channel="am">A <span>→</span> M</button>
+          </div>
+          <div class="channel-panel" id="panel-sm" role="tabpanel" aria-labelledby="tab-sm" tabindex="0"><h4>From observations to lasting context</h4><p>Which observations become persistent personal state? Admission and compression choices shape what later interactions can recover.</p><span class="channel-example">Example: retain a newly stated preference, with its source and scope.</span></div>
+          <div class="channel-panel" id="panel-ma" role="tabpanel" aria-labelledby="tab-ma" tabindex="0" hidden><h4>From retained context to better decisions</h4><p>Which memories reach the action policy, and how do they affect timing, content, preparation, execution, or silence?</p><span class="channel-example">Example: use a remembered meeting commitment to time a reminder.</span></div>
+          <div class="channel-panel" id="panel-as" role="tabpanel" aria-labelledby="tab-as" tabindex="0" hidden><h4>From an action to the evidence it needs</h4><p>Actions create observation needs: acquire relevant information before acting and check uncertain effects afterward.</p><span class="channel-example">Example: inspect the current workspace before editing, then verify the result.</span></div>
+          <div class="channel-panel" id="panel-ms" role="tabpanel" aria-labelledby="tab-ms" tabindex="0" hidden><h4>From prior knowledge to selective attention</h4><p>Memory can guide sampling, attention, and interpretation. The challenge is to preserve opportunities to discover that a prior is wrong.</p><span class="channel-example">Example: monitor a familiar routine while still detecting an unexpected change.</span></div>
+          <div class="channel-panel" id="panel-am" role="tabpanel" aria-labelledby="tab-am" tabindex="0" hidden><h4>From outcomes to justified updates</h4><p>Link outcomes to earlier decisions, revise personal state, and assess whether evidence warrants a persistent policy change.</p><span class="channel-example">Example: update a reminder preference after an explicit user correction.</span></div>
+        </div>
+        <div class="shared-conditions"><span>SHARED CONDITIONS</span><p>Privacy <i>·</i> Resources <i>·</i> Uncertainty <i>·</i> User authority</p><small>Every module and connection operates within these constraints.</small></div>
+      </div>
+    </section>
+
+    <section class="section roadmap" id="closure" aria-labelledby="closure-title">
+      <div class="container">
+        <div class="section-heading"><span class="section-number">03 / LEVELS OF LOOP CLOSURE</span><h2 id="closure-title">From remembering<br><span class="muted">to learning responsibly.</span></h2><p class="section-deck">Five cumulative levels extend a session-local L0 baseline. Continuing operation arrives at L3; self-evolution requires the additional commitments of L5.</p></div>
+        <ol class="level-list">
+          <li><span class="level-id">L1</span><div><h3>Retain personal state</h3><p>Keep usable user-specific state across interactions.</p></div><span class="level-keyword">PERSISTENCE</span></li>
+          <li><span class="level-id">L2</span><div><h3>Use what is retained</h3><p>Let retained state inform a later Sensing or Action decision.</p></div><span class="level-keyword">REUSE</span></li>
+          <li class="level-highlight"><span class="level-id">L3</span><div><h3>Sustain a continuing loop</h3><p>Create scheduled or event-triggered decision opportunities between requests, including waiting and silence.</p></div><span class="level-keyword">ALWAYS-ON BASELINE</span></li>
+          <li><span class="level-id">L4</span><div><h3>Close the outcome-feedback path</h3><p>Link external outcome evidence to earlier decisions and use it to check or correct assistance.</p></div><span class="level-keyword">FEEDBACK</span></li>
+          <li class="level-evolution"><span class="level-id">L5</span><div><h3>Govern persistent policy revision</h3><p>Use attributed outcomes to propose, validate, and durably commit changes to future behavior.</p></div><span class="level-keyword">SELF-EVOLUTION</span></li>
+        </ol>
+        <p class="section-note">A level describes supported closure requirements. It does not, by itself, establish service quality or lasting user benefit.</p>
+        <details class="figure-disclosure"><summary>View the paper’s loop-closure diagram <span aria-hidden="true">+</span></summary><figure class="paper-figure"><a href="assets/closure-levels.png"><img src="assets/closure-levels.webp" width="2400" height="1389" alt="Five cumulative loop closure levels above L0: durable state, state-informed decisions, continuing operation, outcome feedback, and validated policy revision." loading="lazy"></a><figcaption>Detailed loop-closure schematic from the working draft.</figcaption></figure></details>
+      </div>
+    </section>
+
+    <section class="section halo-section" id="halo" aria-labelledby="halo-title">
+      <div class="container">
+        <div class="halo-heading"><div><span class="section-number">04 / FROM ARCHITECTURE TO EVIDENCE</span><h2 id="halo-title">Meet HALO.</h2><p class="halo-expansion">Harness for Always-on Loop Oversight</p></div><div class="halo-stat"><strong>31</strong><span>configurations reviewed<br>across 30 works</span></div></div>
+        <p class="halo-intro">A working connection is a mechanism claim. A useful continuing service needs evidence about its effects. HALO keeps those judgments distinct and traceable.</p>
+        <div class="halo-modes"><article><span class="mode-label">READ MODE</span><h3>Review what the sources establish.</h3><p>Inspect papers and available artifacts. Link channel judgments to source locations, evaluated configurations, and the comparisons reported by the original study.</p><span class="mode-footer">Used for the review in this survey</span></article><article><span class="mode-label">RUN MODE</span><h3>Test a scoped configuration.</h3><p>Connect an executable system through a suitable interface or adapter. Record manipulation checks, traces, and measured endpoints under specified conditions.</p><span class="mode-footer">Protocol for scoped execution</span></article></div>
+        <div class="evidence-forms"><h3>Four forms of supporting evidence</h3><div><span>Mechanism description</span><span>Traced use</span><span>Controlled effect</span><span>Controlled service outcome</span></div><p>These forms are not cumulative. Each claim retains its configuration, comparison, setting, horizon, and uncertainty.</p></div>
+        <div class="halo-finding"><span class="finding-mark" aria-hidden="true">↳</span><p><strong>The integration gap.</strong> Retention and reuse are better documented than feedback into persistent updates. Strong components and selected connections leave open the question of reliable joint operation and lasting benefit.</p></div>
+        <p class="halo-footnote">The read-mode inventory is a narrative selection, not a field-prevalence estimate. Empirical results belong to the original studies.</p>
+      </div>
+    </section>
+
+    <section class="section applications" id="applications" aria-labelledby="applications-title">
+      <div class="container">
+        <div class="section-heading"><span class="section-number">05 / APPLICATIONS</span><h2 id="applications-title">A shared loop.<br><span class="muted">Different worlds to operate in.</span></h2><p class="section-deck">The observation domain, people involved, and outcome horizon change what reliable assistance requires.</p></div>
+        <figure class="paper-figure"><a href="assets/applications.png" aria-label="Open the full-resolution application landscape"><img src="assets/applications.webp" width="2400" height="1289" alt="Application landscape for always-on personal AI across everyday assistance, conversation, digital workspaces, and physical collaboration." loading="lazy"></a><figcaption><span>THE APPLICATION LANDSCAPE</span> Service settings expose different sensing, memory, and action bottlenecks. <a href="assets/applications.png">Full resolution ↗</a></figcaption></figure>
+        <div class="application-grid"><article><span>01</span><h3>Situated daily assistance</h3><p>Connect current egocentric context to timely help and correctable personal histories.</p></article><article><span>02</span><h3>Conversation &amp; meetings</h3><p>Balance turn timing, interruption, audience boundaries, and commitments across sessions.</p></article><article><span>03</span><h3>Digital workspaces</h3><p>Carry plans and procedures across tools while keeping remembered context and authority current.</p></article><article><span>04</span><h3>Physical collaboration</h3><p>Coordinate with people and verify world changes when outcomes are uncertain or hard to reverse.</p></article></div>
+        <div class="research-priorities"><span class="section-number">TWO PRIORITIES AHEAD</span><div><h3>Keep corrective evidence available.</h3><p>Memory-guided observation should still let the assistant notice when routines, preferences, and circumstances change.</p></div><div><h3>Make persistent changes earn their place.</h3><p>Connect attributed outcomes to acceptance checks and later user benefit before committing a policy revision.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section resources" id="resources" aria-labelledby="resources-title">
+      <div class="container resource-inner"><div><span class="section-number">EXPLORE FURTHER</span><h2 id="resources-title">Read. Connect. Build.</h2><p>Explore the full survey and the collection of related research.</p></div><div class="resource-links"><a href="assets/always-on-personal-ai.pdf"><span>Full paper <small>Current working draft · PDF</small></span><b aria-hidden="true">↗</b></a><a href="https://github.com/Always-On-Agent/Always-On-Agent.github.io/blob/main/reading-list.md"><span>Reading list <small>Curated research collection on GitHub</small></span><b aria-hidden="true">↗</b></a><a href="https://github.com/Always-On-Agent"><span>Always-On-Agent <small>Our GitHub organization</small></span><b aria-hidden="true">↗</b></a></div></div>
+    </section>
+
+    <section class="section citation-section" id="cite" aria-labelledby="cite-title">
+      <div class="container citation-inner"><div><span class="section-number">CITATION</span><h2 id="cite-title">Cite this work.</h2><p>BibTeX for the current working draft.</p></div><div class="citation-box"><div class="citation-toolbar"><span>BibTeX</span><button type="button" id="copy-citation">Copy citation <span aria-hidden="true">⧉</span></button><span id="copy-status" role="status" aria-live="polite"></span></div><pre><code id="bibtex">@misc{liu2026alwayson,
+  title = {Always-On Personal AI: A Roadmap towards
+           a Continuing and Self-Evolving Loop},
+  author = {Liu, Shuai and Jin, Weiyang and Tian, Shulin
+            and Hu, Kairui and Dong, Yuhao and Kong, Lingdong
+            and Li, Siyao and Zhang, Kaichen
+            and Yang, Jingkang and Liu, Ziwei},
+  year = {2026},
+  note = {Working draft},
+  url = {https://always-on-agent.github.io/}
+}</code></pre><a class="download-bib" href="citation.bib" download>Download .bib ↓</a></div></div>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><a class="brand" href="#top"><img src="assets/icon.webp" width="32" height="32" alt=""><span>Always-On<span class="brand-light"> Agent</span></span></a><p>A continuing loop, built around people.</p><a href="https://github.com/Always-On-Agent/Always-On-Agent.github.io">Website source ↗</a></div></footer>
+</body>
+</html>
