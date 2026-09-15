@@ -1,0 +1,2105 @@
+{
+  "version": "v2",
+  "updated": "2026-09-15",
+  "mode": "read",
+  "selected_works": 30,
+  "unit": "named configured service and source/evaluation scope",
+  "selection": "Re-review of the existing 30-work matrix; split one paper into two configurations. No prevalence sampling.",
+  "source_ledger_sha256": "2714fedfae4085d9dfe23cb40e6d53681031f70d1789a7da7085c5dac02ee7c2",
+  "records": [
+    {
+      "id": "vinci2",
+      "name": "Vinci2",
+      "configuration": "EgoMemo streaming proactive configuration on EgoServe, with GPT-5-mini reasoning",
+      "group": "C",
+      "summary_en": "Multi-scale memory and reconstructed historical evidence support proactive intervention and recall. EgoServe evaluates service timing across four temporal horizons and ablates memory and retrieval components.",
+      "comparison_scope": "§5.2 and Table 1 compare EgoMemo with direct-model baselines on service-category and temporal-window F1. Removing the hierarchy changes overall F1 from 8.0 to 7.0; removing reconstruction changes it to 6.6. These are component interventions involving several operations, not isolated channel or human-outcome measurements.",
+      "configuration_notes": "Pinned to arXiv:2607.11523v1 and the cached PDF. The reviewed service is streaming EgoServe assistance using retained egocentric history, including multi-day EgoLife recordings. Offline QA adaptations in Appendix C.1 use question-aware captioning and a different reasoner; they are not averaged into this configuration. No code commit was inspected.",
+      "original_contribution": "Streaming multimodal memory supports timed intervention and recall across temporal horizons.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Incoming clips produce timestamped captions and sampled keyframes. The implementation incrementally commits clip/activity/session summaries, source-linked graph entries, and visual embeddings; EgoLife memories persist across the recorded days.",
+          "source_locator": "§4.1 Streaming Memory Construction; Appendix B.1; Appendix C.1 EgoServe (EgoLife Subset)",
+          "source_url": "https://arxiv.org/html/2607.11523v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Retrieved temporal summaries, graph-linked episodes, and reconstructed visual context enter Reason(c_t, C_hat, q_r), which outputs the intervention decision and response. Retained history therefore reaches both whether-to-speak and content decisions.",
+          "source_locator": "§4.2 Caption Reconstruction and Reasoning, Eq. (7); Fig. 3; Appendix C.1",
+          "source_url": "https://arxiv.org/html/2607.11523v1",
+          "realization": "fused"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "The streaming reasoner requests historical evidence, while reconstruction re-examines already archived captions and frames. These passages do not specify an action decision directing a new observation or an in-system follow-up check.",
+          "source_locator": "§4.1–4.2; Appendix C.1 EgoServe (EgoLife Subset)",
+          "source_url": "https://arxiv.org/html/2607.11523v1",
+          "realization": "unspecified",
+          "ambiguity": "Historical retrieval and caption reconstruction are mapped to memory consumption. A new sensing endpoint is unspecified for the streaming configuration."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "Initial clip captioning precedes graph admission; retained context is then retrieved for intervention reasoning. The text does not identify retained personal state controlling the acquisition or interpretation of newly arriving clips.",
+          "source_locator": "§4.1 Streaming Memory Construction; §4.2 Streaming Retrieval-Augmented Reasoning",
+          "source_url": "https://arxiv.org/html/2607.11523v1",
+          "realization": "unspecified",
+          "ambiguity": "Query-focused reconstruction of archived evidence does not alone demonstrate a separate memory-to-sensing route."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "The graph evolves from new observations. No external response to an earlier assistant intervention is associated with that decision and used for a durable personal-state revision. Learning timing from human preferences is identified as future work, but this does not exclude every possible state-update branch.",
+          "source_locator": "§4.1 Evolving Knowledge Graph; §6 Limitations and future work",
+          "source_url": "https://arxiv.org/html/2607.11523v1",
+          "realization": "unspecified",
+          "ambiguity": "Future preference-based timing learning excludes that proposed extension, not an explicitly enumerated total A→M implementation."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2607.11523",
+          "version_url": "https://arxiv.org/html/2607.11523v1",
+          "version": "2607.11523v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "b0a336de46fab2b499cb6aa0c39fc9ce25245c77d7a72b9af109ac8ec7e07436"
+        }
+      ]
+    },
+    {
+      "id": "visionclaw2026",
+      "name": "VisionClaw",
+      "configuration": "Composed Gemini Live + OpenClaw system with connected personal stores and delegated tools",
+      "group": "C",
+      "summary_en": "Voice-directed capture, persistent recall, and delegated research/execution form a composed service. Personal calendar/email context can guide later information acquisition through the action layer.",
+      "comparison_scope": "§5 uses a 12-person within-subject comparison of Always-On Only, Agent Only, and VisionClaw for task time, difficulty, workload, and success. §6 reports 555 voice-initiated interactions across 55 active participant-days by four authors. The connected workflow observations support mechanism mapping; neither study independently isolates all mapped routes.",
+      "configuration_notes": "Pinned to arXiv:2604.03486v2. Storage and retrieval are OpenClaw responsibilities; Appendix C explicitly denies persistent memory only to the Gemini voice interface. §8 describes the configured service as user-initiated/reactive. This bounded initiation policy does not remove its memory or information-acquisition mechanisms. Original HTML prompt checked directly because browser extraction omits code blocks. No code commit inspected.",
+      "original_contribution": "Glasses perception is combined with delegated digital tools and memory services.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Voice-directed capture sends current visual/audio content through execute to persistent stores: examples include a structured hotel-information entry, poster notes, and conversation memories. Later cross-session recall establishes the retained endpoint.",
+          "source_locator": "§3.4 Agentic Execution Layer; §6.3 Save and Recall; Appendix C Gemini Live prompt",
+          "source_url": "https://arxiv.org/html/2604.03486v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "OpenClaw retrieves saved personal information, previous-session results, and calendar/email context, which Gemini communicates or uses in continued task execution. The composed system retains state even though its Gemini front end delegates storage.",
+          "source_locator": "§3.4; §6.3 Recall; §6.4 Interaction Evolves with More Personal Data; Appendix C",
+          "source_url": "https://arxiv.org/html/2604.03486v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "The configured prompt requires recipient/content confirmation before message execution unless urgent. Delegated workflows also acquire named external facts before completing the requested action. These identify precommit information needs within the acting system.",
+          "source_locator": "Appendix C, Task Description Quality; §3.4; §6.3 Retrieve and Shop",
+          "source_url": "https://arxiv.org/html/2604.03486v2",
+          "realization": "direct",
+          "ambiguity": "Fig. 2 labels capture_photo, but Appendix C declares only execute. The code is based on the explicit confirmation/delegated acquisition route, not on that inconsistent tool label."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Retained calendar/email information supplies follow-on research targets: the next meeting participant is looked up before web research, and an email colleague name starts a chain through Scholar, advisor, publications, and grants. Personal state reaches acquisition through task reasoning.",
+          "source_locator": "§6.3 Retrieve, next-meeting-person example; §6.4 Agents Enable Open-Ended Multi-Turn Conversations, six-step email-to-research chain",
+          "source_url": "https://arxiv.org/html/2604.03486v2",
+          "realization": "indirect_via_A",
+          "ambiguity": "External personal stores supply the retained state. This is a connected delegated research route, not independently demonstrated camera adaptation; its observations overlap the M→A and A→S evidence."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "The deployment retains execution results and allows later task-status recall. It does not specify how external feedback about a particular earlier decision governs durable personal-state or policy revision. Accumulating logs alone does not establish that update.",
+          "source_locator": "§6.3 Recall and Control; §6.4 Interaction Evolves with More Personal Data; §7 Models and Continual Learning",
+          "source_url": "https://arxiv.org/html/2604.03486v2",
+          "realization": "unspecified",
+          "ambiguity": "The future discussion of model continual learning does not rule out all external-state updates; neither branch is sufficiently specified as action-outcome adaptation."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2604.03486",
+          "version_url": "https://arxiv.org/html/2604.03486v2",
+          "version": "2604.03486v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "146424d0c07c73526440ed19b61b661bd0ce2528e3a743c9a4fcd80c093ade52"
+        }
+      ]
+    },
+    {
+      "id": "contextagent",
+      "name": "ContextAgent",
+      "configuration": "ContextAgentBench/CAB-Lite evaluated reasoner with supplied per-sample personas and planned tool chains",
+      "group": "C",
+      "summary_en": "Sensory context and supplied personas support proactive prediction and tool use. Planned GPS-to-weather acquisition is explicit; retention across interactions is unspecified in the benchmark configuration.",
+      "comparison_scope": "§5.3 and Appendix E/Table 10 remove personas during both training and testing and measure proactive accuracy, tool F1, and argument accuracy. This establishes a supplied-input/model comparison, not a runtime retained-memory delivery intervention. Qualitative examples expose planned tool-result dependencies.",
+      "configuration_notes": "Pinned to arXiv:2505.14668v2. Review unit is the evaluated CAB/CAB-Lite reasoner, not an inferred continuously learning deployment. Input context includes videos/audio/notifications and per-example persona fields; output is a proactive score, tool chain, and response. No retained user database or feedback horizon is specified. Original §4.1 checked online; no code commit inspected.",
+      "original_contribution": "Sensory context and supplied personas support proactive need prediction and tool use.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "unreported",
+          "rationale": "Annotators supply persona fields for individual benchmark examples; §4.1 uses these fields in experiments and describes continuous extraction from historical conversations as a possible practical extension. An implemented admission-and-retention mechanism is not specified.",
+          "source_locator": "§3.2 Task Construction, persona fields; §4.1 Persona Context",
+          "source_url": "https://arxiv.org/html/2505.14668v2",
+          "realization": "unspecified",
+          "ambiguity": "Supplied benchmark input is not an online personal-memory write. The extension wording does not expressly exclude every write mechanism, so the prior partial code becomes unreported rather than absent."
+        },
+        {
+          "channel": "MA",
+          "status": "unreported",
+          "rationale": "Persona input explicitly conditions proactive scores and tool plans, but the evaluated samples do not specify that a user-specific profile is retained and reused across interactions. The positive persona-conditioning result is therefore distinct from a demonstrated retained M→A route.",
+          "source_locator": "§3.2; §4.1 Persona Context; §4.2 Context-aware Reasoner; §5.3 Persona Context",
+          "source_url": "https://arxiv.org/html/2505.14668v2",
+          "realization": "unspecified",
+          "ambiguity": "Retention/reuse is unresolved, not the implemented consumption of persona input."
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "The reasoner plans sequential tools and incorporates their results. The hiking exemplar identifies missing location, requests current GPS, and passes its city result into a weather request before assistance, completing a directed information-acquisition dependency.",
+          "source_locator": "§4.2 Context-aware Proactive Reasoning; Appendix A hiking exemplar; Appendix C Table 5; Appendix D Tool Definition",
+          "source_url": "https://arxiv.org/html/2505.14668v2",
+          "realization": "direct",
+          "ambiguity": "This is the described tool-chain mechanism. Reported benchmark metrics assess predictions and tool arguments, not an isolated causal effect of live sensor adaptation."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "The sensory extractor uses proactive-oriented VLM prompting and speech recognition; persona fields enter subsequent reasoning. Neither retained personal-state reuse nor its delivery to the acquisition/interpretation endpoint is established for this benchmark configuration.",
+          "source_locator": "§4.1 Sensory Context and Persona Context; §4.2",
+          "source_url": "https://arxiv.org/html/2505.14668v2",
+          "realization": "unspecified",
+          "ambiguity": "Persona-conditioned tool selection cannot establish retained M→S until the personal-state lifetime is specified."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Training removes or supplies persona inputs and distills reasoning traces. The paper does not specify an external outcome tied to an earlier deployed decision that changes durable user state or the deployed policy.",
+          "source_locator": "§4.2 Training Scheme; §5.3 Persona Context; Appendix F Limitations",
+          "source_url": "https://arxiv.org/html/2505.14668v2",
+          "realization": "unspecified",
+          "ambiguity": "Possible historical persona extraction is not an implemented action-feedback update."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2505.14668",
+          "version_url": "https://arxiv.org/html/2505.14668v2",
+          "version": "2505.14668v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "9f0588c65fc559e64c9d9a92914859f2996bbd2e2c58d780963b7a7303722729"
+        }
+      ]
+    },
+    {
+      "id": "proagent",
+      "name": "ProAgent",
+      "configuration": "Default Qwen3-VL-4B ProAgent with persona updating/retrieval and agent-in-the-loop tiered sensing",
+      "group": "C",
+      "summary_en": "Retained personas guide assistance, the assistance decision adjusts later sensing, and action-linked verbal feedback updates contextual personas. The feedback and sampling modules have reported comparisons.",
+      "comparison_scope": "§5 evaluates CAB-Lite and 92 hours of recordings from 20 people. §5.4 compares persona retrieval, sensing, and reasoner variants; removing agent-in-loop sensing reduces F1 by the reported 21.2%. §5.6.2 compares with/without feedback-derived personas, reporting 5.8% lower false detection and 5.1% higher F1. §5.7 has the same 20 participants rate generated assistance. These module/outcome comparisons do not isolate all five routes or prove attribution correctness.",
+      "configuration_notes": "Pinned to arXiv:2512.06721v2. Review includes the implemented feedback-enabled database, not merely initial persona inputs. Long-term persona state is distinct from the four-record short-term context window. Default visual intervals are 5 s/60 s. The source has inconsistent figure cross-references; §5.6.2 and the caption of Fig. 28 identify the human-feedback result. No code commit inspected.",
+      "original_contribution": "Persona-aware reasoning coordinates proactive delivery and on-demand sensing.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Users provide natural-language personas; subsequent context and feedback records yield inferred personas. New entries are committed to a scenario-grouped database, with semantic matching, merging, and replacement of conflicts.",
+          "source_locator": "§4.2.1 Persona Contexts; §4.2.2 Context-Aware Persona Updating",
+          "source_url": "https://arxiv.org/html/2512.06721v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Scenario-relevant retained personas enter the reasoner with visual and other sensory contexts. The reasoner decides silence versus assistance, plans tools, and generates personalized response content.",
+          "source_locator": "§4.2.3 Context-Aware Persona Retrieval; §4.3.1 Proactive Intent Reasoning",
+          "source_url": "https://arxiv.org/html/2512.06721v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "The assistance-need prediction controls subsequent visual sampling: useful-assistance moments maintain high-rate capture; no-need decisions return to low-rate capture. A suppression interval coordinates this decision with low-cost cue triggers.",
+          "source_locator": "§4.4.2 Agent-in-the-Loop Adaptive Perception; §5.1.2 Configuration",
+          "source_url": "https://arxiv.org/html/2512.06721v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Retained personas condition the assistance-need decision, and that same decision drives the subsequent visual sampling schedule. The documented composition reaches a sensing endpoint through action reasoning.",
+          "source_locator": "§4.2.3; §4.3.1; §4.4.2",
+          "source_url": "https://arxiv.org/html/2512.06721v2",
+          "realization": "indirect_via_A",
+          "ambiguity": "This shares the M→A and A→S implementation/evidence; it is not a separately controlled direct persona-to-camera mechanism."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "An interaction record binds sensory context, delivered assistance, and verbal feedback. An LLM infers contextual preferences from these records and merges/replaces database entries, changing later assistance. Attribution rests on explicit user feedback associated with the delivered intervention.",
+          "source_locator": "§4.2.2, interaction tuple r_i=(c_i,a_i,f_i); §5.6.2 Impact of Human Feedback",
+          "source_url": "https://arxiv.org/html/2512.06721v2",
+          "realization": "direct",
+          "update_branch": "personal_state",
+          "ambiguity": "The feedback-derived-persona comparison measures later triggering benefit; it does not independently verify causal credit assignment for every inferred preference."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2512.06721",
+          "version_url": "https://arxiv.org/html/2512.06721v2",
+          "version": "2512.06721v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "09e1c58139d89369d8fd6f1e8ff815a991b150652c3c2a0a5e6d2a0414715490"
+        }
+      ]
+    },
+    {
+      "id": "aiget",
+      "name": "AiGet",
+      "configuration": "Gemini-based AiGet prototype with participant-provided profile, focus/familiarity rules, and interaction history",
+      "group": "C",
+      "summary_en": "Profiles and familiarity/focus analysis select context-relevant knowledge on glasses. User controls are implemented; feedback-based profile refinement belongs to an explicitly unimplemented extension.",
+      "comparison_scope": "§5.3 compares AiGet, a no-rules baseline retaining profiles, and a baseline removing both rules and profiles, with 12 participants rating their own recorded moments. Rules depend on profiles, so the authors omit a rules-only condition. §6 reports 18 participants, 40 sessions, and six participants with continued use over a week. These establish pipeline and usage contributions, not five isolated channel effects.",
+      "configuration_notes": "Pinned to arXiv:2501.16240v2. The retained profile and knowledge history support repeated live interactions; real-time raw gaze/context is not stored (§7.2.4). The review preserves the prototype scope and does not downgrade it for short sessions or a university sample. Fig. 2 future-path wording was checked on the original version. No code commit inspected.",
+      "original_contribution": "Profiles and familiarity/focus rules select context-relevant knowledge on glasses.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Participant-selected interests, values, and demographic/background information enter a user profile reused by the live pipeline. Explicitly supplied personal evidence qualifies; the mechanism does not require autonomous profile inference from sensing.",
+          "source_locator": "§5.1.2 Context Analysis, profile and interest-selection footnote; Appendix B.2 User Profile Sample; §6 continued use",
+          "source_url": "https://arxiv.org/html/2501.16240v2",
+          "realization": "direct",
+          "ambiguity": "§7.2.4 excludes storage of raw real-time gaze/context data; this code concerns the supplied personal profile, not a raw sensor archive."
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The retained profile supplies familiarity and interest judgments; these and retrieved interaction history guide candidate generation, novelty filtering, prioritization, and the knowledge ultimately presented.",
+          "source_locator": "§5.1.2–5.1.3; Table 2 history filtering; §5.3 baseline definitions",
+          "source_url": "https://arxiv.org/html/2501.16240v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "Triggers use current gaze/environment variation or explicit user queries. The ring allows cancellation and follow-up questions, but the inspected design does not specify a system action selecting a subsequent observation target or issuing an information-seeking question.",
+          "source_locator": "§5.1.1 LLM Request Trigger; §5.1.4–5.1.5",
+          "source_url": "https://arxiv.org/html/2501.16240v2",
+          "realization": "unspecified",
+          "ambiguity": "User attention drawn by an overlay is not, by itself, a documented agent sensing-control mechanism."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "During context analysis, the user profile determines familiarity with the current location/entities and refines inferred learning interests. Retained personal knowledge therefore shapes interpretation before knowledge generation and presentation.",
+          "source_locator": "§5.1.2 Context Analysis; Fig. 3",
+          "source_url": "https://arxiv.org/html/2501.16240v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "AM",
+          "status": "absent",
+          "rationale": "The implemented controls dismiss the current display or mute/toggle delivery. Feedback-driven profile refinement is explicitly assigned to the unimplemented future extension, so the prototype lacks the outcome-to-durable-update route described there.",
+          "source_locator": "Fig. 2 caption; §5.1.5 Follow-Up User Actions; §7.2.3 retrospective/profile-update proposal",
+          "source_url": "https://arxiv.org/html/2501.16240v2",
+          "realization": "unspecified",
+          "explicit_absence": "Fig. 2 explicitly labels its gray feedback/profile-update paths as future suggestions not implemented or evaluated; §7.2.3 places profile updating from daily interaction reflections in a proposed future retrospective mode.",
+          "ambiguity": "A dismissed display and stored delivery history do not by themselves complete a durable feedback update."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2501.16240",
+          "version_url": "https://arxiv.org/html/2501.16240v2",
+          "version": "2501.16240v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "9b7849dfc20e5c672623a0a075f36b0e9c1d996b4ca38f7df280f41932ac3c91"
+        }
+      ]
+    },
+    {
+      "id": "ai4service",
+      "name": "Alpha-Service",
+      "configuration": "Initial Alpha-Service runtime with task dispatch, visual trigger/streaming models, web search, and JSON memory",
+      "group": "C",
+      "summary_en": "The modular runtime joins task-directed sensing, tool use, and cross-session JSON context. Demonstrations expose orchestration, while an action-feedback revision mechanism remains unspecified.",
+      "comparison_scope": "§4 presents service demonstrations, including timestamped Blackjack trigger/scene/reasoning outputs and tool use. These provide mechanism descriptions and processing traces. The paper does not report matched channel interventions or a controlled long-horizon service-outcome comparison.",
+      "configuration_notes": "Pinned to arXiv:2510.14359v1. The reviewed unit is Alpha-Service’s initial implementation: local JSON memory, user-command/intent triggers, CPU task dispatch, and Google Search API. §3.5 expressly targets multiple sessions. Generalized/personalized service examples in §2 are motivational; codes rely on §3 implementation rather than those examples. No code commit inspected.",
+      "original_contribution": "A modular runtime combines sensory triggers, task dispatch, tools, and long-term context.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "After each interaction, the system asynchronously extracts dialogue information into local JSON records containing user metadata, summary, final output, timestamp, and topic. The stated endpoint is reuse across sessions.",
+          "source_locator": "§3.5 Memory Unit: Long-Term Context Storage",
+          "source_url": "https://arxiv.org/html/2510.14359v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "A new task retrieves topic/intent-relevant historical records and injects them into the language-model prompt. CPU synthesis combines this retained user context with scene and tool results to form the delivered response.",
+          "source_locator": "§3.3 Synthesis and Response Generation; §3.5",
+          "source_url": "https://arxiv.org/html/2510.14359v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "Task dispatch activates a future event trigger or requests task-specific visual descriptions when more detail is needed. In the Blackjack case, CPU-distributed prompts target card-count changes and detailed game-state observations before guidance.",
+          "source_locator": "§3.3 Decomposition and Dispatch; §4.1 Input Unit, Listings 1–2",
+          "source_url": "https://arxiv.org/html/2510.14359v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "The text describes memory retrieval and input-model dispatch, but does not link a retrieved personal record to the trigger specification or visual-analysis prompt. Memory enters synthesis; a memory-conditioned sensing endpoint is unresolved.",
+          "source_locator": "§3.3 CPU; §3.5 Memory Unit; §4.1 case study",
+          "source_url": "https://arxiv.org/html/2510.14359v1",
+          "realization": "unspecified",
+          "ambiguity": "Sharing an orchestrator is not sufficient evidence that the memory result conditions its sensing request."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "JSON records include agent outputs and the demonstration comments on a game outcome. The source does not associate that outcome with a particular earlier assistant decision and use it to revise durable personal state or policy; episode logging alone is specified.",
+          "source_locator": "§3.5; §4.1 CPU Game Outcome Analysis and Learning Recommendation",
+          "source_url": "https://arxiv.org/html/2510.14359v1",
+          "realization": "unspecified",
+          "ambiguity": "Educational advice after a loss is an output; it is not itself a demonstrated feedback-governed memory revision."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2510.14359",
+          "version_url": "https://arxiv.org/html/2510.14359v1",
+          "version": "2510.14359v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "8390b3cd4b9038cd8c6cd9c3e0bb76b667681b289676ef67d23de1d43a675f4b"
+        }
+      ]
+    },
+    {
+      "id": "mementoar2026",
+      "name": "Memento",
+      "configuration": "Quest 3 prototype with RSAM storage, context-triggered resurfacing, referent checking, and permanent removal",
+      "group": "C",
+      "summary_en": "Context-bound memories recur across days; current-view referent checking supports situated resurfacing, and targeted permanent removal gives users durable control over unwanted recalls.",
+      "comparison_scope": "§4.1 compares embedding choices for contextual retrieval. §4.2 reports nine participants, 25 sessions over 2–4 days, 196 created memories, and 135 proactive recalls, with diaries and concrete referent-misalignment cases. The recall interval was fixed to once per 24 hours in that study. These are technical and observational findings, not controlled benefits of all five routes.",
+      "configuration_notes": "Pinned to arXiv:2601.17622v4. The prototype runs on Quest 3 with remote LLM processing and smartphone GPS; RSAMs explicitly survive interactions. The paper positions it as a simplified context-driven reminder. Its implemented targeted deletion qualifies through the personal-state branch despite the preliminary duration. Original mechanism sections checked online; no code commit inspected.",
+      "original_contribution": "Context-bound AR memories recur across interactions and support user-controlled resurfacing.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "A query interaction combines query, response, response source, referent, and the recent spatial-activity profile into a new RSAM. R-tree/HNSW insertion retains it permanently for subsequent interactions.",
+          "source_locator": "Fig. 2; §2.2.3 Personal Memory Generation",
+          "source_url": "https://arxiv.org/html/2601.17622v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Matched retained RSAMs determine which previous interest/query to resurface and where to display it. The stored query can also yield an updated answer when its routine context recurs.",
+          "source_locator": "§2.2.4 Context-aware Memory Retrieval; §2.2.5; §3 use cases",
+          "source_url": "https://arxiv.org/html/2601.17622v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "An intended resurfacing invokes the Proactive Visualizer’s current-view referent localization/check before AR anchoring. The candidate display thus supplies an observation target whose presence must be established before commitment.",
+          "source_locator": "§2.2.4 existence verification; §2.2.5 Referent detection",
+          "source_url": "https://arxiv.org/html/2601.17622v4",
+          "realization": "direct",
+          "ambiguity": "This action-to-check interpretation shares the same implementation passages with M→S; it is not an independently measured effect."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Referents retained in retrieved RSAMs are supplied to an open-vocabulary detector to identify/localize the corresponding object in the current view. Prior personal context guides the visual interpretation endpoint.",
+          "source_locator": "§2.2.4–2.2.5 Referent detection",
+          "source_url": "https://arxiv.org/html/2601.17622v4",
+          "realization": "direct",
+          "ambiguity": "The relevant evidence overlaps the pre-display A→S check. Detection errors reported in §4.2 concern this shared route rather than separate channel controls."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "The Remove control targets a specific surfaced memory and permanently dismisses it, including mismatched memories. The user’s response to that resurfacing directly governs a durable revision of the personal corpus.",
+          "source_locator": "§2.2.5 Content visualization; §2.2.6 adjustment interface",
+          "source_url": "https://arxiv.org/html/2601.17622v4",
+          "realization": "direct",
+          "update_branch": "personal_state",
+          "ambiguity": "Attribution is supplied by the user selecting the unwanted item. This does not establish autonomous preference learning or a separately measured update benefit."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2601.17622",
+          "version_url": "https://arxiv.org/html/2601.17622v4",
+          "version": "2601.17622v4",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "1c76dc50bb12e02fe4c28d5cf3322ce426c0b18aeea4816ff781bbae125f8c99"
+        }
+      ]
+    },
+    {
+      "id": "socialmind",
+      "name": "SocialMind",
+      "configuration": "RayNEO X2 SocialMind with identity-indexed persona database and multi-tier suggestion generation",
+      "group": "C",
+      "summary_en": "Identity-indexed personas support later suggestions and recognition of known partners. Persona and nonverbal modules have comparative evidence, with a separate live-interaction user study.",
+      "comparison_scope": "§5 evaluates three datasets and a 20-person live study. §5.3.2 removes the persona-adaptation or nonverbal module while retaining other components; reported persona-module gains include 52.2% personalization and 41.2% engagement. These suggestion-quality comparisons span multiple operations. User questionnaires and latency/usability observations are distinct from controlled route-specific service benefits.",
+      "configuration_notes": "Pinned to arXiv:2412.04036v1. Personal memory comprises user/partner identities and post-conversation personas, retained for later encounters; the generic simulated social cache is not the sole basis for the memory codes. Local face ID matching in §4.3.3 was checked against the original version. No code commit inspected.",
+      "original_contribution": "Historical conversations supply identity-indexed personas for live social suggestions.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "After a conversation, an LLM extracts both parties’ persona cues into an identity-indexed database. New cues are registered; similar cues are merged; contradictory prior cues are replaced for later interactions.",
+          "source_locator": "§4.3.1 Implicit Persona Extraction; §4.3.2 Persona Management",
+          "source_url": "https://arxiv.org/html/2412.04036v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Known-partner matching retrieves both parties’ retained personas; otherwise the user’s own persona is used. Runtime prompt integration supplies these cues to selection and generation of live social suggestions.",
+          "source_locator": "§4.3.3 Persona Retrieval; §4.4.2 Knowledge Integration",
+          "source_url": "https://arxiv.org/html/2412.04036v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "Speech and nonverbal cues are sensed on configured schedules, while suggestions are generated and refreshed. The inspected implementation does not specify an intended suggestion issuing an observation request or tracking a targeted follow-up response.",
+          "source_locator": "§4.2; §4.5.2 Intention Infer-based Suggestion Generation; §4.5.3 Proactive Response Update",
+          "source_url": "https://arxiv.org/html/2412.04036v1",
+          "realization": "unspecified",
+          "ambiguity": "Advice the user might speak does not alone establish that the assistant directs or attributes a subsequent observation."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Current face observations are matched locally against the retained identity-indexed persona database to determine whether the partner is already known. Stored identity references therefore guide interpretation of a new encounter before persona retrieval.",
+          "source_locator": "§4.3.1 database organization; §4.3.3 Persona Retrieval",
+          "source_url": "https://arxiv.org/html/2412.04036v1",
+          "realization": "direct",
+          "ambiguity": "This functional mapping concerns identity recognition, not evidence that semantic persona text changes the general nonverbal detector. Identity matching also supports M→A retrieval, so evidence is shared."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "The system updates personas from new conversations and adds paired utterance/cue/suggestion records to caches. It does not specify external feedback about an earlier suggestion governing those commits; contemporaneous pairing and conflict replacement are not sufficient action-outcome attribution.",
+          "source_locator": "§4.3.1–4.3.2; §4.5.1 Runtime Routing and Cache Management",
+          "source_url": "https://arxiv.org/html/2412.04036v1",
+          "realization": "unspecified",
+          "ambiguity": "Post-study questionnaires evaluate the service; the paper does not identify them as inputs to a durable deployed update."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2412.04036",
+          "version_url": "https://arxiv.org/html/2412.04036v1",
+          "version": "2412.04036v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "b09815d669287ee5e1f1fcc5cf9cc7df3d604f26d12c60cea31114966717b4ce"
+        }
+      ]
+    },
+    {
+      "id": "speechless2026",
+      "name": "SpeechLess",
+      "configuration": "SpeechLess six-module implementation with per-user spatial memory, low-confidence verification, and Full/Partial/Zero input modes",
+      "group": "C",
+      "summary_en": "Spatial memory supports minimal utterances by resolving intent, while confirmation governs uncertain responses and storage. The studies evaluate articulation effort, accuracy, usability, and public interaction.",
+      "comparison_scope": "§5.1 compares Full/Partial/Zero in an 18-person Quest 3 study using the same Memory Retriever across all conditions and seeded personal memories. §5.2 ports the same functionality to mobile AR for 13 participants over a week. These comparisons address the speech/intent interface, not a memory-versus-no-memory or verification-only effect; the field deployment is not on smart glasses.",
+      "configuration_notes": "Pinned to arXiv:2602.00793v2. §3.5 explicitly specifies long-term per-user storage independently of the seeded lab task. Speech/buttons initiate assistance; zero utterance is not equivalent to continuously unsolicited activation. The lab and mobile field interfaces share the described channel mechanisms, so no backend split is needed for this row. No code commit inspected.",
+      "original_contribution": "Spatial memory resolves underspecified intent and reduces repeated verbal input.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Remembrance requests or question-answer interactions bind query, response, and spatial dimension sketch into a long-term per-user episode. Verification gates storage, and confirmed deletion remains available.",
+          "source_locator": "§3.1 Remembrance/Removal; §3.5 Personal Memory Store Manager",
+          "source_url": "https://arxiv.org/html/2602.00793v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The retriever supplies up to five retained episodes to the Response Composer with the current query/view. These memories determine response content and enable routine assistance with partial or zero speech.",
+          "source_locator": "§3.3 Memory Retriever; §3.4 Response Composer",
+          "source_url": "https://arxiv.org/html/2602.00793v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "A low-confidence proposed interpretation/response triggers a Yes/No confirmation with rationale. The action candidate thus specifies what user evidence is needed before accepting and storing the response.",
+          "source_locator": "§3.4 Response Composer; §3.6 User Verification Interface",
+          "source_url": "https://arxiv.org/html/2602.00793v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Stored spatial episodes resolve missing semantic dimensions of an incoming partial/zero query in the intent-resolution step. They interpret what the present utterance/context means before response composition, rather than merely adding answer facts.",
+          "source_locator": "§3 Interaction Paradigm; §3.2 Contextual Dimension Encoder; §3.3; Fig. 3",
+          "source_url": "https://arxiv.org/html/2602.00793v2",
+          "realization": "fused",
+          "ambiguity": "Intent interpretation and answer generation share memory retrieval, so this is functional decomposition of a fused route rather than an isolated sensor-channel effect."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "Acceptance/rejection is attached to a particular low-confidence candidate response and governs its admission into the persistent personal corpus. The user also confirms deletion of identified memories. This completes the user-directed state-update branch.",
+          "source_locator": "§3.1 Removal; §3.5 store gate; §3.6 binary verification",
+          "source_url": "https://arxiv.org/html/2602.00793v2",
+          "realization": "direct",
+          "update_branch": "personal_state",
+          "ambiguity": "The mechanism supplies explicit targeted association and durable admission control; autonomous attribution or a controlled benefit of verification alone is not established."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2602.00793",
+          "version_url": "https://arxiv.org/html/2602.00793v2",
+          "version": "2602.00793v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "dec6c005276e72df36cc640f01ca5e4cd08f0388be5f592bbd36a5231d8069a9"
+        }
+      ]
+    },
+    {
+      "id": "m3agent",
+      "name": "M3-Agent",
+      "configuration": "M3-Agent long-video QA configuration: memory-7b-sft plus trained control-32b-rl, with an external multimodal graph",
+      "group": "C",
+      "summary_en": "Entity-centric multimodal memory supports consistent identities and iterative long-video answering. Memory and controller ablations measure this bounded QA service.",
+      "comparison_scope": "§5 compares M3-Bench-robot, M3-Bench-web, and VideoMME-long QA. §5.4/Table 6 varies memory construction and removes identity equivalence/semantic memory; Table 7 varies controller training, inter-turn instructions, and reasoning. These are memory/control component effects, not proactive intervention outcomes or an online action-feedback update test.",
+      "configuration_notes": "The supplied cache lacks an explicit version label. Original arXiv metadata identifies v4 (9 October 2025); its §§4–5 were checked online and match the inspected mechanism passages. Source URL is therefore pinned to v4, while the old cache provenance remains acknowledged. Memory is retained across clips and reused for multiple questions within the video-conditioned task; no long-term live personal deployment is inferred. No code commit inspected.",
+      "original_contribution": "Entity-centric multimodal memory supports consistent identity representation and long-video reasoning.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Successive video/audio clips generate episodic and semantic entries committed to an external entity graph. New nodes/edges are added and repeated entries gain weight, preserving identities and personal/environmental knowledge across later clips and questions.",
+          "source_locator": "§4.1 Long-Term Memory; §4.2 Memorization",
+          "source_url": "https://arxiv.org/html/2508.09736v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The controller repeatedly searches the retained graph by entities or clips, appends retrieved results to its reasoning context, and eventually selects Answer. The stored information reaches the implemented answering decision.",
+          "source_locator": "§4.3 Control, Algorithm 1; §5.5 Control case study",
+          "source_url": "https://arxiv.org/html/2508.09736v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "The documented QA control loop searches prebuilt memory or returns an answer. Its search target is a memory endpoint, and no request for new sensor data or action-specific observation is described.",
+          "source_locator": "§4.3 Algorithm 1; §4.4 Control training environment; §5.5 Control trajectory",
+          "source_url": "https://arxiv.org/html/2508.09736v4",
+          "realization": "unspecified",
+          "ambiguity": "The benchmark restricts memory search to the associated video; this does not establish a general architectural prohibition on all possible sensing-control extensions."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Face/voice tools match features from each incoming clip to stored multimodal nodes and return persistent identifiers. These identities constrain the new episodic/semantic descriptions, directly linking retained identity state to interpretation.",
+          "source_locator": "§4.2 Consistent Entity Representation and Memory Generation; Appendix 10 tools",
+          "source_url": "https://arxiv.org/html/2508.09736v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Online graph changes derive from incoming observations and repeated identity evidence. Offline DAPO uses answer rewards to train the general controller, but the reviewed deployed QA configuration does not specify action-linked external feedback revising durable personal state or its policy.",
+          "source_locator": "§4.1–4.2 graph updates; §4.4 Training; §4.3 deployed control loop",
+          "source_url": "https://arxiv.org/html/2508.09736v4",
+          "realization": "unspecified",
+          "ambiguity": "Generic offline answer-reward optimization is reported training evidence, not evidence of personal interaction feedback adaptation in the fixed deployed configuration."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2508.09736",
+          "version": "content snapshot; version not displayed",
+          "source_kind": "paper",
+          "role": "v1 source snapshot; see recheck URLs and cell locations for v2 inspection",
+          "text_sha256": "4d2f986042e4f0899016378e5e2dc55286faf9e781e3ab694d3fe84998dcb1bb"
+        }
+      ]
+    },
+    {
+      "id": "lightmemego2026",
+      "name": "LightMem-Ego",
+      "configuration": "Phone/glasses client with hierarchical event memory and experience QA",
+      "group": "C",
+      "summary_en": "Aligned capture and asynchronous event consolidation support personal recall across time. The study measures retrieval, experience QA, and phone/glasses latency.",
+      "comparison_scope": "Implemented capture, consolidation, and retrieval pipeline. Demonstrations of object finding, conversation recall, and summaries. §5.1–5.4 (lines 85–114) evaluates annotated evidence retrieval, LLM/human answer accuracy, and latency. §5.5/Table 4 is a descriptive capability comparison; it does not isolate a channel effect or estimate a controlled deployment benefit.",
+      "configuration_notes": "Pinned paper 2607.11487v1; source metadata: tmp/evidence-revision-20260911/sources/lightmemego2026.source.json. Inspected on 2026-09-12. Service: reactive everyday memory assistance. Observations: egocentric video/audio and timestamps. Actions: grounded answers. Personal-state lifetime: short-term events consolidate into long-term episodic and semantic stores. Feedback described for memory construction is later transcript/visual evidence, not evaluated consequences of assistance. Evaluation horizon: scenario queries over recorded personal experience; a longitudinal service outcome is not tested. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "A phone/glasses client feeds aligned event memory for everyday recall.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Aligned visual/audio segments are stored, refined with arriving transcripts, and consolidated into long-term episodes and semantic routines, preferences, and relationships. These are retained personal experiences rather than only the current rolling buffer.",
+          "source_locator": "§§3.1–3.4, lines 62–70; snapshot tmp/evidence-revision-20260911/sources/lightmemego2026.txt",
+          "source_url": "https://arxiv.org/html/2607.11487v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The query router selects retained event and semantic evidence by temporal scope and intent; the answer model consumes the resulting evidence view. This implements memory-conditioned answer content across later recall interactions.",
+          "source_locator": "§§3.4–3.5, lines 71–73; §4, lines 80–82; snapshot tmp/evidence-revision-20260911/sources/lightmemego2026.txt",
+          "source_url": "https://arxiv.org/html/2607.11487v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "The described client continuously supplies low-rate streams and the router responds to user queries. The material does not identify an intended assistant action that requests a new observation or follow-up check.",
+          "source_locator": "§§3.1–3.5, lines 62–73; snapshot tmp/evidence-revision-20260911/sources/lightmemego2026.txt",
+          "source_url": "https://arxiv.org/html/2607.11487v1",
+          "realization": "unspecified",
+          "ambiguity": "Memory retrieval for an incoming query is specified; action-selected acquisition beyond that retrieval is not."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "Cross-frame change and temporal continuity determine segmentation, while retained personal knowledge is retrieved for answers. A retained personal state that changes capture, attention, or interpretation of a new observation is not identified.",
+          "source_locator": "§§3.2–3.5, lines 64–73; snapshot tmp/evidence-revision-20260911/sources/lightmemego2026.txt",
+          "source_url": "https://arxiv.org/html/2607.11487v1",
+          "realization": "unspecified",
+          "ambiguity": "The receiving endpoint of the reported memory router is answer generation, not a separately described sensing process."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Transcript backfilling and event refinement update the experience record from new input. No outcome of an earlier assistant answer or action is associated with that decision and used to revise durable personal state or policy.",
+          "source_locator": "§§3.2–3.4, lines 64–70; Limitations, line 135; snapshot tmp/evidence-revision-20260911/sources/lightmemego2026.txt",
+          "source_url": "https://arxiv.org/html/2607.11487v1",
+          "realization": "unspecified",
+          "ambiguity": "The preliminary memory-lifecycle policy limitation does not explicitly exclude all outcome-driven updating, so absence is not inferred."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2607.11487",
+          "version_url": "https://arxiv.org/html/2607.11487v1",
+          "version": "2607.11487v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "eda6af85af4283a16a5439848d5f03e8174b67bcdeb3c39bc4f395156132b557"
+        }
+      ]
+    },
+    {
+      "id": "pask2026",
+      "name": "PASK",
+      "configuration": "IntentFlow demand detection with PASK-MM and PASK-PAS",
+      "group": "C",
+      "summary_en": "Streaming demand detection uses persistent user and episodic memory, with maintenance after each session. The study contributes intent modeling, latency analysis, long-term memory cases, and small user comparisons.",
+      "comparison_scope": "Streaming detector and persistent hierarchical memory. §6.5.2/Fig. 9 memory-use cases (lines 374, 378–379). Model comparisons cover demand/non-demand decisions over up to 60 turns and latency (§§6.4–6.5, lines 354–379); they do not isolate a HALO channel. §6.5.3 (lines 380–382) reports 20 ratings per scenario and a 5-versus-5 learning quiz comparison. These whole-system outcomes do not establish correct attribution or the marginal effect of post-session updates.",
+      "configuration_notes": "Pinned paper 2604.08000v1; source metadata: tmp/evidence-revision-20260911/sources/pask2026.source.json. Inspected on 2026-09-12. Service: always-on work, learning, and daily assistance. Observations: textualized multimodal streams. Actions: silence, fast assistance, or memory-grounded assistance/tool execution. Retention: user/global stores persist across sessions; workspace memory is session-local. Source feedback: completed trajectories and a generic runtime circulation claim. Evaluation spans turn-level demand accuracy, approximately 30-minute dialogue tests, qualitative memory cases, and brief user tasks. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "Streaming demand detection is combined with persistent user/global memory and asynchronous maintenance.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Completed interaction trajectories yield user traits and episodic leaves; post-session conflict resolution, decay, and merging commit them to persistent user/global memory. Workspace state is session-local, but the coded endpoint is the retained user/global store.",
+          "source_locator": "§4.1, lines 181–191; §4.3, lines 211–223; §5, line 228; snapshot tmp/evidence-revision-20260911/sources/pask2026.txt",
+          "source_url": "https://arxiv.org/html/2604.08000v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Stable user profiles are injected into the system prompt and retrieved episodes are distilled by MemLoader for final response generation or abstention. Both persistent stores are reused beyond the session that formed them.",
+          "source_locator": "§3.1, lines 145–150; §§4.1–4.2, lines 185–209; snapshot tmp/evidence-revision-20260911/sources/pask2026.txt",
+          "source_url": "https://arxiv.org/html/2604.08000v1",
+          "realization": "fused"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "PAS names tool use, concurrent execution, and feedback circulation, but the inspected implementation does not specify an action-selected question, sensor request, or post-action observation target. Demand-triggered retrieval addresses stored memory.",
+          "source_locator": "§3.1, lines 145–152; §5, lines 224–229; snapshot tmp/evidence-revision-20260911/sources/pask2026.txt",
+          "source_url": "https://arxiv.org/html/2604.08000v1",
+          "realization": "unspecified",
+          "ambiguity": "Generic tool execution and runtime feedback do not identify the information need supplied by a particular intended action."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "The high-level paradigm says memory contextualizes observations, but the concrete memory path returns evidence to the detector for response or abstention. It does not identify a distinct memory-conditioned acquisition, attention, or interpretation endpoint in the sensing implementation.",
+          "source_locator": "§2.2, lines 137–138; §3.1, lines 145–150; §4.2, lines 192–209; snapshot tmp/evidence-revision-20260911/sources/pask2026.txt",
+          "source_url": "https://arxiv.org/html/2604.08000v1",
+          "realization": "unspecified",
+          "ambiguity": "Demand detection fuses contextual understanding and action choice; the text does not resolve a separate sensing dependency beyond the established M→A use."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Post-session maintenance extracts traits from trajectories and updates retained state, while PAS mentions feedback circulation. Neither passage specifies which external outcome belongs to which earlier assistance decision or how that association governs a revision.",
+          "source_locator": "§4.3, lines 211–223; §5, line 228; snapshot tmp/evidence-revision-20260911/sources/pask2026.txt",
+          "source_url": "https://arxiv.org/html/2604.08000v1",
+          "realization": "unspecified",
+          "ambiguity": "Action-outcome association is unspecified, not explicitly unfinished. The old partial coding is therefore unsupported under v2."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2604.08000",
+          "version_url": "https://arxiv.org/html/2604.08000v1",
+          "version": "2604.08000v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "91e8456b4b48d1ccc2eae9b938e00cca66dfda972562eb3eb7f5146cb56d44c2"
+        }
+      ]
+    },
+    {
+      "id": "userascode2026",
+      "name": "User as Code",
+      "configuration": "Two-phase executable personal memory with Active Service constraint pipeline",
+      "group": "C",
+      "summary_en": "Append-only facts and typed executable state support recall, aggregate queries, and unsolicited constraint alerts. Matched experiments separate extraction, representation, retrieval, and alert-pipeline contributions.",
+      "comparison_scope": "Two-phase persistent user project and constraint runner. End-to-end conversation-to-code cases (Appendix F). Controlled comparison: architecture, retrieval-channel, and constraint-pipeline ablations (§§4.4–4.7, especially lines 374–435); component effects are task-dependent. Service endpoints are factual/aggregate correctness and alert detection on 40 standard plus 20 hard synthetic scenarios. The hard-set comparison with live Mem0 is explicitly inconclusive (line 393); real-world prevention of harms or longitudinal service benefit is not demonstrated.",
+      "configuration_notes": "Pinned paper 2606.16707v1; source metadata: tmp/evidence-revision-20260911/sources/userascode2026.source.json. Inspected on 2026-09-12. Service: personalized recall, computation, and Active Service. Observations: raw multi-session dialogue. Actions: answers and alerts, with Python constraints over retained typed state. Retention: facts/archives and user project persist across conversations; manifests expose alerts at each later session. Feedback source for promotion is not operationalized as an external service outcome. Evaluation uses LOCOMO/LongMemEval, synthetic aggregate tasks, and synthetic state-change alert scenarios. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "Append-only extraction plus typed executable state supports recall, aggregates, and unsolicited alerts.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Each conversation session contributes extracted facts to append-only indices and raw archives. Periodic regeneration checkpoints the accumulated facts into a versioned typed user project for reuse across sessions.",
+          "source_locator": "§3.2, lines 251–257; §§1–2, lines 61, 164–167; snapshot tmp/evidence-revision-20260911/sources/userascode2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16707v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Typed user state, fact/archive retrieval, and precomputed ACTIVE_ALERTS enter later answer contexts. State-dependent constraints also cause unsolicited alerts at subsequent conversations, so retained user information reaches communication decisions.",
+          "source_locator": "§3.1, lines 176, 222, 250; §3.3, lines 258–274; snapshot tmp/evidence-revision-20260911/sources/userascode2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16707v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "The generate–verify–review loop runs Python checks over already stored user state. The source does not specify a service action that requests fresh environmental/user evidence or a follow-up observation outside that stored-state computation.",
+          "source_locator": "§3.3.2, lines 266–274; snapshot tmp/evidence-revision-20260911/sources/userascode2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16707v1",
+          "realization": "unspecified",
+          "ambiguity": "Sandbox computation of a constraint result is not automatically a sensing endpoint; no external observation target is supplied in the described loop."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "Manifest routing and vector/archive lookup select retained content for answering and constraint execution. No implemented use of retained state to acquire or interpret a new external observation is specified.",
+          "source_locator": "§3.3.1, lines 260–265; §3.4, lines 283–287; snapshot tmp/evidence-revision-20260911/sources/userascode2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16707v1",
+          "realization": "unspecified",
+          "ambiguity": "Progressive disclosure concerns loading memory into the answer context and does not itself establish memory-guided sensing."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "The agent may persist a useful generated check, but the paper does not identify an external outcome of an earlier assistance decision that controls this promotion. Conversation-based fact updates and computed constraint outputs do not establish that action-outcome link.",
+          "source_locator": "§3.3.2, lines 266–274; §5/Future work, lines 438–458; snapshot tmp/evidence-revision-20260911/sources/userascode2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16707v1",
+          "realization": "unspecified",
+          "ambiguity": "The review/promotion mechanism is durable, but the external outcome source and its association with an earlier service action remain unspecified. RL-trained promotion is future work, not deployed feedback learning."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2606.16707",
+          "version_url": "https://arxiv.org/html/2606.16707v1",
+          "version": "2606.16707v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "53c0c08f39f50f9f2d90ec9150ca29f4be488937a80c57cec00e5b55652b049c"
+        }
+      ]
+    },
+    {
+      "id": "lunchnow2025",
+      "name": "PITCH",
+      "configuration": "Slack morning planning and evening reflection, fixed/rotating-goal variants",
+      "group": "C",
+      "summary_en": "Same-day plans guide later reflective questions, while cross-day recall is explicitly unavailable. A 14-day field study documents planning, reflection, refusals, and breakdowns from insistent or misplaced follow-ups.",
+      "comparison_scope": "Stored daily dialogue and morning-to-evening prompt reuse. 336 conversation sessions/3,181 turns from 12 participants (§5, lines 671–674) and traced negotiation/reflection cases. Fixed and rotating goals were used in random weekly order (§3.1, line 211); this compares coaching conditions, not the memory or questioning channel in isolation. This paper analyzes dialogue rather than importing survey/interview outcomes from the earlier publication (§4, lines 263–267). No controlled long-term learning benefit is established.",
+      "configuration_notes": "Pinned paper 2509.24073v4; source metadata: tmp/evidence-revision-20260911/sources/lunchnow2025.source.json. Inspected on 2026-09-12. Service: twice-daily productivity/well-being check-ins at user-selected times. Observations: explicit Slack responses. Actions: planning and reflective questions, suggestions, and acknowledgments. Retention: MongoDB stores conversations; configured reasoning reuses the current day’s morning history in a later evening exchange. §5.1.4 (lines 966–986) explicitly reports lack of cross-day recall/reminders. Feedback: user progress reports, acceptance, negotiation, and refusals; durable outcome-driven model revisions are unspecified. Fixed versus rotating goals changes coaching content, not the coded channel mechanisms. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "Scheduled morning planning and evening reflection reuse the same day’s conversation.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Users supply morning plans through dialogue; daily conversations are stored in MongoDB, and the morning history is retained for the distinct evening interaction. Same-day cross-interaction retention satisfies the Memory boundary.",
+          "source_locator": "§§3.1.1–3.1.2, lines 215–239; §3.1.5, line 260; snapshot tmp/evidence-revision-20260911/sources/lunchnow2025.txt",
+          "source_url": "https://arxiv.org/html/2509.24073v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The evening prompt includes the full morning conversation and requires questions grounded in that plan. Retained plans therefore determine later coaching content.",
+          "source_locator": "§3.1.2, lines 227–239; snapshot tmp/evidence-revision-20260911/sources/lunchnow2025.txt",
+          "source_url": "https://arxiv.org/html/2509.24073v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "Evening questions explicitly ask whether the planned activities happened and why progress matched or deviated from intentions; replies supply the requested information for the reflective exchange.",
+          "source_locator": "§3.1.2, lines 227–239; §5.1, lines 757–794; snapshot tmp/evidence-revision-20260911/sources/lunchnow2025.txt",
+          "source_url": "https://arxiv.org/html/2509.24073v4",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "The retained morning plan selects the content of evening follow-up questions; those questions acquire plan-specific reports from the user. This is the explicit M→A→S path.",
+          "source_locator": "§3.1.2, lines 227–239; Fig. 1, line 207; snapshot tmp/evidence-revision-20260911/sources/lunchnow2025.txt",
+          "source_url": "https://arxiv.org/html/2509.24073v4",
+          "realization": "indirect_via_A"
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Users report and evaluate outcomes of earlier plans or suggestions, and dialogue is stored. The source does not specify an outcome-linked durable revision to personal state or a coaching policy beyond retaining the conversation.",
+          "source_locator": "§3.1.5, line 260; §5.1, lines 757–794; §6.3.2, lines 1050–1060; snapshot tmp/evidence-revision-20260911/sources/lunchnow2025.txt",
+          "source_url": "https://arxiv.org/html/2509.24073v4",
+          "realization": "unspecified",
+          "ambiguity": "Outcome logging is S→M. Prospective designs for learning from corrections/reflections are not evidence of implemented A→M, and no necessary update portion is explicitly implemented-but-unfinished."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2509.24073",
+          "version_url": "https://arxiv.org/html/2509.24073v4",
+          "version": "2509.24073v4",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "ed61c4fc3dabe9aa241fc557ca890866dda80d750daf681a5c39d9898e5bc938"
+        }
+      ]
+    },
+    {
+      "id": "ouroboros2026",
+      "name": "Ouroboros",
+      "configuration": "Hope live deployment with reviewed experience-driven core evolution",
+      "group": "C",
+      "summary_en": "A persistent live runtime turns observed faults and social feedback into reviewed harness repairs used by later work. Deployment traces establish the mechanism; frozen benchmark campaigns remain a separate evidence stream.",
+      "comparison_scope": "Persistent runtime and reviewed commit protocol. Two explicit fault-to-repair cases (§4, line 123) and a 161-day deployment lineage. Benchmark results (§5) use frozen seeds on a separate lineage, with evolution disabled in several listed profiles (Appendix C, lines 263–266); they do not measure the marginal benefit of the live update loop. The deployment follows one evolving agent rather than a controlled population (Limitations, line 169), so causal benefits of live evolution remain unestablished.",
+      "configuration_notes": "Pinned paper 2608.08311v3; source metadata: tmp/evidence-revision-20260911/sources/ouroboros2026.source.json. Inspected on 2026-09-12. Service: governed assistance across seven human communication surfaces, including project work and self-maintenance. Retention: per-person digests plus project/identity/chronicle artifacts across sessions, with reviewed code revisions reused later. Feedback: human reports, task execution results, review failures, instrumentation. Outcome horizon: 161-day live lineage with traced repairs; benchmark tasks use separately pinned frozen configurations. This row does not average the live configuration with evolution-off benchmark or light/no-edit modes. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "A persistent runtime records error classes and admits reviewed harness repairs.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Human messages from multiple surfaces enter an ordered log and retained per-person/per-call digests; projects, chronicle projections, and review records preserve context across later interactions. Per-person state establishes the personal Memory endpoint.",
+          "source_locator": "§3 Operational identity and memory, lines 100–103; §4 Multi-channel state, lines 111–117; snapshot tmp/evidence-revision-20260911/sources/ouroboros2026.txt",
+          "source_url": "https://arxiv.org/html/2608.08311v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Retained identity, project, chronicle, and per-person context shape task behavior across sessions and model routes. The resident constitution and owner-selected permissions constrain the action/commit decisions that use this state.",
+          "source_locator": "§3, lines 95–103; §4, lines 115–121; snapshot tmp/evidence-revision-20260911/sources/ouroboros2026.txt",
+          "source_url": "https://arxiv.org/html/2608.08311v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "Task actions are checked through host-run verification commands with revision-bound receipts, and candidate repairs are inspected and reviewed before adoption. These are in-runtime action-specific checks, distinct from external benchmark graders.",
+          "source_locator": "§3 Task outcomes and verification, lines 98–99; §4 Evolution during deployment, line 123; snapshot tmp/evidence-revision-20260911/sources/ouroboros2026.txt",
+          "source_url": "https://arxiv.org/html/2608.08311v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "The runtime projects retained personal/project context for later work, but the inspected description does not identify which retained user-specific item selects a new acquisition target or changes the interpretation of a new observation.",
+          "source_locator": "§3, lines 100–103; §4, lines 114–123; snapshot tmp/evidence-revision-20260911/sources/ouroboros2026.txt",
+          "source_url": "https://arxiv.org/html/2608.08311v3",
+          "realization": "unspecified",
+          "ambiguity": "Memory, inspection, and repair coexist, but the specific M→A→S target-selection link is not made explicit; generic context-assembly or a policy repair is not automatically personal-memory-guided sensing."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "Feedback about duplicate sends is traced to the earlier output failure and becomes a reviewed guard used in later interactions; review-context failures similarly yield a durable harness repair. External outcome association and committed policy revision are explicit.",
+          "source_locator": "§3 Two modes of core evolution, line 103; §4, lines 117–123; snapshot tmp/evidence-revision-20260911/sources/ouroboros2026.txt",
+          "source_url": "https://arxiv.org/html/2608.08311v3",
+          "realization": "direct",
+          "update_branch": "policy",
+          "ambiguity": "The cases support a diagnosed action/failure-to-repair chain. They do not provide an independent causal attribution test or a paired estimate of the live repair’s service benefit."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2608.08311",
+          "version_url": "https://arxiv.org/html/2608.08311v3",
+          "version": "2608.08311v3",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "68c0f88993a8535219af6c338da8be7234eab93fbefeb1217a01128e19a1b7cb"
+        }
+      ]
+    },
+    {
+      "id": "assistantx",
+      "name": "AssistantX",
+      "configuration": "PPDR4X office robot with long-term relational graph and action reflection",
+      "group": "C",
+      "summary_en": "An office robot combines a retained person/resource graph, targeted human collaboration, and reflection on observed action effects. Simulation ablations and a month-and-a-half deployment evaluate task assistance within that office setting.",
+      "comparison_scope": "Four-agent loop and long-term dynamic graph. Fig. 9 task traces. Controlled comparison: whole Perception, Planning, and Reflection Agent ablations on 210 simulated tasks run five times (§V-B, lines 155–157); each can affect several HALO channels. Simulation comparisons measure task success/completion and action correctness. The open deployment lasted 1.5 months and collected 289 valid post-interaction responses (§V-C, lines 160–161); reported productivity/walking benefits are survey outcomes, not a controlled causal estimate of one channel.",
+      "configuration_notes": "Pinned paper 2409.17655v3; source metadata: tmp/evidence-revision-20260911/sources/assistantx.source.json. Inspected on 2026-09-12. Service: delivery, printing, item borrowing, and coordination in an office with 23 locations. Observations: messaging APIs, robot localization, smart-lock state. Actions: inquiries/notifications, file forwarding, navigation, and handoffs. Retention: long-term person/facility/item/location graph; instruction/dialogue/inference buffers reset after each task. Feedback: action-linked external messages and embodied signals. Source version explicitly supports a state-update A→M route despite short-term buffer resets. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "An office robot combines environmental memory, collaboration, and reflection on observed effects.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "New messages and embodied observations update the Memory Unit; the Reflection Agent changes long-term human availability and location/ownership edges. That person-specific graph persists beyond the task-specific state that resets after each instruction.",
+          "source_locator": "§IV-A, line 64; §IV-D, lines 91–93; snapshot tmp/evidence-revision-20260911/sources/assistantx.txt",
+          "source_url": "https://arxiv.org/html/2409.17655v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The retained person/item/location graph enters Planning and Decision Agent context and determines collaborators, destinations, and communication. The example searches memory for alternatives when a known collaborator is unavailable.",
+          "source_locator": "§IV-C, lines 83–88; Fig. 9, line 153; snapshot tmp/evidence-revision-20260911/sources/assistantx.txt",
+          "source_url": "https://arxiv.org/html/2409.17655v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "The action space includes targeted inquiries and waiting for messages; execution conditions require confirming prerequisites. Post-action messages, robot localization, and smart-lock feedback are checked against intended outcomes.",
+          "source_locator": "Table I, lines 72–78; §IV-C, line 88; §IV-D, lines 91–93; snapshot tmp/evidence-revision-20260911/sources/assistantx.txt",
+          "source_url": "https://arxiv.org/html/2409.17655v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "The remembered availability/ownership graph selects which person or active group to ask when collaboration fails. Those memory-conditioned inquiries obtain missing availability or resource evidence through the explicit M→A→S route.",
+          "source_locator": "§IV-C/Table I, lines 73, 83–88; §V-A, lines 104, 141; Fig. 9, line 153; snapshot tmp/evidence-revision-20260911/sources/assistantx.txt",
+          "source_url": "https://arxiv.org/html/2409.17655v3",
+          "realization": "indirect_via_A",
+          "ambiguity": "§IV-B (lines 66–69) also describes memory-conditioned focus-content perception, but its bundle mixes stored and current information. Coding rests on the clearer targeted-inquiry path rather than claiming an additional independent direct channel."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "Reflection receives the executed cyber/physical actions and incremental external observations, judges whether outcomes match expectations, and updates long-term graph edges and human availability. The durable personal-state branch qualifies without policy learning.",
+          "source_locator": "§IV-A, line 64; §IV-D, lines 91–93; snapshot tmp/evidence-revision-20260911/sources/assistantx.txt",
+          "source_url": "https://arxiv.org/html/2409.17655v3",
+          "realization": "fused",
+          "update_branch": "personal_state",
+          "ambiguity": "The expected-versus-observed comparison provides an explicit attribution procedure. Whole Reflection Agent ablation does not separately validate attribution correctness or isolate durable graph updating from replanning."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2409.17655",
+          "version_url": "https://arxiv.org/html/2409.17655v3",
+          "version": "2409.17655v3",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "c67eb9b5eb256ef87837d196e059cb32dd788a91cc9128a930d293888262db63"
+        }
+      ]
+    },
+    {
+      "id": "sensibleagent2025",
+      "name": "Sensible Agent",
+      "configuration": "WebXR prototype with context-conditioned prompts and response modalities",
+      "group": "T",
+      "summary_en": "The prototype adapts proactive prompt content, query form, and interaction modality to current context. Its study finds lower perceived burden and greater preference, with longer interaction times than the voice-query baseline.",
+      "comparison_scope": "Functional context/query/modality pipeline. The design was informed by an expert workshop (12) and annotation study (40). Controlled comparison: a 10-person AR/VR within-subject prototype comparison with a voice-query baseline (§7, lines 425–459), measuring time, workload, usability, and preference. Wizard-of-Oz control only activated trials; sensing and query logic were functional (lines 433–435). The comparison is not an isolated channel ablation, and its short duration is not the reason Memory channels are absent.",
+      "configuration_notes": "Pinned paper 2509.09255v2; source metadata: tmp/evidence-revision-20260911/sources/sensibleagent2025.source.json. Inspected on 2026-09-12. Service: context-sensitive proactive AR assistance. Observations: one egocentric frame per trigger, manually supplied familiarity/urgency variables, and user choices/gestures. Actions: prompts and generated spoken answers. Retention: each interaction is discrete; no user history or longitudinal preferences in the prototype. §6 illustrative learned-routine/preferences examples (lines 409–414) describe possibilities; the explicit implementation/limitations passages govern this row. Feedback choices are used for the current response; long-term learning is future work. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "Context-sensitive prompt formats and output modalities support proactive XR interaction.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "absent",
+          "rationale": "The prototype uses one triggered frame and manually supplied current-context variables, and explicitly does not model user history or longitudinal preferences. A retained personal-history admission/write route is excluded from this configuration.",
+          "source_locator": "§5.1, lines 291–304; §8.3, lines 478–480; §9, line 482; snapshot tmp/evidence-revision-20260911/sources/sensibleagent2025.txt",
+          "source_url": "https://arxiv.org/html/2509.09255v2",
+          "realization": "unspecified",
+          "explicit_absence": "§8.3, lines 478–480: each interaction is discrete and temporal/feedback adaptation is future work; §9, line 482: the current prototype does not model user history or longitudinal preferences."
+        },
+        {
+          "channel": "MA",
+          "status": "absent",
+          "rationale": "The implemented action/query generator consumes current context and generic few-shot exemplars. The explicit prototype exclusion of user history and longitudinal preferences means these examples are not a reused personal-memory input to actions.",
+          "source_locator": "§5.1, lines 294–304; §5.2.2, lines 360–379; §9, line 482; snapshot tmp/evidence-revision-20260911/sources/sensibleagent2025.txt",
+          "source_url": "https://arxiv.org/html/2509.09255v2",
+          "realization": "unspecified",
+          "explicit_absence": "§8.3, lines 478–480: each interaction is discrete and temporal/feedback adaptation is future work; §9, line 482: the current prototype does not model user history or longitudinal preferences."
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "Generated binary/multi-choice prompts request the user’s confirmation or selection, and the chosen output/query format constrains which input modalities are enabled. The received choice then conditions the response.",
+          "source_locator": "§4.2/§4.3, lines 273–284; §5.1, lines 297–304; snapshot tmp/evidence-revision-20260911/sources/sensibleagent2025.txt",
+          "source_url": "https://arxiv.org/html/2509.09255v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "absent",
+          "rationale": "User history and longitudinal preferences are explicitly excluded; current prototype parsing uses manually injected contextual variables and does not compute similarity over historical data. Historical personal-state guidance of sensing is therefore excluded in this prototype.",
+          "source_locator": "§5.1 Context Parsing, line 296; §8.3, lines 478–480; §9, line 482; snapshot tmp/evidence-revision-20260911/sources/sensibleagent2025.txt",
+          "source_url": "https://arxiv.org/html/2509.09255v2",
+          "realization": "unspecified",
+          "explicit_absence": "§5.1, line 296 explicitly says historical-data similarity is not implemented, while §9, line 482 excludes user history/longitudinal preference modeling and §8.3, line 478 leaves cross-turn temporal tracking to an extension."
+        },
+        {
+          "channel": "AM",
+          "status": "absent",
+          "rationale": "The source places longer-term adaptation through reinforcement learning or implicit feedback tracking in future extensions and says the prototype has no user-history/longitudinal-preference model. Its observed user selections do not drive a deployed durable personal-state or preference-policy revision.",
+          "source_locator": "§8.3, lines 478–480; §9, line 482; snapshot tmp/evidence-revision-20260911/sources/sensibleagent2025.txt",
+          "source_url": "https://arxiv.org/html/2509.09255v2",
+          "realization": "unspecified",
+          "explicit_absence": "§8.3, line 480 identifies longer-term RL/implicit-feedback adaptation as a future extension; §9, line 482 expressly excludes user history and longitudinal preferences."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2509.09255",
+          "version_url": "https://arxiv.org/html/2509.09255v2",
+          "version": "2509.09255v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "bf8393268e1dbfec5191c632b7c14b2163c5fc7bbda578312411756df1d6570e"
+        }
+      ]
+    },
+    {
+      "id": "egocopilot2026",
+      "name": "Egocentric Co-Pilot",
+      "configuration": "Smart-glasses assistant with event/query history, HCC, MCP tools, and clarifier",
+      "group": "T",
+      "summary_en": "Reusable event/query history supports visual, symbolic, and web tool use with pre-action clarification. Egocentric QA, task trials, and blinded log ratings compare history compression and tool composition.",
+      "comparison_scope": "Event log, HCC, MCP orchestration, and clarifier. Tool/intent examples in Fig. 4. Controlled comparison: HCC/T-CoT/model/transcript ablations on Egolife and HD-EPIC (§4.2/Table 2); HCC removal changes answer accuracy, not an isolated durable-write effect. §4.3 reports task completion and board-game trials. §4.4/Appendix D uses four blinded raters of prerecorded logs from nine systems (lines 309–314, 1211–1215), not a longitudinal live-user study. No controlled long-term personalization benefit is established.",
+      "configuration_notes": "Pinned paper 2603.01104v1; source metadata: tmp/evidence-revision-20260911/sources/egocopilot2026.source.json. Inspected on 2026-09-12. Pinned HTML was re-opened to verify the cached mechanism/retention passages. Service: speech/gaze-based situated QA, notes/reminders, and tool-backed assistance. Observations: egocentric video and ASR queries. Actions: answers, clarifying questions, and MCP calls. Retention: unified historical event/query log for later queries; duration/restart guarantees unspecified. Short-term object/board smoothing is a separate local sensing buffer. Evaluation emphasizes controlled short-term tasks; that horizon does not downgrade complete log-to-answer mechanisms. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "A glasses assistant combines compressed temporal context with visual and symbolic tools.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "A chronological event log accumulates first-person narrations and spoken user queries; historical chunks are retained for HCC and reused when later questions exceed the immediate window. User-directed CalendarAPI/MemoTool operations also write personal notes/reminders.",
+          "source_locator": "§3.1, lines 147–158; §4.3, lines 296–298; Appendix A, line 1143; snapshot tmp/evidence-revision-20260911/sources/egocopilot2026.txt",
+          "source_url": "https://arxiv.org/html/2603.01104v1",
+          "realization": "direct",
+          "ambiguity": "The paper specifies a growing history reused by subsequent queries, but not cross-restart storage guarantees. The separate board-state voting buffer is not the Memory endpoint used for this coding."
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The Reasoning Core selects HCC summaries from the accumulated personal event/query history and prepends them to local T-CoT context before generating an answer. This reaches the communication endpoint without requiring lossless compression.",
+          "source_locator": "§3.1, lines 148–158; §4.2/Table 2, lines 274–292; snapshot tmp/evidence-revision-20260911/sources/egocopilot2026.txt",
+          "source_url": "https://arxiv.org/html/2603.01104v1",
+          "realization": "direct",
+          "ambiguity": "Compressed-context omissions are an observed quality limitation, not an explicitly unfinished memory-to-answer implementation."
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "The orchestrator invokes visual tools for a planned task, and the integrated clarifier asks targeted follow-up questions when semantic alternatives remain uncertain, consuming the reply before committing to an action.",
+          "source_locator": "§3.2, lines 159–175; §3.4, lines 199–219; §4.3, lines 297–304; snapshot tmp/evidence-revision-20260911/sources/egocopilot2026.txt",
+          "source_url": "https://arxiv.org/html/2603.01104v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "Fig. 4 demonstrates deictic resolution with short-term object tracking, while HCC is described as answer-time retrieval. The inspected source does not explicitly connect retained cross-interaction personal history to the tracking/clarification sensing endpoint.",
+          "source_locator": "§3.1, lines 148–149; §3.2, line 173; Fig. 4/§4.3, lines 293–296; snapshot tmp/evidence-revision-20260911/sources/egocopilot2026.txt",
+          "source_url": "https://arxiv.org/html/2603.01104v1",
+          "realization": "unspecified",
+          "ambiguity": "Do not relabel the temporal board/object buffer as retained personal Memory. A link from the longer-lived event/query log to acquisition or new-observation interpretation remains unspecified; the old partial status is not supported."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Replies and tool results update current context, but the source does not show outcomes associated with earlier assistance decisions governing durable personal-state or policy revision. Its manual failure analysis suggests mitigations as future work.",
+          "source_locator": "§3.4, lines 214–219; §4.3 Failure Analysis, lines 305–307; §5, lines 316–318; snapshot tmp/evidence-revision-20260911/sources/egocopilot2026.txt",
+          "source_url": "https://arxiv.org/html/2603.01104v1",
+          "realization": "unspecified",
+          "ambiguity": "Offline model fine-tuning and reviewer inspection of failures are not a runtime A→M route. The missing attribution/update implementation is unknown rather than a reported partial mechanism."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2603.01104",
+          "version_url": "https://arxiv.org/html/2603.01104v1",
+          "version": "2603.01104v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "8f41c88bf9374b3a765ddc3a24dd8383e3c46b6dfde302e2cbd200382e0659b5"
+        }
+      ]
+    },
+    {
+      "id": "visualclaw2026-claude-code",
+      "name": "VisualClaw",
+      "configuration": "VisualClawArena / Claude Code (Sonnet 4.6), Cascade-8 + FullEvo Cat.",
+      "group": "T",
+      "summary_en": "Native inspection and validation combine with retained scenario context and failure-driven skill evolution. Matched Arena comparisons measure correctness and cost for this backend.",
+      "comparison_scope": "Native tool loop plus retained bank/evolver. Scored within-scenario trajectories. Controlled comparison: 200 staged Arena scenarios, comparing Cascade-8 FullEvo Cat./Guide with matched no-evolution and Uniform-8 variants (§5.3/Table 7); the Claude Code Cat. configuration gains about 3.2 macro points over no-evolution. Endpoints are round/scenario correctness and API cost. Static video-QA parity-budget and memory-evolver experiments are complementary evidence for the shared components, not live personalized service outcomes.",
+      "configuration_notes": "Pinned paper 2606.16295v1; source metadata: tmp/evidence-revision-20260911/sources/visualclaw2026.source.json. Inspected on 2026-09-12. Pinned HTML §4.2 was checked against the cache. Service: scripted stakeholder workspace tasks with documents, video keyframes, dynamic updates, and file edits. Retention: scenario histories/episodic examples and evolved skills span repeated day steps; workspaces are staged clean at each step and the paper reports accumulated scenario context. Feedback: external answer keys/executable final checks. A→S comes from Claude Code’s native acting loop, not the grader. Static video-QA is a separate benchmark adaptation setting and is not used alone to establish personal retention. The cascade’s rolling frame reference is local sensing state. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "Cascaded capture and failure-derived skills improve video QA and workspace tasks.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Across staged scenario interactions, correctly answered examples and failure trajectories enter retained episodic/evolution stores; later steps reuse accumulated scenario context and the resulting skill bank. The coded personal scope is the scenario’s stakeholder/workspace history.",
+          "source_locator": "§3.4, lines 251–260; §4.1, lines 268–285; §4.2, lines 339–340; §5.3, line 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "direct",
+          "ambiguity": "The benchmark uses scripted stakeholder scenarios and simulated day steps. Generic cross-benchmark reasoning-skill accumulation alone would not establish personal Memory; real-user multi-day retention is not empirically established."
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Retained scenario context and retrieved/evolved skill or memory content are prepended to the workspace-agent prompt, conditioning later answers and file modifications under the scenario operating contract.",
+          "source_locator": "§3.3, lines 247–249; §4.1, lines 276–280; §4.2, lines 339–340; §5.3, line 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "Claude Code executes native file/image reads and validation commands within its tool loop before stopping. Planned edits and checks therefore select workspace evidence; delegated backend realization reaches the sensing endpoint.",
+          "source_locator": "§4.2, lines 339–340; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "direct",
+          "ambiguity": "This status applies to the native Claude Code backend. The external final scorer is not used as evidence for this channel."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Retained scenario skills/memory are supplied to the native workspace decision loop, which chooses reads of files/keyframes and action-specific validation. The explicit prompt-to-tool-loop chain supports memory-guided acquisition through A.",
+          "source_locator": "§3.3, lines 247–249; §4.2, lines 339–340; §5.2, line 512; §5.3, line 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "indirect_via_A",
+          "ambiguity": "This is a linked realization through the memory-conditioned action policy, not an additional independent sensing controller or a claim that the frame cascade is memory-controlled."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "Round-specific answer-key or executable-check failures are returned to the evolver, associated with the failed response/workspace decision, and used to admit/prune durable skills reused in later steps. This implements the policy branch.",
+          "source_locator": "§3.4, lines 251–260; §4.2, line 340; §5.3, lines 517–518, 588, 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "direct",
+          "update_branch": "policy",
+          "ambiguity": "The grader is an external outcome source for evolution, not in-system A→S. Scoring associates the outcome with a round/action; neither the no-evolution comparison nor the utility tracker proves causal attribution to an individual skill."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2606.16295",
+          "version_url": "https://arxiv.org/html/2606.16295v1",
+          "version": "2606.16295v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "7228e2db34bb62831c15ff893f6eb0816b8bc266e1b50e41e088b0d13108ab44"
+        }
+      ]
+    },
+    {
+      "id": "visualclaw2026-codex",
+      "name": "VisualClaw",
+      "configuration": "VisualClawArena / Codex (GPT-5.5), Cascade-8 + FullEvo Cat.",
+      "group": "T",
+      "summary_en": "The snapshot/write bridge uses retained context and failure-driven skill evolution. Its observation interface differs from Claude Code; matched Arena comparisons measure correctness and cost.",
+      "comparison_scope": "Noninteractive snapshot/write bridge plus retained bank/evolver. Scored within-scenario trajectories. Controlled comparison: the same 200 Arena scenarios with backend-matched Cascade-8/no-evolution/Uniform-8 variants (§5.3/Table 7); Codex Cat. improves about 2.9 macro points over no-evolution. Outcomes concern scenario correctness and cost, not autonomous in-system observation or a live multi-day personalized service. Static video-QA component comparisons remain separate evidence.",
+      "configuration_notes": "Pinned paper 2606.16295v1; source metadata: tmp/evidence-revision-20260911/sources/visualclaw2026.source.json. Inspected on 2026-09-12. Pinned HTML §4.2 confirms this bridge. Service: the same scripted stakeholder workspace tasks; backend: GPT-5.5 through the noninteractive Codex bridge. Observations: runner-supplied snapshots/keyframes. Actions: answer and emitted writes applied afterward. Retention and feedback follow the shared scenario/evolution loop. The paper’s generic statements about inspecting workspaces are resolved by its explicit backend-specific implementation. Static video-QA is retained as contextual evidence, not a third service row or evidence of actual user-history retention. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "Cascaded capture and failure-derived skills improve video QA and workspace tasks.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Across staged scenario interactions, correctly answered examples and failure trajectories enter retained episodic/evolution stores; later steps reuse accumulated scenario context and the resulting skill bank. The coded personal scope is the scenario’s stakeholder/workspace history.",
+          "source_locator": "§3.4, lines 251–260; §4.1, lines 268–285; §4.2, lines 339–340; §5.3, line 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "direct",
+          "ambiguity": "The benchmark uses scripted stakeholder scenarios and simulated day steps. Generic cross-benchmark reasoning-skill accumulation alone would not establish personal Memory; real-user multi-day retention is not empirically established."
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Retained scenario context and retrieved/evolved skill or memory content are prepended to the workspace-agent prompt, conditioning later answers and file modifications under the scenario operating contract.",
+          "source_locator": "§3.3, lines 247–249; §4.1, lines 276–280; §4.2, lines 339–340; §5.3, line 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "absent",
+          "rationale": "This configured Codex bridge is noninteractive: the runner supplies the workspace snapshot and image attachments up front, then applies emitted file writes after the call. It excludes an in-call read/check loop, and final scoring stays outside the acting system.",
+          "source_locator": "§4.2, lines 339–340; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "unspecified",
+          "explicit_absence": "§4.2, line 340 explicitly contrasts native Claude Code tool use with the noninteractive Codex snapshot-plus-returned-writes bridge, with scoring outside both agents."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "The retained context conditions the one-call snapshot-to-answer/write decision. The bridge excludes action-triggered acquisition, and the source does not separately identify a retained personal-state dependency at a new-observation interpretation endpoint.",
+          "source_locator": "§3.3, lines 247–249; §4.2, lines 339–340; §5.3, line 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "unspecified",
+          "ambiguity": "A→S absence does not imply total M→S absence: direct/fused interpretation could qualify if specified. Here answer-time context consumption alone establishes M→A, leaving that sensing endpoint unresolved."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "Round-specific answer-key or executable-check failures are returned to the evolver, associated with the failed response/workspace decision, and used to admit/prune durable skills reused in later steps. This implements the policy branch.",
+          "source_locator": "§3.4, lines 251–260; §4.2, line 340; §5.3, lines 517–518, 588, 634; snapshot tmp/evidence-revision-20260911/sources/visualclaw2026.txt",
+          "source_url": "https://arxiv.org/html/2606.16295v1",
+          "realization": "direct",
+          "update_branch": "policy",
+          "ambiguity": "The grader is an external outcome source for evolution, not in-system A→S. Scoring associates the outcome with a round/action; neither the no-evolution comparison nor the utility tracker proves causal attribution to an individual skill."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2606.16295",
+          "version_url": "https://arxiv.org/html/2606.16295v1",
+          "version": "2606.16295v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "7228e2db34bb62831c15ff893f6eb0816b8bc266e1b50e41e088b0d13108ab44"
+        }
+      ]
+    },
+    {
+      "id": "pro2assist2026",
+      "name": "Pro²Assist",
+      "configuration": "Continuous single-task procedural guidance with session-reset progress history",
+      "group": "T",
+      "summary_en": "Motion cues, procedural knowledge, and task-progress tracking support step-aware guidance. Ablations and a 20-participant study evaluate recognition, timing, and perceived usefulness within single tasks.",
+      "comparison_scope": "Adaptive motion sampling, task-guideline compilation, structured completed-step tracking, and consistency control. Controlled comparison: motion, temporal-context/expert-knowledge, and consistency variants (§5.4, lines 207–225) affect recognition and intervention timing; the consistency module changes both historical context and delivery, so it is not one isolated HALO channel. Curated-video and real-world evaluations include 20 multimodal recordings averaging 325.4 seconds (line 174). Outcome scope is short procedural assistance and a 20-person perception survey (§5.7), not cross-interaction personalization or learning from intervention outcomes.",
+      "configuration_notes": "Pinned paper 2605.04227v2; source metadata: tmp/evidence-revision-20260911/sources/pro2assist2026.source.json. Inspected on 2026-09-12. Pinned HTML verified the explicit session initialization statement. Service starts from a user’s request for one procedural task; observations are egocentric vision/IMU, actions are step-aware visual/audio guidance or silence. Retention: completed-step list is initialized empty per task, with separate sliding prediction windows. External user feedback is collected for study analysis; no runtime outcome-linked durable revision is described. The task-session reset rules out cross-task carryover, but does not define a finer user-interaction boundary; SM/MA/MS therefore remain unreported for common personal Memory. No status is downgraded because the study is short or because the local mechanism lacks implementation. Task-specific knowledge retrieval remains a positive local contribution. No code commit was inspected and no independent execution was performed.",
+      "original_contribution": "Multiscale temporal and procedural context improves step-aware assistance.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "unreported",
+          "rationale": "Verified step transitions populate a complete within-task progress record, explicitly initialized empty for each task session. This establishes local history and excludes cross-task carryover, but does not specify whether the record spans distinct user interactions within the task; the common personal Memory retention endpoint is unresolved.",
+          "source_locator": "§4.3.2, line 134; §4.4.2, line 148; §6, line 270; snapshot tmp/evidence-revision-20260911/sources/pro2assist2026.txt",
+          "source_url": "https://arxiv.org/html/2605.04227v2",
+          "realization": "unspecified",
+          "ambiguity": "A task-session reset is not an explicit reset at every user interaction. Treating one uninterrupted task as exactly one interaction would add a review assumption; the source does not resolve that boundary, so neither absent nor partial is warranted."
+        },
+        {
+          "channel": "MA",
+          "status": "unreported",
+          "rationale": "The completed-step record clearly conditions current guidance and silence/content decisions. Its lifetime is specified per task session, but retention across distinct user interactions is not established or explicitly excluded at that finer boundary, leaving the personal-memory source endpoint unresolved.",
+          "source_locator": "§4.3.2, line 134; §4.4.1, lines 139–142; §6, lines 270–271; snapshot tmp/evidence-revision-20260911/sources/pro2assist2026.txt",
+          "source_url": "https://arxiv.org/html/2605.04227v2",
+          "realization": "unspecified",
+          "ambiguity": "The local context-to-guidance mechanism is implemented. Unknown qualification as retained personal Memory, rather than an unfinished mechanism or weak evaluation, determines this status."
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "The frame policy is driven by head/hand motion, while initial task instructions select a WikiHow guideline. The inspected passages do not identify a planned assistant action that supplies a fresh observation target, clarification need, or post-intervention check.",
+          "source_locator": "§4.2, lines 118–122; §4.3.1, line 128; §4.4, lines 139–149; snapshot tmp/evidence-revision-20260911/sources/pro2assist2026.txt",
+          "source_url": "https://arxiv.org/html/2605.04227v2",
+          "realization": "unspecified",
+          "ambiguity": "Fixed instruction-to-guideline retrieval and S-local motion gating are concrete capabilities, but neither alone identifies an action-selected information need."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "The completed-step record helps interpret current procedural images, but it is explicitly reset for each task. Beyond this local context effect, the source does not specify a retained cross-interaction personal-state dependency at sensing.",
+          "source_locator": "§4.3.2, lines 130–134; §4.4.1, lines 141–142; §6, line 270; snapshot tmp/evidence-revision-20260911/sources/pro2assist2026.txt",
+          "source_url": "https://arxiv.org/html/2605.04227v2",
+          "realization": "unspecified",
+          "ambiguity": "The existing local interpretation mechanism is complete within its procedural scope. The personal-memory sensing route is unresolved; MS is not marked absent merely because the available history is task-local."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Consistency checking commits a step transition from repeated predictions and suppresses duplicate guidance. It does not associate an observed user outcome with an earlier assistant intervention or specify a durable personal-state/policy revision from that association.",
+          "source_locator": "§4.4.2, lines 144–149; §6, lines 267–271; snapshot tmp/evidence-revision-20260911/sources/pro2assist2026.txt",
+          "source_url": "https://arxiv.org/html/2605.04227v2",
+          "realization": "unspecified",
+          "ambiguity": "Offline supervised/distilled training is not feedback learning in this fixed deployment. Longitudinal personalization is discussed prospectively; no implemented-but-unfinished attribution-and-update route is identified."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2605.04227",
+          "version_url": "https://arxiv.org/html/2605.04227v2",
+          "version": "2605.04227v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "f56e7e75a606d2a766f49fb48e187162102c4e7de9c938de0ac577e8492a1826"
+        }
+      ]
+    },
+    {
+      "id": "pro2bench2026",
+      "name": "Plan, Watch, Recover",
+      "configuration": "Full predicted-plan PWR: trained planner plus trained duplex interaction model, with online plan updates; not the oracle-plan condition",
+      "group": "T",
+      "summary_en": "A retained task plan guides visual checks, interruption, and recovery. Planner–duplex comparisons and plan ablations evaluate procedural guidance and timing within tasks.",
+      "comparison_scope": "Implemented plan state, visual cues and clip selection. Qualitative multi-turn traces. Sections 4 and A.1–A.5 compare monolithic versus PWR, fine-tuning, no/zero-shot/oracle plans, intervention F1, guidance quality and out-of-plan recovery across six datasets. These are architecture/plan-condition and task-outcome comparisons, not isolated estimates of every HALO channel or longitudinal personal-assistant effects.",
+      "configuration_notes": "Pinned paper 2606.04970v1; cached snapshot inspected 2026-09-11 and method URL rechecked 2026-09-12; no code inspected. Service: wearable video procedural coaching at 2 fps. Retained state: per-user task request, procedural progress and dialogue across multiple exchanges, distinct from the raw-video sensing window. Feedback: observed task progress/deviations. Horizon: recorded procedural tasks and sequential examples. Oracle-plan and no-plan variants have different write mechanisms and must remain separate if included; no cross-task retention inference. The cross-interaction warrant is specifically Section 2.5 Reactive turn handling (numbered source line 0351): a later user-initiated mid-task question reuses the plan initialized by the earlier request and subsequently updated from user progress. Continuous automatic plan updates alone would not suffice.",
+      "original_contribution": "A cached procedural plan guides observation and recovery during a task.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "The initial user request initializes a structured plan; visual evidence updates its completed/current/next fields. Section 2.5 explicitly supports a later user-initiated mid-task question using that retained plan and conversation history. Thus the user’s goal/progress state crosses distinct user exchanges; repeated automatic planner calls alone are not the retention warrant.",
+          "source_locator": "Sections 2.2–2.5; pro2bench2026.txt numbered source lines 0290–0316, 0323–0338, 0351–0353",
+          "source_url": "https://arxiv.org/html/2606.04970v1",
+          "realization": "direct",
+          "ambiguity": "The separate interaction endpoint is the later user-initiated reactive question in Section 2.5 (source line 0351). This is an implementation description, not a claim of cross-task retention or an independently measured retention effect."
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The duplex consumes the retained plan to choose silent versus interrupt and to formulate guidance; reactive questions also use the current plan and conversation history. This is consumption of retained individual task state, irrespective of the separate benefit of plan conditioning.",
+          "source_locator": "Sections 2.2 and 2.5; source lines 0290–0306, 0343–0353",
+          "source_url": "https://arxiv.org/html/2606.04970v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "The planner’s intended procedural steps include explicit completion/in-progress visual cues, and its plan updates set the timestamps used to select later video clips. Thus the preparation decision supplies both observation targets and temporal attention.",
+          "source_locator": "Sections 2.3–2.4; source lines 0315–0334",
+          "source_url": "https://arxiv.org/html/2606.04970v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Retained current-step cues tell the duplex what evidence to seek, while retained plan-update timestamps select historical clips. The receiving endpoints are visual interpretation and clip selection, rather than only utterance generation.",
+          "source_locator": "Sections 2.4–2.5; source lines 0327–0338, 0348–0349",
+          "source_url": "https://arxiv.org/html/2606.04970v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "The planner revises task progress using observations and the current utterance. The source does not specify association of an external outcome with an earlier assistance decision as the reason for a retained personal-state or policy revision; consistency with what was just said and tracking user progress do not by themselves establish that link.",
+          "source_locator": "Sections 2.2–2.6; source lines 0309–0312, 0337–0359; pinned HTML rechecked 2026-09-12",
+          "source_url": "https://arxiv.org/html/2606.04970v1",
+          "realization": "unspecified",
+          "ambiguity": "A state revision is implemented, but attribution of the observation to the outcome of prior assistance, rather than to ongoing user activity, is unresolved."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2606.04970",
+          "version_url": "https://arxiv.org/html/2606.04970v1",
+          "version": "2606.04970v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "d7141ea0a580be0db512c50011ffb5536a4d63af72c55228cf29ee9616a5cbbd"
+        }
+      ]
+    },
+    {
+      "id": "ipibench2026",
+      "name": "IPI-Agent",
+      "configuration": "Full IPI-Agent with Interaction-Control Policy, Memory Tool and Temporal-Gating Mechanism (Qwen3-VL-8B component-ablation configuration)",
+      "group": "T",
+      "summary_en": "IPI-Agent stores editable monitoring requests and interaction history, then combines intent routing with temporal gating to coordinate streaming proactive and reactive interaction.",
+      "comparison_scope": "Explicit memory and gating workflows. Section 5.4 compares four base MLLMs with and without IPI-Agent on monitoring, cancellation/modification and interleaved interaction. Section 5.5/Table 5 removes the interaction-control policy or temporal gating from Qwen3-VL-8B. These module ablations measure streaming task performance and may change multiple channels; they do not isolate each HALO dependency.",
+      "configuration_notes": "Pinned paper 2605.27074v1, cached 2026-09-11; no code inspected. Service: video-triggered assistance and reactive QA under a 1 fps evaluation protocol. Retained state: active user tasks and historical interactions across multiple turns in a continuous stream. This meets the protocol’s cross-interaction boundary without implying cross-session persistence. Feedback source: user instructions and frame evidence. Horizon: benchmark videos from seconds to over five minutes; study length does not downgrade implemented retention.",
+      "original_contribution": "Editable proactive requests and temporal gating stabilize streaming interaction.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "The Memory Tool stores new user monitoring instructions as structured proactive tasks, modifies or cancels them on later instructions, and stores historical interactions. Requests persist across interleaved reactive and proactive exchanges, so user-directed writes reach retained personal task state.",
+          "source_locator": "Sections 4.1–4.2; ipibench2026.txt numbered source lines 0183–0196",
+          "source_url": "https://arxiv.org/html/2605.27074v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Reactive responses retrieve interaction history; later proactive responses and activation decisions depend on the retained task and enhanced instruction. The retained user request survives intervening questions and constrains subsequent timing and content.",
+          "source_locator": "Sections 4.2–4.3; source lines 0188–0200",
+          "source_url": "https://arxiv.org/html/2605.27074v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "When the agent accepts a monitoring instruction as a proactive task, it generates candidate textual proposals for that task. These become explicit targets compared with subsequent visual observations, implementing the intended monitoring action’s information target.",
+          "source_locator": "Section 4.3; source lines 0197–0200",
+          "source_url": "https://arxiv.org/html/2605.27074v1",
+          "realization": "fused",
+          "ambiguity": "The monitoring intention is realized jointly by task admission, proposal generation and the gating workflow; it is not an independently measured extra channel."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "The persistent Proactive Memory determines the task-specific proposals against which new frames are compared; Interaction Memory also resolves ambiguous references before processing the stream. Retained user task/context therefore guides the sensing interpretation endpoint.",
+          "source_locator": "Sections 4.2–4.3; source lines 0188–0199",
+          "source_url": "https://arxiv.org/html/2605.27074v1",
+          "realization": "fused"
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Task edits and cancellations are implemented, but the inspected method does not associate user/environment feedback with a previous assistant action and then use that outcome to revise retained personal state or policy. Management instructions alone do not specify this action-outcome association.",
+          "source_locator": "Sections 4.2–4.3 and 5.4–5.5; source lines 0188–0200, 0558–0618",
+          "source_url": "https://arxiv.org/html/2605.27074v1",
+          "realization": "unspecified",
+          "ambiguity": "Whether reactions to delivered triggers alter later task state or triggering policy is not specified."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2605.27074",
+          "version_url": "https://arxiv.org/html/2605.27074v1",
+          "version": "2605.27074v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "105dc53e99aad6f068e1e9e021f026e62f1efce3e71e42da2ad3ea5478a16032"
+        }
+      ]
+    },
+    {
+      "id": "luproactiveagent2024",
+      "name": "Proactive Agent",
+      "configuration": "Section 3.4 Proactive Agent in the Environment Gym, including retained event/dialogue history and simulated accepted-task execution",
+      "group": "T",
+      "summary_en": "The gym agent accumulates event and dialogue history to propose tasks and execute accepted assistance in simulation. ProactiveBench separately evaluates prediction timing and task suitability using human-grounded reward judgments.",
+      "comparison_scope": "Gym memory and action/state-observation loop. Main evaluation is task prediction on 233 real-world events in 12 scenarios, with fine-tuned Qwen2/Llama versus untuned/proprietary baselines (Section 4.2). Section 4.3 compares one/three predictions and reward-model draft refinement. Endpoints include precision, recall, false-alarm rate and F1; these comparisons do not establish execution-loop or durable feedback-channel benefit.",
+      "configuration_notes": "Pinned paper 2410.12361v3, cached 2026-09-11 and method URL rechecked 2026-09-12; no code inspected. Service unit here is the proposed interactive gym agent, not a prediction-only adapter. The gym retains simulated user events/dialogue across repeated interactions and provides action-generated observations. Real-world test traces evaluate prediction, while task execution is part of synthetic data generation. If the survey intends the evaluated offline predictor, split it from this configuration and recode its online SM/AS/MS endpoints rather than borrowing the gym implementation.",
+      "original_contribution": "Event history supports prediction of useful proactive tasks.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "On every new event the agent updates its memory, combines it with historical events and user conversations, and continues receiving events over repeated prediction/execution cycles. This explicitly retains the simulated user’s interaction history across interactions rather than supplying a single static profile.",
+          "source_locator": "Section 3.4 and Figure 3; luproactiveagent2024.txt numbered source lines 0244–0253; Section 3.2 lines 0198–0209",
+          "source_url": "https://arxiv.org/html/2410.12361v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Historical events, user conversations and user characteristics condition predicted assistance tasks and the decision to stay silent. Accepted predictions lead to execution in the gym, so retained user context reaches task/action selection.",
+          "source_locator": "Sections 3.2 and 3.4; source lines 0208–0209, 0247–0253",
+          "source_url": "https://arxiv.org/html/2410.12361v3",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "The simulated task-execution loop takes an agent action, receives the gym’s corresponding event/state change, detects that resulting state, and decides the next action. This implements an action-conditioned post-action observation within the acting framework; the separate reward-model grader is not the evidence for this channel.",
+          "source_locator": "Section 3.4, Task Execution; source lines 0254–0260; pinned HTML rechecked 2026-09-12",
+          "source_url": "https://arxiv.org/html/2410.12361v3",
+          "realization": "direct",
+          "ambiguity": "This route belongs to the Environment Gym execution configuration, not automatically to offline ProactiveBench prediction-only evaluation."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Retained event/dialogue history determines the proposed task; after acceptance that task drives tool actions and their subsequent state observations. The described linked path supports memory-guided sensing through action selection.",
+          "source_locator": "Section 3.4; source lines 0247–0260",
+          "source_url": "https://arxiv.org/html/2410.12361v3",
+          "realization": "indirect_via_A",
+          "ambiguity": "No separate direct memory-conditioned sensor or event-collection policy is described; the reported route is only the linked execution path."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Events are written to memory and reward-model feedback can refine the current draft prediction. The source does not describe using an action-associated outcome to commit a lasting personal preference/state or policy revision. Offline fine-tuning on generated data and within-prediction refinement do not establish personalized outcome learning.",
+          "source_locator": "Sections 3.4 and 4.3; source lines 0247–0260, 0554–0565; Appendix B",
+          "source_url": "https://arxiv.org/html/2410.12361v3",
+          "realization": "unspecified",
+          "ambiguity": "Whether judgments or execution outcomes are retained and used as revision signals beyond event logging/current-draft correction is unspecified."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2410.12361",
+          "version_url": "https://arxiv.org/html/2410.12361v3",
+          "version": "2410.12361v3",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "798d2eb9d03850ac62ded3caf280711caef1174d5bc17fdee5769ed5f5623658"
+        }
+      ]
+    },
+    {
+      "id": "pahf2026",
+      "name": "PAHF",
+      "configuration": "Full pre-action plus post-action PAHF with GPT-4o and the default SQLite per-user memory, in feedback-enabled learning/adaptation phases",
+      "group": "T",
+      "summary_en": "PAHF combines targeted clarification with durable correction of user preferences after errors. Pre-only, post-only and combined comparisons distinguish initial uncertainty from preference drift in simulated sequential tasks.",
+      "comparison_scope": "Implemented SQLite admission/retrieval/update and question/outcome loops. Section 4 uses embodied-choice and shopping domains, original/evolved personas, two learning phases and two held-out test phases. No-memory/pre-only/post-only/full comparisons report success rate, feedback frequency and average cumulative personalization error. These controlled feedback-condition comparisons support the complementary learning effects; they are not independent interventions on direct versus indirect MS or proof of arbitrary outcome attribution.",
+      "configuration_notes": "Pinned paper 2602.16173v1, cached 2026-09-11; no code inspected. Main backend is SQLite with on-disk, user-isolated notes; the FAISS alternative has in-memory retention with optional save/load and is not used to weaken the default configuration. Service actions are simulated embodied choices and shopping commitments/abstentions; feedback comes from persona LLMs or deterministic shopping verdicts. Phases 2 and 4 explicitly disable human feedback and use frozen learned memory, so they are evidence of reuse, not an averaged full-loop configuration.",
+      "original_contribution": "Pre-action clarification and post-action preference correction support continual personalization.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Pre-action answers and salient post-action feedback are detected, summarized and integrated as per-user notes; the SQLite store adds or replaces notes on disk for later tasks. This explicitly commits supplied preference evidence to personal memory.",
+          "source_locator": "Sections 3.2 and 3.4; pahf2026.txt physical lines 118–123, 132–138, 186–192",
+          "source_url": "https://arxiv.org/html/2602.16173v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Retrieved preference notes are cleaned into personalized cues and inserted before deciding whether to clarify and which executable action to choose. Notes learned earlier are reused on new instructions and observations.",
+          "source_locator": "Sections 3.2 and 3.4; physical lines 118–130, 189–191; Section 4.2 lines 203–210",
+          "source_url": "https://arxiv.org/html/2602.16173v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "When retrieved preferences leave the intended task ambiguous, the agent asks a targeted pre-action question and receives its answer before commitment. The action-relevant uncertainty supplies the information need.",
+          "source_locator": "Section 3.2, Pre-Action Interaction; physical lines 118–130; Section 4.1 lines 198–200",
+          "source_url": "https://arxiv.org/html/2602.16173v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Memory completeness changes whether and what the agent asks; those clarification decisions acquire missing preference evidence. The sensing endpoint is reached through the explicitly described memory→question decision→answer path.",
+          "source_locator": "Section 3.2, Pre-Action Interaction; physical lines 118–130; Section 5 line 227",
+          "source_url": "https://arxiv.org/html/2602.16173v1",
+          "realization": "indirect_via_A"
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "The user/simulator evaluates the chosen action and supplies a targeted correction after an incorrect outcome. The updater receives the action plus feedback, detects salient personalized information, and adds or overwrites durable per-user notes. Association is explicit; the state branch suffices without policy-weight training.",
+          "source_locator": "Sections 3.2 and 3.4; physical lines 132–138, 186–192; Section 4.1 lines 198–200",
+          "source_url": "https://arxiv.org/html/2602.16173v1",
+          "realization": "direct",
+          "update_branch": "personal_state",
+          "ambiguity": "Attribution is warranted by direct simulated user correction; channel presence does not establish that every extracted revision is correct. Controlled comparisons test correction utility, not general causal attribution under noisy deployment feedback."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2602.16173",
+          "version_url": "https://arxiv.org/html/2602.16173v1",
+          "version": "2602.16173v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "a4cc1d72e8524e8a448bb1d2abc2e7b41535af6d0c0349af7e8cf489dbfd0d4e"
+        }
+      ]
+    },
+    {
+      "id": "awarellm2026",
+      "name": "AwareLLM",
+      "configuration": "Personalized treatment prototype with user-configurable system-prompt preferences, retained chat context and both sensor reasoning loops",
+      "group": "T",
+      "summary_en": "AwareLLM fuses physiological, visual and conversational context with supplied preferences to deliver workplace assistance. Its reported memory links use preferences and retained dialogue; session-specific sensor calibration remains part of sensing.",
+      "comparison_scope": "Configurable preferences, chat-context inputs and dual-loop reasoning. A counterbalanced within-subject study with 20 participants compares the whole treatment system against gpt-4o-mini without AwareLLM, across three 20-minute workplace tasks. Outcomes include NASA-TLX, perceived productivity, intervention ratings and expert-rated work quality. Section 7.2 explicitly calls for modality ablations and longitudinal evaluation: current whole-system effects are not isolated channel effects.",
+      "configuration_notes": "Pinned paper 2605.09625v3, cached 2026-09-11 and method URL rechecked 2026-09-12; no code inspected. State qualifying here: per-user configurable preferences plus recent user dialogue retained across exchanges. Sections 4.2/5 explicitly delete sensor data after use; Section 4.3 establishes a session-specific physiological baseline, which is not Personal Memory. The source’s broad deletion wording and explicit context reuse warrant preserving this boundary. The single lab session limits evidence horizon, not implemented cross-interaction retention.",
+      "original_contribution": "Physiological and workspace context supports personalized intervention.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "User-supplied work/interaction preferences are put into reusable system-prompt settings, and subsequent reasoning receives the last five user prompts. These are explicit user-directed personal-state writes retained across exchanges. The physiological baseline and rolling raw-sensor windows are not used as evidence of Memory.",
+          "source_locator": "Sections 4.2 and 5; awarellm2026.txt numbered source lines 0327–0328, 0453–0464; Appendix D.1.2 and D.4/D.5 lines 1546–1555, 1690, 1801",
+          "source_url": "https://arxiv.org/html/2605.09625v3",
+          "realization": "direct",
+          "ambiguity": "The privacy text says sensor data points are deleted after use. Retention here is limited to configured preferences and conversational context explicitly reused across interactions; multi-session personal-memory persistence is not specified."
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The assistance engine uses retained preferences and chat history to select intervention content, tone, timing and delivery. Its policy layer further filters outputs using the user’s notification preferences and do-not-disturb state.",
+          "source_locator": "Sections 4.1, 4.4.4 and 4.5.3; source lines 0310, 0370–0377, 0391–0395",
+          "source_url": "https://arxiv.org/html/2605.09625v3",
+          "realization": "fused"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "The system specifies fixed periodic sensor capture and one-/three-minute reasoning loops. It does not describe an intended or prior assistance action supplying a new information target or follow-up check; routine continued monitoring alone does not establish this channel.",
+          "source_locator": "Sections 4.4.2–4.4.5 and Appendix D; source lines 0354–0379, 1680–1850",
+          "source_url": "https://arxiv.org/html/2605.09625v3",
+          "realization": "unspecified",
+          "ambiguity": "An action-conditioned sensing/clarification path is neither implemented explicitly nor affirmatively excluded by the inspected description."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "The fused contextual reasoning step uses retained user prompts to determine task status/progression while interpreting new multimodal summaries. The source also describes integrating user history to infer intent. Thus user history reaches a sensing interpretation endpoint before intervention selection.",
+          "source_locator": "Section 4.4.4; source line 0377; Appendix D.4–D.5, lines 1690, 1801, 1828",
+          "source_url": "https://arxiv.org/html/2605.09625v3",
+          "realization": "fused",
+          "ambiguity": "This mapping is based on retained dialogue context; session-specific ECG/pupil calibration is a sensing-state estimate and is excluded from the Memory rationale."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Rolling summaries can mention earlier interventions and the study gathers intervention ratings, but no implemented association-and-revision step uses the user’s response to an earlier intervention to change retained preferences or policy. The study feedback instruments are not a runtime update rule.",
+          "source_locator": "Sections 4.4–4.5 and 6.3; source lines 0354–0395, 0582–0609; Appendix D.4 output line 1784",
+          "source_url": "https://arxiv.org/html/2605.09625v3",
+          "realization": "unspecified",
+          "ambiguity": "Whether dismissal or post-intervention behavior revises retained personal settings is unspecified; summary logging and debounce are insufficient."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2605.09625",
+          "version_url": "https://arxiv.org/html/2605.09625v3",
+          "version": "2605.09625v3",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "08dbe95cb3f892629f8d638810ed736e065b5f8ae7787f5437f17c1fdb7bac0c"
+        }
+      ]
+    },
+    {
+      "id": "proact2026",
+      "name": "ProAct",
+      "configuration": "Directed Idle: full Future-State Prediction plus Idle-Time Acquisition and delivery policy with the persistent memory layer",
+      "group": "T",
+      "summary_en": "ProAct predicts future needs from persistent user state and spends idle time acquiring missing evidence before choosing whether to deliver or retain it. The original comparisons test directed preparation and memory performance.",
+      "comparison_scope": "Explicit extraction, persistent memory and candidate/search/delivery pipeline. Worked preparation traces and provenance. ProActEval compares Reactive, Undirected Idle and Directed Idle on 200 synthetic scenarios across 40 domains, reporting turn/effort, coverage, factuality and cost endpoints; the direction ablation affects acquisition targets and delivery trajectories. MemBench separately measures reflective preference/emotion accuracy. These do not identify a runtime action-outcome attribution mechanism.",
+      "configuration_notes": "Pinned paper 2605.25971v2, cached 2026-09-11; no code inspected. Service: idle-time information preparation in multi-turn dialogue. State: persistent profiles, entity facts, summaries, unresolved gaps and artifacts. The benchmark initially loads a profile/fact sheet into memory or search, but online writes are separately described in Appendix J. Closed-loop synthetic conversation outcomes and reflective-memory tests are the reported horizons; do not merge the Reactive or Undirected Idle ablations into the full configuration.",
+      "original_contribution": "Persistent memory guides preparation for anticipated needs during idle time.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "After foreground turns the extraction pipeline updates user attributes, rolling summaries and facts; acquired artifacts and provenance are committed for later predictions and responses. This goes beyond the benchmark’s seeded fact sheet and describes online personal-state admission.",
+          "source_locator": "Sections 3.1–3.4; proact2026.txt numbered source lines 0175–0185, 0251–0255; Appendix J lines 1002–1007; Appendix U lines 1837–1883",
+          "source_url": "https://arxiv.org/html/2605.25971v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Persistent profiles, unresolved goals, summaries and stored artifacts condition candidate future needs, budget allocation and push/queue/store decisions; remembered evidence also supports later responses.",
+          "source_locator": "Sections 3.2–3.4; source lines 0187–0208, 0213–0226, 0241–0255",
+          "source_url": "https://arxiv.org/html/2605.25971v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "Selected predicted needs carry retrieval plans, and the acquisition policy decomposes accepted needs into subquestions, searches for evidence and checks coverage. Intended preparation therefore supplies concrete information targets before delivery.",
+          "source_locator": "Sections 3.2 and 3.4; source lines 0194–0198, 0227–0244",
+          "source_url": "https://arxiv.org/html/2605.25971v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Memory gaps and coverage shape candidate preparation decisions, which determine subquestions and selective searches. The linked path is memory→preparation/acquisition choice→evidence sensing; it is one indirect realization, not a separate fifth-grade status.",
+          "source_locator": "Sections 3.3–3.4; source lines 0213–0240",
+          "source_url": "https://arxiv.org/html/2605.25971v2",
+          "realization": "indirect_via_A",
+          "ambiguity": "Coverage checking and acquisition are fused in one policy; this coding does not claim an independently ablated direct MS module."
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Artifacts, provenance and new conversational facts are committed or merged, but the source does not specify an earlier delivered action’s external outcome being used to revise personal state or policy. The coverage judge measures evaluation outcomes outside the acting policy; the utility objective is not evidence of an implemented feedback update.",
+          "source_locator": "Sections 3.2–3.4 and 4.3; source lines 0200–0208, 0251–0255, 0285–0291; Appendices J and U",
+          "source_url": "https://arxiv.org/html/2605.25971v2",
+          "realization": "unspecified",
+          "ambiguity": "Acquisition provenance identifies knowledge sources, not attribution of user/service outcomes to a past assistance decision. Whether such feedback drives a lasting revision is unspecified."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2605.25971",
+          "version_url": "https://arxiv.org/html/2605.25971v2",
+          "version": "2605.25971v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "1650d3b03c69974218b91fc262d4abd1a54015b67dad303647abc9c52ceba2b4"
+        }
+      ]
+    },
+    {
+      "id": "longtermtoa2026",
+      "name": "Long-term TOA",
+      "configuration": "Full hybrid-triggered Task-oriented Agent with task-state/reminder tracking; Qwen3-32B-Finetuned ChronosBench configuration",
+      "group": "T",
+      "summary_en": "Long-term TOA maintains user constraints across dormant periods and converts them into monitoring triggers. Response-linked corrections revise continuing task state; ChronosBench tests follow-up, silence and intent shifts under simulated time.",
+      "comparison_scope": "Structured state/reminder update and backend-trigger workflow; complete positive/negative dialogue examples. ChronosBench compares fine-tuned Qwen/Llama models with base/guided and proprietary models on simple and intention-shift scenarios. Endpoints are task success, action accuracy and status accuracy. This is controlled model/prompt comparison of simulated task outcomes, not an isolated memory-channel or personal-threshold-learning ablation.",
+      "configuration_notes": "Pinned paper 2601.09382v1, cached 2026-09-11; no code inspected. Service: product, job and flight matching as external information changes. Personal state: user-linked constraints, task status, reminders and interaction time, retained across active/dormant/wake-up phases. Observations are engineered injections and time progression is simulated; database tracker semantics are described while engineering detail is out of scope. This does not make the completed dependency partial. Explicitly future interruption-threshold learning concerns an additional policy branch.",
+      "original_contribution": "Dormant-period monitors and updated intents support cross-time follow-ups.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "User needs, later constraints and intention shifts update structured task slots. Setting reminders creates user-linked entries in a database-driven tracker containing conditions, status and last-interaction time, retained through dormant periods and later follow-ups.",
+          "source_locator": "Sections 3.1, 3.4–3.6; longtermtoa2026.txt numbered source lines 0150–0156, 0170–0177",
+          "source_url": "https://arxiv.org/html/2601.09382v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The agent reuses retained user constraints and task context to retrieve information, set/update reminders, choose follow-up versus silence and respond after intent shifts. The state crosses active, dormant and resumed interactions in the configured service.",
+          "source_locator": "Sections 3.1–3.2 and 3.5–3.6; source lines 0153–0163, 0175–0177",
+          "source_url": "https://arxiv.org/html/2601.09382v1",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "INFO_RETRIEVAL requests an observation of current external state; SET_REMINDER supplies conditions for the backend monitor, which later injects matched environmental observations. The route is described through a simulated/engineered backend, which still reaches the observation endpoint.",
+          "source_locator": "Sections 3.2 and 3.4; source lines 0161–0172; Appendix D.1, lines 0610–0634",
+          "source_url": "https://arxiv.org/html/2601.09382v1",
+          "realization": "direct",
+          "ambiguity": "The paper explicitly uses injected observations rather than a standard tool-calling API. This is a realization/evidence distinction, not a partial mechanism."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "The tracker retains each user’s conditions and reminder state. The monitor applies the agent’s previously stored reminders as filters and constructs observations with the original task context; retained intent therefore governs which environmental changes reach sensing.",
+          "source_locator": "Sections 3.1–3.2 and 3.4; source lines 0153–0163, 0172",
+          "source_url": "https://arxiv.org/html/2601.09382v1",
+          "realization": "direct",
+          "ambiguity": "The monitoring filter is delegated to a backend whose detailed engineering is not elaborated, but its receiving function and retained conditions are explicitly specified."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "Users evaluate the agent’s recommendations and supply corrective constraints or confirmation/refusal. The agent uses that response to revise continuing task conditions and reminder state, or commit completed/failed status. The example rejecting offered cameras updates the budget/storage constraints for subsequent monitoring; this is a personal task-state revision.",
+          "source_locator": "Sections 3.5–3.6; source lines 0175–0177; Appendix D.1 lines 0621–0634; Appendix E camera example lines 0685–0693",
+          "source_url": "https://arxiv.org/html/2601.09382v1",
+          "realization": "direct",
+          "update_branch": "personal_state",
+          "ambiguity": "Association is the user’s explicit response to an offered recommendation; correctness of general causal attribution is not established. Personalized interruption-threshold learning is explicitly future work (line 0375), but that does not negate the implemented task-state branch."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2601.09382",
+          "version_url": "https://arxiv.org/html/2601.09382v1",
+          "version": "2601.09382v1",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "d0fb03be2540b6183cbb62f50adf756122f7aee876ca86c166adcabb5d2d930a"
+        }
+      ]
+    },
+    {
+      "id": "propersim",
+      "name": "ProPerAssistant",
+      "configuration": "Full ProPerAssistant with AR history/retrieval and daily per-persona DPO updates (LLaMA 3.3 70B, LoRA)",
+      "group": "T",
+      "summary_en": "ProPerAssistant combines retained interaction history with daily preference training on simulated recommendation ratings. Across personas, comparisons separate history, ratings in context and DPO-based adaptation.",
+      "comparison_scope": "History/retrieval plus recommendation-linked replay/DPO. Fourteen simulated days across 32 personas compare No Memory, AR Memory, ARS Memory and full ProPerAssistant, reporting daily four-criterion ratings, successful interventions, timing and recommendation frequency. ARS versus full tests explicit preference training against scores in context; AR versus No Memory tests history provision. The study validates simulated judgments with human reviewers but does not measure delayed real-user service outcomes.",
+      "configuration_notes": "Pinned paper 2509.21730v2, cached 2026-09-11; no code inspected. Service: periodic home recommendations or silence at 2.5-minute intervals. Personal state: summarized and retrieved user interaction history, accumulated replay data and a per-persona policy across fourteen simulated days. The user’s own evaluative memory is separate. Full assistant uses two scored candidates and daily LoRA DPO; baselines disable training or memory and should not be averaged. The source explicitly leaves delayed/noisy rewards to future work, while immediate-feedback AM is fully implemented.",
+      "original_contribution": "Rated recommendations support repeated personalization in a simulated home.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Observed user-action/assistant-recommendation pairs enter a retained interaction history: recent pairs remain detailed, older pairs are summarized, and similar past situations can be retrieved. The assistant accumulates user-specific state across repeated recommendations and simulation days.",
+          "source_locator": "Section 5, Internal State; propersim.txt numbered source lines 0149–0153; Section 6.2/Table 1 day sequence",
+          "source_url": "https://arxiv.org/html/2509.21730v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "The assistant consumes the current-day summary and five similar past interaction pairs when deciding the content of a recommendation or No Recommendation. Its per-persona trained policy also retains feedback-derived preferences for subsequent decisions.",
+          "source_locator": "Sections 3 and 5; source lines 0101–0112, 0149–0157",
+          "source_url": "https://arxiv.org/html/2509.21730v2",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "Recommendation decisions occur on a fixed simulation cadence from supplied current user actions. The acting assistant is not described as requesting an observation target or performing a post-action check; candidate scoring by the separate user evaluator does not itself establish in-system action-guided sensing.",
+          "source_locator": "Sections 3, 4.2 and 6.2; source lines 0101–0115, 0126–0143, 0167–0171",
+          "source_url": "https://arxiv.org/html/2509.21730v2",
+          "realization": "unspecified",
+          "ambiguity": "The text leaves any assistant-controlled acquisition/checking route unspecified; fixed cadence alone is not affirmative evidence of total absence."
+        },
+        {
+          "channel": "MS",
+          "status": "unreported",
+          "rationale": "The documented retrieval endpoint is recommendation reasoning. The source does not specify retained assistant state controlling the supplied user-action observations, their acquisition, or a separate interpretation step. Memory inside the simulated user is not the assistant’s MS channel.",
+          "source_locator": "Sections 4.2 and 5; source lines 0126–0143, 0149–0157",
+          "source_url": "https://arxiv.org/html/2509.21730v2",
+          "realization": "unspecified",
+          "ambiguity": "A direct or action-mediated memory-to-sensing dependency for the assistant cannot be identified from the described implementation."
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "For each user context the simulated user scores candidate recommendations; chosen/rejected pairs retain that context and recommendation identity in a replay buffer. Daily DPO uses those pairs to update the per-persona policy for later days. Association and use in durable revision are explicit through the policy branch.",
+          "source_locator": "Section 5, User Preference Alignment; source lines 0154–0157; Sections 6.2–6.4, lines 0167–0171, 0479–0490",
+          "source_url": "https://arxiv.org/html/2509.21730v2",
+          "realization": "direct",
+          "update_branch": "policy",
+          "ambiguity": "Feedback is immediate simulated preference scoring, with human checks of judge reasonableness. It is not delayed real-world satisfaction, and improved ratings do not establish arbitrary causal attribution."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2509.21730",
+          "version_url": "https://arxiv.org/html/2509.21730v2",
+          "version": "2509.21730v2",
+          "source_kind": "paper",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "42d0ab33fd364071ed82b091dbec4bd1946b29b2285f518aad107d04469c6c2b"
+        }
+      ]
+    },
+    {
+      "id": "chatgptpulse2025",
+      "name": "ChatGPT Pulse",
+      "configuration": "Pulse mobile preview described in OpenAI’s 2025-09-25 introduction, with memory/chat history and retained curation/card feedback",
+      "group": "D",
+      "summary_en": "Pulse documents daily personalized research and retained feedback; these are vendor mechanism claims.",
+      "comparison_scope": "Vendor documentation; early qualitative student feedback, no controlled channel or service comparison.",
+      "configuration_notes": "Article dated 2025-09-25; cached 2026-09-11 and rechecked 2026-09-12. No code inspected. Scope: nightly research and next-day cards; retained user history/feedback crosses days. Optional Gmail/Calendar connections are disabled by default and unnecessary to these codes. Documented mechanism presence is distinct from independent empirical validation.",
+      "original_contribution": "Nightly personalized research uses memory and feedback to prepare daily cards.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Chats, curation instructions and feedback history are retained; saved/followed-up updates enter conversation history. Direct user writes qualify.",
+          "source_locator": "Made for you once a day; You decide what shows up; Meant to work for you; web lines 43, 49, 52",
+          "source_url": "https://openai.com/index/introducing-chatgpt-pulse/",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Remembered chats and feedback condition the next day’s selected, personalized cards.",
+          "source_locator": "Made for you once a day; web line 43",
+          "source_url": "https://openai.com/index/introducing-chatgpt-pulse/",
+          "realization": "fused"
+        },
+        {
+          "channel": "AS",
+          "status": "unreported",
+          "rationale": "The article leaves the action-plan-to-research-request boundary unspecified; asynchronous research alone does not expose that dependency.",
+          "source_locator": "Made for you once a day; You decide what shows up; web lines 39–49",
+          "source_url": "https://openai.com/index/introducing-chatgpt-pulse/",
+          "realization": "unspecified",
+          "ambiguity": "A fused topic-selection/research pipeline is possible but its action-to-sensing endpoint is not identified."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Retained interests and feedback determine the topics researched overnight, reaching acquisition rather than only response generation.",
+          "source_locator": "Made for you once a day; You decide what shows up; web lines 43, 49",
+          "source_url": "https://openai.com/index/introducing-chatgpt-pulse/",
+          "realization": "fused"
+        },
+        {
+          "channel": "AM",
+          "status": "reported",
+          "rationale": "Card-specific ratings and corrections are remembered for next time and change later selections: an explicit feedback-to-retained-state claim.",
+          "source_locator": "You decide what shows up; Limitations; web lines 49, 62",
+          "source_url": "https://openai.com/index/introducing-chatgpt-pulse/",
+          "realization": "fused",
+          "update_branch": "personal_state",
+          "ambiguity": "The vendor specifies feedback association/use, but exposes neither revision internals nor a controlled attribution/benefit test."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openai.com/index/introducing-chatgpt-pulse/",
+          "version": "Article dated 2025-09-25; web snapshot 2026-09-11",
+          "source_kind": "product_documentation",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "21e2854d2557a46599494d9eece24b9a34dc16b098479d790309ec1aab5d0f95"
+        }
+      ]
+    },
+    {
+      "id": "metamuse2026",
+      "name": "Muse",
+      "configuration": "September 2026 launch configuration with persistent user VM memory, goals/background work, browser sub-agent and Sentinel controls",
+      "group": "D",
+      "summary_en": "Muse documents persistent personal memory, ongoing goal-driven tasks and browser sensing under permission controls. Outcome-attributed personal revision remains unspecified.",
+      "comparison_scope": "Vendor launch/design/security documentation, with illustrative product-team use cases. No controlled channel or personal-service outcome comparison is provided in these sources.",
+      "configuration_notes": "Pinned September 2026 launch snapshots: metamuse2026, musedesign2026, musesafety2026, cached 2026-09-11; design/security URLs rechecked 2026-09-12. No code inspected. Personal memory persists across chats; user VM files are backed up; goals continue while the app is closed. The service can observe websites and connected sources, communicate and execute approved tasks. Muse Secure VM is the reviewed configuration; future Confidential VM and general model-checkpoint training are separate claims.",
+      "original_contribution": "Persistent memory, scheduled background work, and explicit permission controls support personal tasks.",
+      "source_review_date": "2026-09-12",
+      "independently_reproduced": false,
+      "cells": [
+        {
+          "channel": "SM",
+          "status": "reported",
+          "rationale": "Conversation-derived personal knowledge and editable Memory files persist across conversations. The user VM stores and backs up files, including memory, so user-directed writes reach retained personal state.",
+          "source_locator": "How We Designed Muse: Evolving From an Assistant to an Agent, Background work and transparency (cached lines 24, 30); security article: Our Policy Around Data (line 94)",
+          "source_url": "https://introducing.muse.ai/",
+          "realization": "direct"
+        },
+        {
+          "channel": "MA",
+          "status": "reported",
+          "rationale": "Remembered goals and conversation-derived patterns guide ideas and ongoing work, with results screened for notification value. Retained user approval scopes constrain later connector actions.",
+          "source_locator": "Design article: lines 22, 32, 39–40; security article: Human in the Loop, lines 44–46",
+          "source_url": "https://introducing.muse.ai/",
+          "realization": "direct"
+        },
+        {
+          "channel": "AS",
+          "status": "reported",
+          "rationale": "A browser sub-agent receives the task and reads/traverses pages to complete it. Goal-directed background work also monitors specified sources, supplying observation targets. This delegated realization reaches sensing.",
+          "source_locator": "Security article: Browser Use, cached line 76; design article: task example and browser/background work, lines 17–22",
+          "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+          "realization": "direct",
+          "ambiguity": "These are vendor-described task and browser mechanisms, with illustrative use cases rather than independent execution traces."
+        },
+        {
+          "channel": "MS",
+          "status": "reported",
+          "rationale": "Retained goals and plans drive ongoing background tasks, including source monitoring and browser exploration. The explicit link is retained goal→task/plan choice→sensing.",
+          "source_locator": "Design article: background work, cross-conversation memory and Goals and tracking, cached lines 17–24, 32; security article: Browser Use line 76",
+          "source_url": "https://introducing.muse.ai/",
+          "realization": "indirect_via_A"
+        },
+        {
+          "channel": "AM",
+          "status": "unreported",
+          "rationale": "Memory editing, adaptive plan suggestions, activity logs and pooled model training are described. The sources do not specify an external outcome associated with an earlier assistance decision governing a retained personal-state or policy revision.",
+          "source_locator": "Design article: lines 30, 39–40; security article: Our Policy Around Data, lines 94–96; official introduction: How It Works",
+          "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+          "realization": "unspecified",
+          "ambiguity": "Sentinel records action-specific permission decisions before execution; this is authority state, not demonstrated learning from external outcomes. Whether outcome-linked plan adjustments are durably committed is unspecified."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+          "version": "content snapshot; version not displayed",
+          "source_kind": "product_documentation",
+          "role": "v1 source snapshot; see recheck URLs and cell locations for v2 inspection",
+          "text_sha256": "1d623291730de6b3c788c1c69d46655db788009465c32e4b110b21ee6787550b"
+        },
+        {
+          "url": "https://introducing.muse.ai/",
+          "version": "content snapshot; version not displayed",
+          "source_kind": "product_documentation",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "68c486d00871858830a5bb4486fb2f4a447bfe6d61e1c51f86cda86b89faeaad"
+        },
+        {
+          "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+          "version": "content snapshot; version not displayed",
+          "source_kind": "product_documentation",
+          "role": "Pinned source snapshot used in the review",
+          "text_sha256": "6a6b0cff7fb4da8c963256684ae8aa67d1e2b052babfa80fb25e6f6913e9e7a6"
+        }
+      ]
+    }
+  ]
+}

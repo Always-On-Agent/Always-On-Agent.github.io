@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#182439">
+  <title>HALO — Always-On Loop Oversight</title>
+  <meta name="description" content="Explore source-linked evidence for 31 personal-AI configurations, prepare a local HALO analysis task, and inspect your own evidence reports.">
+  <link rel="canonical" href="https://always-on-agent.github.io/halo/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="halo.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body class="halo-page">
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="brand" href="../"><img src="../assets/icon.webp" width="36" height="36" alt=""><span>Always-On<span class="brand-light"> Agent</span></span></a>
+    <nav aria-label="Main navigation"><a href="../">Survey</a><a href="#evidence" data-view-link="evidence">Evidence library</a><a href="#prepare" data-view-link="prepare">Prepare an analysis</a><a href="#report" data-view-link="report">Open a report</a></nav>
+    <a class="back-link" href="../#halo">About HALO ↗</a>
+  </div></header>
+  <main>
+    <section class="workspace-hero"><div class="container">
+      <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> HARNESS FOR ALWAYS-ON LOOP OVERSIGHT</div>
+      <div class="workspace-title"><div><h1>HALO<span class="title-dot">.</span></h1><p>Trace the loop. Inspect the evidence.</p></div><div class="workspace-stats"><div><strong id="config-count">31</strong><span>configurations</span></div><div><strong>5</strong><span>coupling channels</span></div><div><strong>2</strong><span>oversight modes</span></div></div>
+      <p class="workspace-intro">From a published mechanism to the comparison behind it. Explore the survey’s read-mode records, prepare a task for your local coding agent, or inspect a report of your own.</p>
+    </div></section>
+
+    <div class="container workspace-container" id="workspace">
+      <div class="workspace-tabs" role="tablist" aria-label="HALO workspace">
+        <button id="view-evidence" type="button" role="tab" aria-selected="true" aria-controls="evidence" data-view="evidence"><span>01</span> Evidence library</button>
+        <button id="view-prepare" type="button" role="tab" aria-selected="false" aria-controls="prepare" tabindex="-1" data-view="prepare"><span>02</span> Prepare an analysis</button>
+        <button id="view-report" type="button" role="tab" aria-selected="false" aria-controls="report" tabindex="-1" data-view="report"><span>03</span> Open a report</button>
+      </div>
+
+      <section class="workspace-panel" id="evidence" role="tabpanel" aria-labelledby="view-evidence">
+        <div class="workspace-section-heading"><div><span class="section-number">SOURCE-BASED REVIEW · V2</span><h2>Follow every judgment to its source.</h2><p>31 configurations from 30 works. Mechanism status and supporting evidence are assessed separately.</p></div><a class="small-link" href="data/inventory.json" download>Download inventory ↓</a></div>
+        <div class="filter-bar"><div class="search-field"><label for="search">Find a system</label><input id="search" type="search" placeholder="Search systems, configurations, or evidence…" autocomplete="off"></div><div><label for="group-filter">Source / evaluation group</label><select id="group-filter"><option value="">All groups</option><option value="C">Contextual &amp; continuing</option><option value="T">Bounded &amp; simulated</option><option value="D">Product documentation</option></select></div><div><label for="channel-filter">Channel</label><select id="channel-filter"><option value="">Any channel</option><option value="SM">S → M</option><option value="MA">M → A</option><option value="AS">A → S</option><option value="MS">M → S</option><option value="AM">A → M</option></select></div><div><label for="status-filter">Mechanism status</label><select id="status-filter"><option value="">Any status</option><option value="reported">Reported</option><option value="partial">Partial</option><option value="absent">Absent</option><option value="unreported">Unreported</option></select></div><button class="reset-button" id="reset-filters" type="button">Reset</button></div>
+        <div class="legend" aria-label="Mechanism status legend"><span><i class="mechanism-dot reported"></i>Reported</span><span><i class="mechanism-dot partial"></i>Explicitly partial</span><span><i class="mechanism-dot absent"></i>Explicitly absent</span><span><i class="mechanism-dot unreported"></i>Unreported</span><small>* documented channel composition</small></div>
+        <p class="data-error" id="data-error" role="alert" hidden></p>
+        <div class="evidence-layout"><aside class="library-panel" aria-label="Reviewed configurations"><div class="library-heading"><span id="result-count" role="status" aria-live="polite">Loading evidence…</span><span>SM · MA · AS · MS · AM</span></div><div id="record-list" class="record-list"></div></aside><article class="record-detail" id="record-detail" aria-label="Selected evidence record"><div class="loading-note">Loading the source-linked review…</div></article></div>
+        <p class="inventory-note">This is a narrative selection, not a field-prevalence estimate or a leaderboard. Results and comparisons belong to the original sources; HALO has not independently reproduced these configurations.</p>
+      </section>
+
+      <section class="workspace-panel" id="prepare" role="tabpanel" aria-labelledby="view-prepare" hidden>
+        <div class="workspace-section-heading"><div><span class="section-number">YOUR AGENT · YOUR WORKSPACE</span><h2>Prepare a source-grounded analysis.</h2><p>Create a self-contained task to run with your local coding agent. Your inputs stay in this browser.</p></div></div>
+        <div class="prepare-layout"><form class="task-form" id="task-form">
+          <label for="task-target">Paper or repository <span class="required">*</span></label><input id="task-target" name="target" required maxlength="4096" placeholder="Paper URL, repository URL, or local path">
+          <p class="field-hint">The local agent reads the supplied materials and records the evaluated configuration.</p>
+          <div class="form-pair"><div><label for="task-name">Analysis name</label><input id="task-name" name="name" maxlength="160" placeholder="A name for this analysis"></div><div><label for="task-paper">Supporting paper</label><input id="task-paper" name="paper" maxlength="4096" placeholder="Optional URL or local PDF path"></div></div>
+          <label for="task-scope">Service scope and questions</label><textarea id="task-scope" name="scope" rows="3" maxlength="6000" placeholder="Configuration, interaction boundaries, outcome horizon, or questions to investigate…"></textarea>
+          <fieldset><legend>Oversight mode</legend><div class="task-modes"><label><input type="radio" name="mode" value="read" checked><span><strong>Read mode</strong><small>Inspect sources and map evidence. No target execution.</small></span></label><label><input type="radio" name="mode" value="run"><span><strong>Run mode</strong><small>Add scoped, isolated tests where an interface is available.</small></span></label></div></fieldset>
+          <p class="field-hint" id="mode-guidance">Read mode produces source-linked judgments and identifies what existing comparisons establish.</p>
+          <button type="submit" class="button primary" id="generate-task">Generate local task <span aria-hidden="true">↗</span></button><span id="task-status" class="inline-status" role="status" aria-live="polite"></span>
+        </form><aside class="task-guide"><span class="section-number">THE ANALYSIS PATH</span><ol><li><span>01</span><div><h3>Read the materials</h3><p>Pin the configuration, versions, and source locations.</p></div></li><li><span>02</span><div><h3>Trace five dependencies</h3><p>Separate mechanism status, realization, and supporting evidence.</p></div></li><li><span>03</span><div><h3>Inspect comparisons</h3><p>Keep published results distinct from any execution performed locally.</p></div></li><li><span>04</span><div><h3>Keep the report</h3><p>Produce report.md and evidence.json. Open them in the report viewer.</p></div></li></ol><a href="protocol.md" class="small-link" download>Download the review protocol ↓</a><p class="guide-note">The public site prepares the task. Analysis runs in your own coding-agent session using its configured tools and account.</p></aside></div>
+        <section class="generated-task" id="generated-task" hidden><div class="generated-heading"><div><span class="section-number">READY FOR YOUR LOCAL AGENT</span><h3>Your analysis task</h3></div><div><button type="button" class="button secondary" id="copy-task">Copy task</button><button type="button" class="button primary" id="download-task">Download task.md ↓</button></div></div><p>Save the task as <code>halo-task.md</code>, then ask your local coding agent: <strong>“Read halo-task.md and complete this HALO analysis in a new output folder.”</strong> The task includes the review protocol and required output schema.</p><details><summary>Preview the full task</summary><pre id="task-preview"></pre></details></section>
+      </section>
+
+      <section class="workspace-panel" id="report" role="tabpanel" aria-labelledby="view-report" hidden>
+        <div class="workspace-section-heading"><div><span class="section-number">LOCAL FILE VIEWER</span><h2>Bring the evidence back into view.</h2><p>Open an evidence.json and, optionally, its report.md. Files are processed locally in this browser.</p></div></div>
+        <div class="report-inputs"><div><label for="evidence-file">Evidence ledger (.json)</label><input type="file" id="evidence-file" accept=".json,application/json"><p>Supports the five-channel HALO ledger and individual records exported from the library.</p></div><div><label for="report-file">Analysis report (.md or .txt, optional)</label><input type="file" id="report-file" accept=".md,.txt,text/plain,text/markdown"><p>The report is displayed as text, preserving the agent’s original wording.</p></div></div>
+        <div id="import-message" class="import-message" role="status" aria-live="polite"></div>
+        <div class="viewer-empty" id="viewer-empty"><span class="empty-glyph" aria-hidden="true">↳</span><h3>Every result needs a trace.</h3><p>Select your evidence file to inspect channel statuses, source locations, and the judgments behind them.</p><button type="button" class="small-link" id="open-sample">Open a published review example →</button></div>
+        <article id="imported-detail" class="record-detail imported-detail" hidden></article>
+        <section id="imported-report" class="imported-report" hidden><div class="report-text-heading"><h3 id="report-file-name">Analysis report</h3><span>LOCAL FILE · ORIGINAL TEXT</span></div><pre id="report-text"></pre></section>
+      </section>
+    </div>
+    <section class="protocol-strip"><div class="container"><div><h2>A shared protocol.<br><span class="muted">A clear scope for every claim.</span></h2><p>Read and run modes use the same evidence criteria. Reporting completeness, functional closure, and user benefit answer different questions.</p></div><a href="protocol.md" class="button secondary">Read the protocol ↗</a></div></section>
+  </main>
+  <footer><div class="container footer-inner"><a class="brand" href="../"><img src="../assets/icon.webp" width="32" height="32" alt=""><span>Always-On<span class="brand-light"> Agent</span></span></a><p>HALO · September 2026 research preview</p><a href="../">Back to the survey ↗</a></div></footer>
+</body>
+</html>
