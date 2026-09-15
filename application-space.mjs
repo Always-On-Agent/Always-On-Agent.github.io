@@ -7,6 +7,9 @@ const short = value => ({ "Within-session": "Within-session", "Cross-session": "
 export function createApplicationSpace(root, { onSelect, renderDetail }) {
   let cases = [], selected = "", view = "3d", camera = { ...INITIAL_CAMERA }, selection = null, drag = null, pendingFrame = 0;
   let planeOrder = PLANES.map(plane => plane.id);
+  let panelExpanded = false;
+  let panelScrollTimer;
+  const panelAnimations = new WeakMap();
   root.innerHTML = `<div class="space-workspace">
     <div class="space-visuals">
       <div class="space-orbit-panel glass-panel">
@@ -18,12 +21,36 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       <div class="space-plane-panels" hidden></div>
       <p class="space-projection-note">Each location groups cases with the same categories. Counts refer to distinct works at that location; distances do not indicate performance.</p>
     </div>
-    <aside class="space-inspector glass-panel" aria-label="Works at the selected location"><div class="space-inspector-content"></div></aside>
+    <div class="space-inspector-dock"><aside class="space-inspector glass-panel" aria-label="Works at the selected location"><div class="space-inspector-content"></div></aside></div>
   </div>`;
   const svg = root.querySelector(".space-svg");
   const orbitPanel = root.querySelector(".space-orbit-panel");
   const planePanels = root.querySelector(".space-plane-panels");
   const inspector = root.querySelector(".space-inspector-content");
+  const inspectorSurface = root.querySelector('.space-inspector');
+  const inspectorDock = root.querySelector('.space-inspector-dock');
+  const deckResize = typeof ResizeObserver === 'function' ? new ResizeObserver(() => fitDeckHeight()) : null;
+
+  function fitDeckHeight() {
+    if (view !== 'planes') return;
+    const card = planePanels.querySelector('[data-front="true"]');
+    if (!card) return;
+    const height = Math.max(464, card.offsetHeight || 0) + (card.offsetTop || 140) + 24;
+    planePanels.querySelector('.space-depth-deck').style.height = `${Math.ceil(height)}px`;
+  }
+
+  function animatePanel(card, opening = true) {
+    const face = card?.querySelector('.space-projection-card');
+    if (!face?.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    panelAnimations.get(face)?.cancel();
+    const lift = opening ? -14 : 5;
+    const animation = face.animate([
+      { transform:'translateY(0) scale(1)' },
+      { transform:`translateY(${lift}px) scale(${opening ? 1.012 : .992})`, offset:.36 },
+      { transform:'translateY(0) scale(1)' }
+    ], { duration:opening ? 620 : 400, easing:'cubic-bezier(.22,.75,.25,1)' });
+    panelAnimations.set(face, animation);
+  }
 
   function renderScene() {
     const project = fitProjection(camera);
@@ -59,7 +86,8 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
 
   function renderPlanes() {
     if (!planePanels.querySelector('.space-depth-deck')) {
-      planePanels.innerHTML = `<div class="space-unfold-heading"><span class="space-eyebrow">THREE PERSPECTIVES, ONE COLLECTION</span><p>Choose a glass panel to bring it forward. Select a location to explore its works.</p></div><div class="space-deck-scene"><div class="space-deck-glow" aria-hidden="true"></div><div class="space-depth-deck">${PLANES.map((plane,index) => `<section class="space-depth-card" data-plane-card="${plane.id}" aria-labelledby="plane-title-${plane.id}"><div class="space-projection-card"><div class="space-card-glass" aria-hidden="true"></div><button type="button" class="space-plane-handle" data-plane-switch="${plane.id}" aria-controls="plane-content-${plane.id}"><span class="space-plane-number">0${index+1}</span><span class="space-plane-heading"><strong id="plane-title-${plane.id}">${plane.title}</strong><span>${({"domain-people":"Across all outcome horizons", "domain-time":"Across all participant scopes", "people-time":"Across all interaction domains"})[plane.id]}</span></span><span class="space-plane-state" aria-hidden="true"></span></button><div class="space-plane-content" id="plane-content-${plane.id}"></div></div></section>`).join('')}</div></div><div class="space-deck-navigation"><button type="button" data-plane-step="-1" aria-label="Previous projection">←</button><p class="space-deck-status" role="status" aria-live="polite"></p><button type="button" data-plane-step="1" aria-label="Next projection">→</button></div><p class="space-unfold-note">These are three projections of the same cases. A selected work stays highlighted when you switch panels. Depth separates views; it does not rank the work.</p>`;
+      planePanels.innerHTML = `<div class="space-unfold-heading"><span class="space-eyebrow">THREE PERSPECTIVES, ONE COLLECTION</span><p>Tap an exposed edge to switch panels. Open the front panel, or select a cell, to explore the works inside.</p></div><div class="space-deck-scene"><div class="space-deck-glow" aria-hidden="true"></div><div class="space-depth-deck">${PLANES.map((plane,index) => `<section class="space-depth-card" data-plane-card="${plane.id}" aria-labelledby="plane-title-${plane.id}"><div class="space-projection-card"><div class="space-card-glass" aria-hidden="true"></div><button type="button" class="space-plane-handle" data-plane-switch="${plane.id}" aria-controls="plane-works-${plane.id}"><span class="space-plane-number">0${index+1}</span><span class="space-plane-heading"><strong id="plane-title-${plane.id}">${plane.title}</strong><span>${({"domain-people":"Across all outcome horizons", "domain-time":"Across all participant scopes", "people-time":"Across all interaction domains"})[plane.id]}</span></span><span class="space-plane-state" aria-hidden="true"></span></button><div class="space-plane-content" id="plane-content-${plane.id}"><div class="space-plane-table"></div><div class="space-panel-reveal" id="plane-works-${plane.id}"><div class="space-panel-clip"><div class="space-panel-slot"></div></div></div></div></div></section>`).join('')}</div></div><p class="space-deck-status sr-only" role="status" aria-live="polite"></p><p class="space-unfold-note">These are three projections of the same cases. A selected work stays with you when you switch panels. Depth separates views; it does not rank the work.</p>`;
+      planePanels.querySelectorAll('.space-depth-card').forEach(card => deckResize?.observe(card));
     }
     PLANES.forEach(plane => {
       const card = planePanels.querySelector(`[data-plane-card="${plane.id}"]`);
@@ -68,14 +96,20 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       card.style.setProperty('--depth', depth);
       card.dataset.depth = String(depth);
       card.dataset.front = String(front);
+      card.dataset.expanded = String(front && panelExpanded);
       const handle = card.querySelector('[data-plane-switch]');
       handle.setAttribute('aria-pressed', String(front));
-      card.querySelector('.space-plane-state').textContent = front ? 'In view' : 'Bring forward ↗';
+      handle.setAttribute('aria-expanded', String(front && panelExpanded));
+      card.querySelector('.space-plane-state').textContent = front ? panelExpanded ? 'Close works −' : 'Explore works +' : 'Bring forward ↗';
       const body = card.querySelector('.space-plane-content');
       body.toggleAttribute('inert', !front);
       body.setAttribute('aria-hidden', String(!front));
+      const reveal = card.querySelector('.space-panel-reveal');
+      reveal.toggleAttribute('inert', !front || !panelExpanded);
+      reveal.setAttribute('aria-hidden', String(!front || !panelExpanded));
+      if (front) card.querySelector('.space-panel-slot').append(inspectorSurface);
       const cells = projectPlane(cases, plane);
-      body.innerHTML = `<table><caption class="sr-only">${esc(plane.title)} projection</caption><thead><tr><td></td>${plane.columns.map(label => `<th scope="col">${label}</th>`).join('')}</tr></thead><tbody>${plane.rows.map(y => `<tr${y === 'Unmeasured' ? ' class="space-unmeasured-row"' : ''}><th scope="row">${short(y)}</th>${plane.columns.map(x => {
+      card.querySelector('.space-plane-table').innerHTML = `<table><caption class="sr-only">${esc(plane.title)} projection</caption><thead><tr><td></td>${plane.columns.map(label => `<th scope="col">${label}</th>`).join('')}</tr></thead><tbody>${plane.rows.map(y => `<tr${y === 'Unmeasured' ? ' class="space-unmeasured-row"' : ''}><th scope="row">${short(y)}</th>${plane.columns.map(x => {
         const cell = cells.find(cell => cell.x === x && cell.y === y);
         const active = selected ? cell.ids.includes(selected) : selection?.type === 'plane' && selection.plane === plane.id && selection.x === x && selection.y === y;
         const key = JSON.stringify([plane.id,x,y]);
@@ -86,14 +120,32 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
     const status = planePanels.querySelector('.space-deck-status');
     const label = `0${current+1} / 03 · ${PLANES[current].title}`;
     if (status.textContent !== label) status.textContent = label;
+    fitDeckHeight();
   }
 
   function switchPlane(id) {
-    if (id === planeOrder[0] || !PLANES.some(plane => plane.id === id)) return;
+    if (!PLANES.some(plane => plane.id === id)) return;
+    clearTimeout(panelScrollTimer);
+    if (id === planeOrder[0]) {
+      panelExpanded = !panelExpanded;
+      renderPlanes(); renderInspector();
+      animatePanel(planePanels.querySelector('[data-front="true"]'), panelExpanded);
+      if (panelExpanded) {
+        inspector.querySelector('.space-list-heading,.space-case-detail')?.focus({ preventScroll:true });
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        panelScrollTimer = setTimeout(() => {
+          if (view === 'planes' && panelExpanded && inspectorSurface.contains(root.ownerDocument.activeElement)) inspectorSurface.scrollIntoView({ behavior:reduced ? 'auto' : 'smooth', block:'nearest' });
+        }, reduced ? 0 : 540);
+      } else planePanels.querySelector(`[data-plane-switch="${id}"]`).focus({ preventScroll:true });
+      return;
+    }
+    const previous = planePanels.querySelector('[data-front="true"]');
     planeOrder = [id, ...planeOrder.filter(plane => plane !== id)];
     selection = null;
     renderPlanes();
     renderInspector();
+    animatePanel(previous, false);
+    animatePanel(planePanels.querySelector('[data-front="true"]'));
     planePanels.querySelector(`[data-plane-switch="${id}"]`).focus({ preventScroll:true });
   }
 
@@ -113,29 +165,36 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
     const current = cases.find(item => item.id === selected);
     if (current) {
       inspector.innerHTML = `<button class="space-back-list" type="button" data-space-back>← Back to the works</button><div class="space-case-detail" tabindex="-1">${renderDetail(current)}</div>`;
+      fitDeckHeight();
       return;
     }
     const ids = selectedIDs();
     const visible = cases.filter(item => ids.includes(item.id));
     const scope = selection?.type === "cluster" ? JSON.parse(selection.key).join(" · ") : selection ? `${selection.x} · ${selection.y}` : "All filtered application cases";
     inspector.innerHTML = `<div class="space-list-heading" tabindex="-1"><span class="space-eyebrow">${selection ? 'SELECTED LOCATION' : 'WORKS IN VIEW'}</span><h4>${visible.length} ${visible.length === 1 ? 'work' : 'works'}</h4><p>${esc(scope)}</p>${selection ? '<button type="button" data-space-clear>Show all locations</button>' : ''}</div><div class="space-work-list">${visible.map(item => `<button type="button" data-application-case="${esc(item.id)}"><strong>${esc(item.name)}</strong><span>${esc(item.domains.join(' + '))} · ${esc(item.horizon)}</span></button>`).join('') || '<p class="space-empty">No works at this location under the current filters.</p>'}</div>`;
+    fitDeckHeight();
   }
 
   function render() {
     root.dataset.spaceMode = view;
     orbitPanel.hidden = view !== "3d";
     planePanels.hidden = view !== "planes";
+    inspectorDock.hidden = view === 'planes';
+    if (view !== 'planes') inspectorDock.append(inspectorSurface);
     if (view === "3d") renderScene();
     else if (view === "planes") renderPlanes();
     renderInspector();
   }
 
   function chooseLocation(next) {
+    clearTimeout(panelScrollTimer);
     selection = next;
+    if (view === 'planes') panelExpanded = true;
     onSelect("");
     const heading = inspector.querySelector('.space-list-heading');
     heading?.focus({ preventScroll: true });
-    if (window.matchMedia('(max-width: 760px)').matches) root.querySelector('.space-inspector').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+    if (view === 'planes') animatePanel(planePanels.querySelector('[data-front="true"]'));
+    if (view === 'planes' || window.matchMedia('(max-width: 760px)').matches) heading?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
   }
 
   function changeCamera(action) {
@@ -152,8 +211,6 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   root.addEventListener('click', event => {
     const planeSwitch = event.target.closest('[data-plane-switch]');
     if (planeSwitch) { switchPlane(planeSwitch.dataset.planeSwitch); return; }
-    const planeStep = event.target.closest('[data-plane-step]');
-    if (planeStep) { stepPlane(Number(planeStep.dataset.planeStep)); return; }
     const controls = event.target.closest('[data-camera]');
     if (controls) changeCamera(controls.dataset.camera);
     const cluster = event.target.closest('[data-space-cluster]');
@@ -166,12 +223,14 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
     if (cell && !cell.disabled) { const [plane,x,y] = JSON.parse(cell.dataset.spaceCell); chooseLocation({ type:'plane',plane,x,y }); }
     if (event.target.closest('[data-space-clear]')) { selection = null; onSelect(''); inspector.querySelector('.space-list-heading')?.focus({ preventScroll: true }); }
     if (event.target.closest('[data-space-back]')) { const previous = selected; onSelect(''); const target = [...inspector.querySelectorAll('[data-application-case]')].find(button => button.dataset.applicationCase === previous) || inspector.querySelector('.space-list-heading'); target?.focus({ preventScroll: true }); }
+    const card = event.target.closest('[data-plane-card]');
+    if (card && !event.target.closest('button,a,input,select,textarea,.space-panel-reveal')) switchPlane(card.dataset.planeCard);
   });
   planePanels.addEventListener('keydown', event => {
     if (!event.target.closest('[data-plane-switch]')) return;
     const step = ({ ArrowRight:1, ArrowDown:1, ArrowLeft:-1, ArrowUp:-1 })[event.key];
     if (step) { event.preventDefault(); stepPlane(step); }
-    if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); switchPlane(PLANES[event.key === 'Home' ? 0 : PLANES.length-1].id); }
+    if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); const id = PLANES[event.key === 'Home' ? 0 : PLANES.length-1].id; if (id !== planeOrder[0]) switchPlane(id); }
   });
   svg.addEventListener('keydown', event => {
     const cluster = event.target.closest('[data-space-cluster]');
@@ -201,8 +260,11 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
 
   return {
     update({ cases:next, selectedCase, view:nextView }) {
+      clearTimeout(panelScrollTimer);
       const changed = cases.map(item=>item.id).join('|') !== next.map(item=>item.id).join('|');
       const viewChanged = view !== nextView;
+      const picked = selectedCase && selectedCase !== selected;
+      if (nextView === 'planes' && (picked || viewChanged && selectedCase)) panelExpanded = true;
       root.dataset.spaceEntering = String(viewChanged);
       if (viewChanged) {
         if (pendingFrame) { cancelAnimationFrame(pendingFrame); pendingFrame = 0; }
@@ -212,8 +274,9 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       cases=next; selected=selectedCase; view=nextView;
       if (changed || viewChanged) selection=null;
       render();
+      if (picked && view === 'planes') animatePanel(planePanels.querySelector('[data-front="true"]'));
     },
     clearLocation() { selection = null; },
-    get detailElement() { return inspector.querySelector('.space-case-detail'); }
+    get detailElement() { return view !== 'planes' || panelExpanded ? inspector.querySelector('.space-case-detail') : null; }
   };
 }
