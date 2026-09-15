@@ -1,5 +1,5 @@
 import { MODULES, DOMAINS, HORIZONS, unique, channelCode, selectWorks, selectCases, applicationCells, worksCSV } from "./research-core.mjs";
-import { createApplicationSpace } from "./application-space.mjs";
+import { createApplicationSpace } from "./application-space.mjs?v=glass-depth-20260915";
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
@@ -13,6 +13,8 @@ const prettyChannel = value => channelCode(value).replace("→", " → ");
 const motion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 
 let data, tables, applicationSpace, filteredWorks = [], page = 1, applicationFamily = "", applicationView = window.matchMedia("(max-width: 760px)").matches ? "map" : "3d", selectedCase = "";
+const requestedApplicationView = new URLSearchParams(location.search).get('view');
+if (["3d", "planes", "map", "table"].includes(requestedApplicationView)) applicationView = requestedApplicationView;
 const expandedReferences = new Set();
 const pageSize = 12;
 

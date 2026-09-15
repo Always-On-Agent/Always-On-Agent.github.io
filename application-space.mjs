@@ -6,6 +6,7 @@ const short = value => ({ "Within-session": "Within-session", "Cross-session": "
 
 export function createApplicationSpace(root, { onSelect, renderDetail }) {
   let cases = [], selected = "", view = "3d", camera = { ...INITIAL_CAMERA }, selection = null, drag = null, pendingFrame = 0;
+  let planeOrder = PLANES.map(plane => plane.id);
   root.innerHTML = `<div class="space-workspace">
     <div class="space-visuals">
       <div class="space-orbit-panel glass-panel">
@@ -57,15 +58,48 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   }
 
   function renderPlanes() {
-    planePanels.innerHTML = `<div class="space-unfold-heading"><span class="space-eyebrow">THREE VIEWS OF THE SAME WORKS</span><p>Each glass panel opens two dimensions. Select a cell to read every work in it.</p></div><div class="space-projection-cards">${PLANES.map((plane, index) => {
+    if (!planePanels.querySelector('.space-depth-deck')) {
+      planePanels.innerHTML = `<div class="space-unfold-heading"><span class="space-eyebrow">THREE PERSPECTIVES, ONE COLLECTION</span><p>Choose a glass panel to bring it forward. Select a location to explore its works.</p></div><div class="space-deck-scene"><div class="space-deck-glow" aria-hidden="true"></div><div class="space-depth-deck">${PLANES.map((plane,index) => `<section class="space-depth-card" data-plane-card="${plane.id}" aria-labelledby="plane-title-${plane.id}"><div class="space-projection-card"><div class="space-card-glass" aria-hidden="true"></div><button type="button" class="space-plane-handle" data-plane-switch="${plane.id}" aria-controls="plane-content-${plane.id}"><span class="space-plane-number">0${index+1}</span><span class="space-plane-heading"><strong id="plane-title-${plane.id}">${plane.title}</strong><span>${({"domain-people":"Across all outcome horizons", "domain-time":"Across all participant scopes", "people-time":"Across all interaction domains"})[plane.id]}</span></span><span class="space-plane-state" aria-hidden="true"></span></button><div class="space-plane-content" id="plane-content-${plane.id}"></div></div></section>`).join('')}</div></div><div class="space-deck-navigation"><button type="button" data-plane-step="-1" aria-label="Previous projection">←</button><p class="space-deck-status" role="status" aria-live="polite"></p><button type="button" data-plane-step="1" aria-label="Next projection">→</button></div><p class="space-unfold-note">These are three projections of the same cases. A selected work stays highlighted when you switch panels. Depth separates views; it does not rank the work.</p>`;
+    }
+    PLANES.forEach(plane => {
+      const card = planePanels.querySelector(`[data-plane-card="${plane.id}"]`);
+      const depth = planeOrder.indexOf(plane.id);
+      const front = depth === 0;
+      card.style.setProperty('--depth', depth);
+      card.dataset.depth = String(depth);
+      card.dataset.front = String(front);
+      const handle = card.querySelector('[data-plane-switch]');
+      handle.setAttribute('aria-pressed', String(front));
+      card.querySelector('.space-plane-state').textContent = front ? 'In view' : 'Bring forward ↗';
+      const body = card.querySelector('.space-plane-content');
+      body.toggleAttribute('inert', !front);
+      body.setAttribute('aria-hidden', String(!front));
       const cells = projectPlane(cases, plane);
-      return `<section class="space-projection-card glass-panel"><div class="space-projection-heading"><span>0${index+1}</span><div><h4>${plane.title}</h4><p>${({"domain-people":"Across all outcome horizons", "domain-time":"Across all participant scopes", "people-time":"Across all interaction domains"})[plane.id]}</p></div></div><table><caption class="sr-only">${esc(plane.title)} projection</caption><thead><tr><td></td>${plane.columns.map(label => `<th scope="col">${label}</th>`).join('')}</tr></thead><tbody>${plane.rows.map(y => `<tr${y === 'Unmeasured' ? ' class="space-unmeasured-row"' : ''}><th scope="row">${short(y)}</th>${plane.columns.map(x => {
+      body.innerHTML = `<table><caption class="sr-only">${esc(plane.title)} projection</caption><thead><tr><td></td>${plane.columns.map(label => `<th scope="col">${label}</th>`).join('')}</tr></thead><tbody>${plane.rows.map(y => `<tr${y === 'Unmeasured' ? ' class="space-unmeasured-row"' : ''}><th scope="row">${short(y)}</th>${plane.columns.map(x => {
         const cell = cells.find(cell => cell.x === x && cell.y === y);
         const active = selected ? cell.ids.includes(selected) : selection?.type === 'plane' && selection.plane === plane.id && selection.x === x && selection.y === y;
         const key = JSON.stringify([plane.id,x,y]);
-        return `<td>${cell.ids.length ? `<button type="button" data-space-cell="${esc(key)}" aria-pressed="${active}" aria-label="${esc(x)}, ${esc(y)}: ${cell.ids.length} works"><span>${cell.ids.length}</span><small>${cell.ids.length === 1 ? 'work' : 'works'}</small></button>` : '<span class="space-empty" aria-label="No cases">—</span>'}</td>`;
-      }).join('')}</tr>`).join('')}</tbody></table></section>`;
-    }).join('')}</div><p class="space-unfold-note">A work can appear in more than one cell when its recorded scope spans categories. Unmeasured is kept separate wherever a panel includes outcome horizon.</p>`;
+        return `<td>${cell.ids.length ? `<button type="button" data-space-cell="${esc(key)}" aria-pressed="${active}" aria-label="${esc(x)}, ${esc(y)}: ${cell.ids.length} works"${front ? '' : ' disabled tabindex="-1"'}><span>${cell.ids.length}</span><small>${cell.ids.length === 1 ? 'work' : 'works'}</small></button>` : '<span class="space-empty" aria-label="No cases">—</span>'}</td>`;
+      }).join('')}</tr>`).join('')}</tbody></table><p class="space-plane-footnote">${plane.y === 'horizon' ? 'Unmeasured has no measured outcome horizon.' : 'Includes measured and unmeasured outcome horizons.'} A work can occupy more than one cell.</p>`;
+    });
+    const current = PLANES.findIndex(plane => plane.id === planeOrder[0]);
+    const status = planePanels.querySelector('.space-deck-status');
+    const label = `0${current+1} / 03 · ${PLANES[current].title}`;
+    if (status.textContent !== label) status.textContent = label;
+  }
+
+  function switchPlane(id) {
+    if (id === planeOrder[0] || !PLANES.some(plane => plane.id === id)) return;
+    planeOrder = [id, ...planeOrder.filter(plane => plane !== id)];
+    selection = null;
+    renderPlanes();
+    renderInspector();
+    planePanels.querySelector(`[data-plane-switch="${id}"]`).focus({ preventScroll:true });
+  }
+
+  function stepPlane(step) {
+    const current = PLANES.findIndex(plane => plane.id === planeOrder[0]);
+    switchPlane(PLANES[(current + step + PLANES.length) % PLANES.length].id);
   }
 
   function selectedIDs() {
@@ -116,6 +150,10 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   }
 
   root.addEventListener('click', event => {
+    const planeSwitch = event.target.closest('[data-plane-switch]');
+    if (planeSwitch) { switchPlane(planeSwitch.dataset.planeSwitch); return; }
+    const planeStep = event.target.closest('[data-plane-step]');
+    if (planeStep) { stepPlane(Number(planeStep.dataset.planeStep)); return; }
     const controls = event.target.closest('[data-camera]');
     if (controls) changeCamera(controls.dataset.camera);
     const cluster = event.target.closest('[data-space-cluster]');
@@ -125,9 +163,15 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       else chooseLocation({ type:'cluster', key:cluster.dataset.spaceCluster });
     }
     const cell = event.target.closest('[data-space-cell]');
-    if (cell) { const [plane,x,y] = JSON.parse(cell.dataset.spaceCell); chooseLocation({ type:'plane',plane,x,y }); }
+    if (cell && !cell.disabled) { const [plane,x,y] = JSON.parse(cell.dataset.spaceCell); chooseLocation({ type:'plane',plane,x,y }); }
     if (event.target.closest('[data-space-clear]')) { selection = null; onSelect(''); inspector.querySelector('.space-list-heading')?.focus({ preventScroll: true }); }
     if (event.target.closest('[data-space-back]')) { const previous = selected; onSelect(''); const target = [...inspector.querySelectorAll('[data-application-case]')].find(button => button.dataset.applicationCase === previous) || inspector.querySelector('.space-list-heading'); target?.focus({ preventScroll: true }); }
+  });
+  planePanels.addEventListener('keydown', event => {
+    if (!event.target.closest('[data-plane-switch]')) return;
+    const step = ({ ArrowRight:1, ArrowDown:1, ArrowLeft:-1, ArrowUp:-1 })[event.key];
+    if (step) { event.preventDefault(); stepPlane(step); }
+    if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); switchPlane(PLANES[event.key === 'Home' ? 0 : PLANES.length-1].id); }
   });
   svg.addEventListener('keydown', event => {
     const cluster = event.target.closest('[data-space-cluster]');
