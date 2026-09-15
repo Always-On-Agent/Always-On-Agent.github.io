@@ -1131,6 +1131,7 @@ h2 {
 
 .citation-toolbar {
   display:flex;
+  flex-wrap:wrap;
   align-items:center;
   gap:12px;
   padding:12px 20px;
@@ -1155,10 +1156,13 @@ h2 {
 }
 
 #copy-status {
-  position:absolute;
-  right:20px;
-  top:-27px;
+  flex-basis:100%;
+  text-align:right;
   color:var(--teal);
+}
+
+#copy-status:empty {
+  display:none;
 }
 
 pre {
