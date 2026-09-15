@@ -831,13 +831,15 @@ h2 {
 }
 
 .halo-section {
-  background:#182639;
-  color:#eff5f3;
+  --muted:#657181;
+  background:var(--soft);
+  color:var(--ink);
+  border-block:1px solid var(--line);
   position:relative;
 }
 
 .halo-section .section-number {
-  color:#92bdae;
+  color:var(--teal);
 }
 
 .halo-heading {
@@ -856,7 +858,7 @@ h2 {
 .halo-expansion {
   font-size:21px;
   line-height:1.4;
-  color:#a2b6c2;
+  color:var(--muted);
   margin-top:14px;
 }
 
@@ -864,7 +866,7 @@ h2 {
   display:flex;
   align-items:center;
   gap:24px;
-  border-left:1px solid #40505d;
+  border-left:1px solid var(--line);
   padding-left:40px;
 }
 
@@ -873,20 +875,20 @@ h2 {
   line-height:1;
   font-weight:400;
   letter-spacing:-.06em;
-  color:#b4e4d2;
+  color:var(--teal);
 }
 
 .halo-stat span {
   font-size:12px;
   line-height:1.8;
-  color:#9bafbb;
+  color:var(--muted);
 }
 
 .halo-intro {
   max-width:850px;
   font-size:21px;
   line-height:1.65;
-  color:#b2c0ca;
+  color:#526274;
   margin-top:35px;
 }
 
@@ -899,15 +901,15 @@ h2 {
 
 .halo-modes article {
   padding:29px;
-  border:1px solid #3d4c5e;
+  border:1px solid var(--line);
   border-radius:9px;
-  background:#ffffff02;
+  background:var(--paper);
 }
 
 .mode-label {
   font-size:10px;
   letter-spacing:.16em;
-  color:#a5cebb;
+  color:var(--teal);
   font-weight:600;
 }
 
@@ -922,13 +924,13 @@ h2 {
 .halo-modes p {
   font-size:15px;
   line-height:1.7;
-  color:#9eb0bf;
+  color:var(--muted);
 }
 
 .mode-footer {
   display:block;
   font-size:11px;
-  color:#829da4;
+  color:var(--muted);
   margin-top:24px;
 }
 
@@ -938,7 +940,7 @@ h2 {
 
 .evidence-forms h3 {
   font-size:17px;
-  color:#c4d2db;
+  color:var(--ink);
   letter-spacing:-.015em;
   font-weight:500;
 }
@@ -952,15 +954,16 @@ h2 {
 
 .evidence-forms span {
   font-size:12px;
-  border:1px solid #3d5260;
+  border:1px solid #d7e5de;
   padding:7px 12px;
   border-radius:5px;
-  color:#a5c5c0;
+  color:var(--teal);
+  background:var(--paper);
 }
 
 .evidence-forms p {
   font-size:12px;
-  color:#8a9caa;
+  color:var(--muted);
 }
 
 .halo-finding {
@@ -969,27 +972,27 @@ h2 {
   gap:24px;
   margin-top:38px;
   padding-top:30px;
-  border-top:1px solid #364557;
+  border-top:1px solid var(--line);
 }
 
 .finding-mark {
   font-size:31px;
-  color:#9fcbb8;
+  color:var(--teal);
 }
 
 .halo-finding p {
   font-size:16px;
-  color:#a6b8c4;
+  color:#526274;
   max-width:960px;
 }
 
 .halo-finding strong {
   font-weight:600;
-  color:#d9e8e1;
+  color:var(--ink);
 }
 
 .halo-footnote {
-  color:#8296a6;
+  color:var(--muted);
   font-size:11px;
   margin:24px 0 0 47px;
 }
