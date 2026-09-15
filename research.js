@@ -1,5 +1,5 @@
 import { MODULES, DOMAINS, HORIZONS, unique, channelCode, selectWorks, selectCases, applicationCells, worksCSV } from "./research-core.mjs";
-import { createApplicationSpace } from "./application-space.mjs?v=glass-inplace-20260916";
+import { createApplicationSpace } from "./application-space.mjs?v=glass-unfold-20260916";
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));

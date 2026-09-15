@@ -83,7 +83,7 @@
 .space-deck-scene { position:relative; }
 .space-deck-glow { position:absolute; inset:9% 3% 5%; border-radius:45%; background:radial-gradient(ellipse at 18% 28%,#b5d8cb 0,transparent 52%),radial-gradient(ellipse at 87% 55%,#e3ccb1 0,transparent 48%),radial-gradient(ellipse at 49% 85%,#bbcedb 0,transparent 56%); filter:blur(25px); pointer-events:none; }
 .space-depth-deck { overflow-anchor:none; position:relative; height:664px; max-width:900px; margin:0 auto; perspective:1200px; perspective-origin:50% 115px; transform-style:preserve-3d; }
-.space-depth-card { position:absolute; top:140px; left:0; width:100%; z-index:calc(3 - var(--depth)); transform:translate3d(0,calc(var(--depth) * -72px),calc(var(--depth) * -145px)); transform-style:preserve-3d; transition:transform .72s cubic-bezier(.2,.78,.22,1); }
+.space-depth-card { touch-action:pan-y pinch-zoom; position:absolute; top:140px; left:0; width:100%; z-index:calc(3 - var(--depth)); transform:translate3d(0,calc(var(--depth) * -72px),calc(var(--depth) * -145px)); transform-style:preserve-3d; transition:transform 1.1s cubic-bezier(.2,.7,.2,1); }
 .space-projection-card { position:relative; display:grid; grid-template-rows:auto minmax(0,1fr); height:500px; border-radius:25px; }
 .space-depth-deck,.space-depth-card,.space-projection-card { pointer-events:none; }
 .space-plane-handle,.space-depth-card[data-front=true] .space-projection-card { pointer-events:auto; }
@@ -91,7 +91,8 @@
 .space-card-glass::after { content:""; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(130deg,#ffffff75 0,transparent 28%,transparent 71%,#ffffff3d 100%); box-shadow:inset 0 0 0 1px #ffffff29; }
 .space-depth-card[data-depth="1"] .space-card-glass { background:linear-gradient(135deg,#ffffff63,#f5fffa2e); }
 .space-depth-card[data-depth="2"] .space-card-glass { background:linear-gradient(135deg,#ffffff75,#f4fff52b); }
-.space-plane-handle { position:relative; touch-action:manipulation; display:flex; align-items:flex-start; gap:12px; width:100%; min-height:89px; padding:21px 23px 16px; border:0; border-radius:25px 25px 0 0; background:transparent; text-align:left; color:#314e40; }
+.space-plane-handle { position:relative; touch-action:pan-y pinch-zoom; cursor:grab; user-select:none; display:flex; align-items:flex-start; gap:12px; width:100%; min-height:89px; padding:21px 23px 16px; border:0; border-radius:25px 25px 0 0; background:transparent; text-align:left; color:#314e40; }
+.space-plane-panels.is-dragging,.space-plane-panels.is-dragging * { cursor:grabbing !important; user-select:none; }
 .space-plane-handle:hover { background:linear-gradient(180deg,#ffffff47,transparent); }
 .space-plane-handle:focus-visible { outline-offset:-6px; }
 .space-plane-number { flex-shrink:0; display:grid; place-items:center; width:31px; height:31px; border:1px solid #ffffffe6; border-radius:10px; background:linear-gradient(135deg,#ffffffa1,#ffffff26); box-shadow:0 2px 6px #5573650d,inset 0 1px 0 #fff; color:#5f7a6d; font-size:10px; }
@@ -124,9 +125,9 @@
 .space-depth-card[data-front=false] .space-plane-handle { background:linear-gradient(180deg,#ffffff59,transparent); }
 .space-depth-card[data-panel-view=works] .space-plane-state { color:#345f49; }
 /* Both views share one footprint. Only the visible view receives input. */
-.space-plane-table,.space-panel-works { grid-area:1 / 1; min-width:0; min-height:0; transition:opacity .24s ease,transform .32s cubic-bezier(.2,.78,.22,1); }
+.space-plane-table,.space-panel-works { grid-area:1 / 1; min-width:0; min-height:0; transition:opacity .9s ease,transform 1.1s cubic-bezier(.2,.7,.2,1); }
 .space-plane-table { overflow:auto; scrollbar-width:thin; scrollbar-color:#b4cbbd transparent; }
-.space-panel-works { display:grid; grid-template-rows:auto minmax(0,1fr); opacity:0; visibility:hidden; transform:translateY(8px) scale(.99); pointer-events:none; border:1px solid #ffffffe0; border-radius:17px; background:linear-gradient(130deg,#ffffff85,#e5f2ed38 55%,#ffffff55); box-shadow:inset 0 1px 0 #fff,0 6px 18px -14px #44675a50; -webkit-backdrop-filter:blur(18px) saturate(145%); backdrop-filter:blur(18px) saturate(145%); }
+.space-panel-works { display:grid; grid-template-rows:auto minmax(0,1fr); opacity:0; visibility:hidden; transform:translateY(12px) scale(.94); transform-origin:50% 25%; pointer-events:none; border:1px solid #ffffffe0; border-radius:17px; background:linear-gradient(130deg,#ffffff85,#e5f2ed38 55%,#ffffff55); box-shadow:inset 0 1px 0 #fff,0 6px 18px -14px #44675a50; -webkit-backdrop-filter:blur(18px) saturate(145%); backdrop-filter:blur(18px) saturate(145%); }
 .space-depth-card[data-panel-view=works] .space-plane-table { opacity:0; visibility:hidden; transform:scale(.98); pointer-events:none; }
 .space-depth-card[data-front=true][data-panel-view=works] .space-panel-works { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
 .space-panel-toolbar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:5px 12px; padding:10px 16px; border-bottom:1px solid #ffffffb3; }
@@ -188,7 +189,7 @@
   .space-plane-state { font-size:0; margin-top:5px; }
   .space-plane-state::after { content:"↗"; font-size:16px; }
   .space-depth-card[data-front=true] .space-plane-state { padding:0; border:0; background:transparent; }
-  .space-depth-card[data-front=true] .space-plane-state::after { content:"+"; color:#427d5b; }
+  .space-depth-card[data-front=true] .space-plane-state::after { content:"↩"; color:#427d5b; }
   .space-plane-content { padding:0 9px 17px; }
   .space-projection-card table { border-spacing:4px; }
   .space-projection-card thead td { width:29%; }
@@ -207,7 +208,6 @@
   .space-panel-slot .space-work-list button span { font-size:10px; }
   .space-panel-slot .space-list-heading button { position:static; margin-top:9px; }
   .space-panel-slot .space-case-detail .application-detail-body { grid-template-columns:1fr; gap:19px; }
-  .space-depth-card[data-panel-view=works] .space-plane-state::after { content:"↩"; }
 }
 @media(max-width:420px) {
   .space-panel-slot .space-work-list { grid-template-columns:1fr; }

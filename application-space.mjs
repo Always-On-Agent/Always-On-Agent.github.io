@@ -9,6 +9,7 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   let planeOrder = PLANES.map(plane => plane.id);
   let panelShowingWorks = false;
   let workListScroll = 0;
+  let deckDrag = null, suppressDeckClickUntil = 0;
   const panelAnimations = new WeakMap();
   root.innerHTML = `<div class="space-workspace">
     <div class="space-visuals">
@@ -29,17 +30,39 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   const inspector = root.querySelector(".space-inspector-content");
   const inspectorSurface = root.querySelector('.space-inspector');
   const inspectorDock = root.querySelector('.space-inspector-dock');
-  function animatePanel(card, opening = true) {
+  function playAnimation(element, frames, options) {
+    if (!element) return;
+    panelAnimations.get(element)?.cancel();
+    if (!element.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    panelAnimations.set(element, element.animate(frames, options));
+  }
+
+  function animatePanel(card, arriving = true) {
     const face = card?.querySelector('.space-projection-card');
-    if (!face?.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    panelAnimations.get(face)?.cancel();
-    const lift = opening ? -14 : 5;
-    const animation = face.animate([
-      { transform:'translateY(0) scale(1)' },
-      { transform:`translateY(${lift}px) scale(${opening ? 1.012 : .992})`, offset:.36 },
+    if (!face) return;
+    const start = face.style.transform || (arriving ? 'translateY(12px) scale(.97,.94)' : 'scale(.99)');
+    face.style.removeProperty('transform');
+    playAnimation(face, [
+      { transform:start },
       { transform:'translateY(0) scale(1)' }
-    ], { duration:opening ? 620 : 400, easing:'cubic-bezier(.22,.75,.25,1)' });
-    panelAnimations.set(face, animation);
+    ], { duration:arriving ? 1100 : 800, easing:'cubic-bezier(.2,.7,.2,1)' });
+  }
+
+  function revealFrom(source, surface) {
+    const bounds = surface.getBoundingClientRect();
+    const origin = source?.getBoundingClientRect();
+    if (!origin || !bounds.width || !bounds.height) return { x:50, y:25, clip:'inset(18% 36% 64% 36% round 14px)' };
+    const x = clamp((origin.left + origin.width / 2 - bounds.left) / bounds.width * 100, 8, 92);
+    const y = clamp((origin.top + origin.height / 2 - bounds.top) / bounds.height * 100, 8, 92);
+    return { x, y, clip:`inset(${Math.max(0,y-8)}% ${Math.max(0,92-x)}% ${Math.max(0,92-y)}% ${Math.max(0,x-8)}% round 14px)` };
+  }
+
+  function unfoldSurface(surface, origin = { x:50, y:20, clip:'inset(8% 12% 35% 12% round 18px)' }) {
+    surface.style.transformOrigin = `${origin.x}% ${origin.y}%`;
+    playAnimation(surface, [
+      { clipPath:origin.clip, opacity:.08, transform:'scale(.94)' },
+      { clipPath:'inset(0% 0% 0% 0% round 17px)', opacity:1, transform:'scale(1)' }
+    ], { duration:1100, easing:'cubic-bezier(.2,.65,.2,1)' });
   }
 
   function renderScene() {
@@ -76,7 +99,7 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
 
   function renderPlanes() {
     if (!planePanels.querySelector('.space-depth-deck')) {
-      planePanels.innerHTML = `<div class="space-unfold-heading"><span class="space-eyebrow">THREE PERSPECTIVES, ONE COLLECTION</span><p>Tap an exposed edge to switch panels. Select a cell or the front title to browse works in this panel.</p></div><div class="space-deck-scene"><div class="space-deck-glow" aria-hidden="true"></div><div class="space-depth-deck">${PLANES.map((plane,index) => `<section class="space-depth-card" data-plane-card="${plane.id}" aria-labelledby="plane-title-${plane.id}"><div class="space-projection-card"><div class="space-card-glass" aria-hidden="true"></div><button type="button" class="space-plane-handle" data-plane-switch="${plane.id}" aria-controls="plane-content-${plane.id}"><span class="space-plane-number">0${index+1}</span><span class="space-plane-heading"><strong id="plane-title-${plane.id}">${plane.title}</strong><span>${({"domain-people":"Across all outcome horizons", "domain-time":"Across all participant scopes", "people-time":"Across all interaction domains"})[plane.id]}</span></span><span class="space-plane-state" aria-hidden="true"></span></button><div class="space-plane-content" id="plane-content-${plane.id}"><div class="space-plane-table"></div><div class="space-panel-works" id="plane-works-${plane.id}"><div class="space-panel-toolbar"><button type="button" data-space-matrix>← Back to matrix</button><span>WORKS &amp; EVIDENCE</span></div><div class="space-panel-slot"></div></div></div></div></section>`).join('')}</div></div><p class="space-deck-status sr-only" role="status" aria-live="polite"></p><p class="space-unfold-note">These are three projections of the same cases. A selected work stays with you when you switch panels. Depth separates views; it does not rank the work.</p>`;
+      planePanels.innerHTML = `<div class="space-unfold-heading"><span class="space-eyebrow">THREE PERSPECTIVES, ONE COLLECTION</span><p>Tap a title or edge, or drag sideways, to switch panels. Select a cell to explore its works.</p></div><div class="space-deck-scene"><div class="space-deck-glow" aria-hidden="true"></div><div class="space-depth-deck">${PLANES.map((plane,index) => `<section class="space-depth-card" data-plane-card="${plane.id}" aria-labelledby="plane-title-${plane.id}"><div class="space-projection-card"><div class="space-card-glass" aria-hidden="true"></div><button type="button" class="space-plane-handle" data-plane-switch="${plane.id}" aria-controls="plane-content-${plane.id}"><span class="space-plane-number">0${index+1}</span><span class="space-plane-heading"><strong id="plane-title-${plane.id}">${plane.title}</strong><span>${({"domain-people":"Across all outcome horizons", "domain-time":"Across all participant scopes", "people-time":"Across all interaction domains"})[plane.id]}</span></span><span class="space-plane-state" aria-hidden="true"></span></button><div class="space-plane-content" id="plane-content-${plane.id}"><div class="space-plane-table"></div><div class="space-panel-works" id="plane-works-${plane.id}"><div class="space-panel-toolbar"><button type="button" data-space-matrix>← Back to matrix</button><span>WORKS &amp; EVIDENCE</span></div><div class="space-panel-slot"></div></div></div></div></section>`).join('')}</div></div><p class="space-deck-status sr-only" role="status" aria-live="polite"></p><p class="space-unfold-note">These are three projections of the same cases. Each panel opens at its matrix. Depth separates views; it does not rank the work.</p>`;
     }
     PLANES.forEach(plane => {
       const card = planePanels.querySelector(`[data-plane-card="${plane.id}"]`);
@@ -88,8 +111,8 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       card.dataset.panelView = front && panelShowingWorks ? 'works' : 'matrix';
       const handle = card.querySelector('[data-plane-switch]');
       handle.setAttribute('aria-pressed', String(front));
-      handle.setAttribute('aria-label', `${front ? panelShowingWorks ? 'Show matrix for' : 'Explore works in' : 'Bring forward'} ${plane.title}`);
-      card.querySelector('.space-plane-state').textContent = front ? panelShowingWorks ? 'View matrix ↩' : 'Explore works +' : 'Bring forward ↗';
+      handle.setAttribute('aria-label', `Open ${plane.title} matrix`);
+      card.querySelector('.space-plane-state').textContent = front ? panelShowingWorks ? 'View matrix ↩' : 'Matrix view' : 'Open matrix ↗';
       const body = card.querySelector('.space-plane-content');
       body.toggleAttribute('inert', !front);
       body.setAttribute('aria-hidden', String(!front));
@@ -114,25 +137,24 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
     if (status.textContent !== label) status.textContent = label;
   }
 
-  function switchPlane(id) {
+  function switchPlane(id, order = null) {
     if (!PLANES.some(plane => plane.id === id)) return;
-    if (id === planeOrder[0]) {
-      panelShowingWorks = !panelShowingWorks;
-      renderPlanes(); renderInspector();
-      animatePanel(planePanels.querySelector('[data-front="true"]'), panelShowingWorks);
-      if (panelShowingWorks) inspector.querySelector('.space-list-heading,.space-case-detail')?.focus({ preventScroll:true });
-      else focusMatrix();
-      return;
-    }
+    if (deckDrag) finishDeckDrag({ pointerId:deckDrag.id }, true);
     const previous = planePanels.querySelector('[data-front="true"]');
-    planeOrder = [id, ...planeOrder.filter(plane => plane !== id)];
+    planeOrder = order || [id, ...planeOrder.filter(plane => plane !== id)];
+    panelShowingWorks = false;
     selection = null;
     workListScroll = 0;
-    renderPlanes();
-    renderInspector();
-    animatePanel(previous, false);
-    animatePanel(planePanels.querySelector('[data-front="true"]'));
-    planePanels.querySelector(`[data-plane-switch="${id}"]`).focus({ preventScroll:true });
+    panelAnimations.get(inspector)?.cancel();
+    // Clear the controller's selected case too, so later renders cannot reopen it.
+    onSelect('');
+    const current = planePanels.querySelector('[data-front="true"]');
+    current.querySelector('.space-plane-table').scrollTop = 0;
+    current.querySelector('.space-plane-table').scrollLeft = 0;
+    if (previous !== current) animatePanel(previous, false);
+    animatePanel(current);
+    unfoldSurface(current.querySelector('.space-plane-table'));
+    current.querySelector('[data-plane-switch]').focus({ preventScroll:true });
   }
 
   function focusMatrix() {
@@ -149,7 +171,7 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
     panelShowingWorks = false;
     renderPlanes();
     focusMatrix();
-    animatePanel(planePanels.querySelector('[data-front="true"]'), false);
+    unfoldSurface(planePanels.querySelector('[data-front="true"] .space-plane-table'));
   }
 
   function stepPlane(step) {
@@ -181,9 +203,12 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
   function finishInspector() {
     if (view !== 'planes') return;
     inspectorSurface.scrollTop = selected ? 0 : workListScroll;
-    if (panelShowingWorks && inspector.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      panelAnimations.get(inspector)?.cancel();
-      panelAnimations.set(inspector, inspector.animate([{ opacity:.25, transform:'translateY(5px)' }, { opacity:1, transform:'none' }], { duration:280, easing:'ease-out' }));
+    if (panelShowingWorks) {
+      playAnimation(inspector, [
+        { opacity:0, transform:'translateY(10px) scale(.98)', offset:0 },
+        { opacity:.08, transform:'translateY(8px) scale(.985)', offset:.16 },
+        { opacity:1, transform:'translateY(0) scale(1)', offset:1 }
+      ], { duration:1000, easing:'cubic-bezier(.2,.6,.2,1)' });
     }
   }
 
@@ -198,14 +223,16 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
     renderInspector();
   }
 
-  function chooseLocation(next) {
+  function chooseLocation(next, source) {
+    const surface = view === 'planes' ? planePanels.querySelector('[data-front="true"] .space-panel-works') : null;
+    const origin = surface ? revealFrom(source, surface) : null;
     selection = next;
     workListScroll = 0;
     if (view === 'planes') panelShowingWorks = true;
     onSelect("");
     const heading = inspector.querySelector('.space-list-heading');
     heading?.focus({ preventScroll: true });
-    if (view === 'planes') animatePanel(planePanels.querySelector('[data-front="true"]'));
+    if (surface) unfoldSurface(surface, origin);
     if (view !== 'planes' && window.matchMedia('(max-width: 760px)').matches) heading?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
   }
 
@@ -233,18 +260,75 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       else chooseLocation({ type:'cluster', key:cluster.dataset.spaceCluster });
     }
     const cell = event.target.closest('[data-space-cell]');
-    if (cell && !cell.disabled) { const [plane,x,y] = JSON.parse(cell.dataset.spaceCell); chooseLocation({ type:'plane',plane,x,y }); }
+    if (cell && !cell.disabled) { const [plane,x,y] = JSON.parse(cell.dataset.spaceCell); chooseLocation({ type:'plane',plane,x,y }, cell); }
     if (event.target.closest('[data-space-clear]')) { selection = null; workListScroll = 0; onSelect(''); inspector.querySelector('.space-list-heading')?.focus({ preventScroll: true }); }
     if (event.target.closest('[data-space-back]')) { const previous = selected; onSelect(''); const target = [...inspector.querySelectorAll('[data-application-case]')].find(button => button.dataset.applicationCase === previous) || inspector.querySelector('.space-list-heading'); target?.focus({ preventScroll: true }); }
     const card = event.target.closest('[data-plane-card]');
     if (card && !event.target.closest('button,a,input,select,textarea,.space-panel-works')) switchPlane(card.dataset.planeCard);
   });
+  // Horizontal intent starts a deck gesture; vertical intent stays native scrolling.
+  planePanels.addEventListener('pointerdown', event => {
+    suppressDeckClickUntil = 0;
+    if (view !== 'planes' || event.button !== 0 || !event.isPrimary || deckDrag) return;
+    const card = event.target.closest('[data-plane-card]');
+    if (!card || event.target.closest('.space-panel-works')) return;
+    if (event.target.closest('button,a,input,select,textarea') && !event.target.closest('[data-plane-switch]')) return;
+    const front = planePanels.querySelector('[data-front="true"]');
+    deckDrag = { id:event.pointerId, x:event.clientX, y:event.clientY, dx:0, active:false,
+      card:front, width:front.getBoundingClientRect().width };
+  });
+  planePanels.addEventListener('pointermove', event => {
+    if (!deckDrag || event.pointerId !== deckDrag.id) return;
+    const dx = event.clientX - deckDrag.x, dy = event.clientY - deckDrag.y;
+    if (!deckDrag.active) {
+      if (Math.abs(dy) > 12 && Math.abs(dy) >= Math.abs(dx)) { deckDrag = null; return; }
+      if (Math.abs(dx) < 12 || Math.abs(dx) < Math.abs(dy) * 1.25) return;
+      deckDrag.active = true;
+      panelAnimations.get(deckDrag.card.querySelector('.space-projection-card'))?.cancel();
+      planePanels.setPointerCapture(event.pointerId);
+      planePanels.classList.add('is-dragging');
+    }
+    event.preventDefault();
+    deckDrag.dx = dx;
+    const offset = clamp(dx * .42, -100, 100);
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    deckDrag.card.querySelector('.space-projection-card').style.transform = `translateX(${offset}px) rotate(${reduced ? 0 : offset / 45}deg)`;
+  });
+  function finishDeckDrag(event, canceled = false) {
+    if (!deckDrag || event.pointerId !== deckDrag.id) return;
+    const gesture = deckDrag;
+    deckDrag = null;
+    planePanels.classList.remove('is-dragging');
+    if (planePanels.hasPointerCapture(event.pointerId)) planePanels.releasePointerCapture(event.pointerId);
+    if (!gesture.active) return;
+    suppressDeckClickUntil = canceled ? 0 : performance.now() + 350;
+    const threshold = clamp(gesture.width * .16, 48, 90);
+    if (!canceled && Math.abs(gesture.dx) >= threshold) {
+      const order = gesture.dx < 0 ? [...planeOrder.slice(1), planeOrder[0]] : [planeOrder[planeOrder.length - 1], ...planeOrder.slice(0, -1)];
+      switchPlane(order[0], order);
+    } else {
+      const face = gesture.card.querySelector('.space-projection-card');
+      const start = face.style.transform;
+      face.style.removeProperty('transform');
+      playAnimation(face, [{ transform:start }, { transform:'none' }], { duration:600, easing:'cubic-bezier(.2,.7,.2,1)' });
+    }
+  }
+  planePanels.addEventListener('pointerup', event => finishDeckDrag(event));
+  planePanels.addEventListener('pointercancel', event => finishDeckDrag(event, true));
+  planePanels.addEventListener('lostpointercapture', event => finishDeckDrag(event, true));
+  planePanels.addEventListener('pointerleave', () => { if (deckDrag && !deckDrag.active) deckDrag = null; });
+  planePanels.addEventListener('click', event => {
+    if (event.detail !== 0 && performance.now() < suppressDeckClickUntil) {
+      event.preventDefault(); event.stopImmediatePropagation();
+      suppressDeckClickUntil = 0;
+    }
+  }, true);
   planePanels.addEventListener('keydown', event => {
     if (event.key === 'Escape' && panelShowingWorks) { event.preventDefault(); showMatrix(); return; }
     if (!event.target.closest('[data-plane-switch]')) return;
     const step = ({ ArrowRight:1, ArrowDown:1, ArrowLeft:-1, ArrowUp:-1 })[event.key];
     if (step) { event.preventDefault(); stepPlane(step); }
-    if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); const id = PLANES[event.key === 'Home' ? 0 : PLANES.length-1].id; if (id !== planeOrder[0]) switchPlane(id); }
+    if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); const id = PLANES[event.key === 'Home' ? 0 : PLANES.length-1].id; switchPlane(id); }
   });
   svg.addEventListener('keydown', event => {
     const cluster = event.target.closest('[data-space-cluster]');
@@ -274,6 +358,7 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
 
   return {
     update({ cases:next, selectedCase, view:nextView }) {
+      if (deckDrag) finishDeckDrag({ pointerId:deckDrag.id }, true);
       const changed = cases.map(item=>item.id).join('|') !== next.map(item=>item.id).join('|');
       const viewChanged = view !== nextView;
       const picked = selectedCase && selectedCase !== selected;
@@ -282,6 +367,7 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       if (nextView === 'planes' && (picked || viewChanged && selectedCase)) panelShowingWorks = true;
       root.dataset.spaceEntering = String(viewChanged);
       if (viewChanged) {
+        panelAnimations.get(inspector)?.cancel();
         if (pendingFrame) { cancelAnimationFrame(pendingFrame); pendingFrame = 0; }
         if (drag && svg.hasPointerCapture(drag.id)) svg.releasePointerCapture(drag.id);
         drag = null; svg.classList.remove('is-dragging');
@@ -289,7 +375,6 @@ export function createApplicationSpace(root, { onSelect, renderDetail }) {
       cases=next; selected=selectedCase; view=nextView;
       if (changed || viewChanged) selection=null;
       render();
-      if (picked && view === 'planes') animatePanel(planePanels.querySelector('[data-front="true"]'));
     },
     clearLocation() { selection = null; workListScroll = 0; },
     get detailElement() { return view !== 'planes' || panelShowingWorks ? inspector.querySelector('.space-case-detail') : null; }
