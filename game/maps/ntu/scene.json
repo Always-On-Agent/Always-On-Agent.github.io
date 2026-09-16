@@ -1,0 +1,101 @@
+{
+  "version": "1.21.4",
+  "bbox": [
+    103.6765,
+    1.3385,
+    103.6875,
+    1.3495
+  ],
+  "origin": {
+    "lat": 1.3495,
+    "lon": 103.6765
+  },
+  "scale": 1,
+  "width": 1223,
+  "depth": 1224,
+  "areaKm2": 1.5,
+  "spawn": {
+    "x": 726.5,
+    "y": -37,
+    "z": 674.5,
+    "yaw": -3.141592653589793
+  },
+  "stations": [
+    {
+      "id": "plaza",
+      "name": {
+        "en": "The Hive · Demo hub",
+        "zh": "The Hive · 体验起点"
+      },
+      "position": {
+        "x": 726,
+        "y": -36,
+        "z": 677
+      },
+      "approach": {
+        "x": 726.5,
+        "y": -37,
+        "z": 674.5,
+        "yaw": -3.141592653589793
+      }
+    },
+    {
+      "id": "library",
+      "name": {
+        "en": "Library · Demo notice",
+        "zh": "图书馆旁 · 试玩告示"
+      },
+      "position": {
+        "x": 462,
+        "y": -20,
+        "z": 158
+      },
+      "approach": {
+        "x": 461.5,
+        "y": -21,
+        "z": 161.5,
+        "yaw": -0.3217505543966422
+      }
+    },
+    {
+      "id": "return",
+      "name": {
+        "en": "The Quad · Demo return",
+        "zh": "The Quad · 试玩归还点"
+      },
+      "position": {
+        "x": 416,
+        "y": -17,
+        "z": 515
+      },
+      "approach": {
+        "x": 416.5,
+        "y": -18,
+        "z": 518.5,
+        "yaw": 0
+      }
+    },
+    {
+      "id": "meetup",
+      "name": {
+        "en": "Yunnan Garden · Meetup",
+        "zh": "云南园 · 虚构会合点"
+      },
+      "position": {
+        "x": 951,
+        "y": -51,
+        "z": 710
+      },
+      "approach": {
+        "x": 953.5,
+        "y": -52,
+        "z": 713.5,
+        "yaw": 0.5880026035475675
+      }
+    }
+  ],
+  "boundary": {
+    "en": "Real NTU geography at one block per metre; procedural buildings and fictional demo activities. This sample covers the academic core, not all Singapore.",
+    "zh": "按一米一个方块生成的 NTU 地理底图；建筑为程序生成、活动为虚构。当前样板覆盖教学核心区，并非整个新加坡。"
+  }
+}

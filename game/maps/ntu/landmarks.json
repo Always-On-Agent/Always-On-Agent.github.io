@@ -1,0 +1,146 @@
+{
+  "bboxSouthWestNorthEast": [
+    1.3385,
+    103.6765,
+    1.3495,
+    103.6875
+  ],
+  "scaleBlocksPerMetre": 1,
+  "projection": "Arnis local, no rotation",
+  "scaleFactors": {
+    "x": 1222,
+    "z": 1223
+  },
+  "extentInclusive": {
+    "minX": 0,
+    "maxX": 1222,
+    "minZ": 0,
+    "maxZ": 1223
+  },
+  "origin": "northwest corner; +X east, +Z south",
+  "formula": {
+    "x": "trunc((longitude - west)/(east - west) * 1222)",
+    "z": "trunc((1 - (latitude - south)/(north - south)) * 1223)"
+  },
+  "osmBaseTimestamp": "2026-09-16T12:19:19Z",
+  "attribution": "© OpenStreetMap contributors, ODbL 1.0",
+  "pois": [
+    {
+      "name": "Lee Wee Nam Library",
+      "osmType": "node",
+      "osmId": 2247504654,
+      "sourceUrl": "https://www.openstreetmap.org/node/2247504654",
+      "lat": 1.347689,
+      "lon": 103.6809281,
+      "worldXZ": {
+        "x": 491,
+        "z": 201
+      },
+      "coordinateMeaning": "mapped node"
+    },
+    {
+      "name": "The Quad",
+      "osmType": "node",
+      "osmId": 7321337674,
+      "sourceUrl": "https://www.openstreetmap.org/node/7321337674",
+      "lat": 1.3449084,
+      "lon": 103.6798638,
+      "worldXZ": {
+        "x": 373,
+        "z": 510
+      },
+      "coordinateMeaning": "mapped node"
+    },
+    {
+      "name": "Lee Wee Nam Library bus stop",
+      "osmType": "node",
+      "osmId": 10126340248,
+      "sourceUrl": "https://www.openstreetmap.org/node/10126340248",
+      "lat": 1.3478024,
+      "lon": 103.6802681,
+      "worldXZ": {
+        "x": 418,
+        "z": 188
+      },
+      "coordinateMeaning": "mapped node"
+    },
+    {
+      "name": "Lee Wee Nam Library campus shuttle stop",
+      "osmType": "node",
+      "osmId": 14085887216,
+      "sourceUrl": "https://www.openstreetmap.org/node/14085887216",
+      "lat": 1.3480596,
+      "lon": 103.6806826,
+      "worldXZ": {
+        "x": 464,
+        "z": 160
+      },
+      "coordinateMeaning": "mapped node"
+    },
+    {
+      "name": "Yunnan Garden",
+      "osmType": "way",
+      "osmId": 49967616,
+      "sourceUrl": "https://www.openstreetmap.org/way/49967616",
+      "lat": 1.3441051,
+      "lon": 103.68508729999999,
+      "worldXZ": {
+        "x": 953,
+        "z": 599
+      },
+      "coordinateMeaning": "footprint bounding-box centre; not an entrance"
+    },
+    {
+      "name": "North Spine",
+      "osmType": "way",
+      "osmId": 49967705,
+      "sourceUrl": "https://www.openstreetmap.org/way/49967705",
+      "lat": 1.3464429,
+      "lon": 103.68088845,
+      "worldXZ": {
+        "x": 487,
+        "z": 339
+      },
+      "coordinateMeaning": "footprint bounding-box centre; not an entrance"
+    },
+    {
+      "name": "South Spine",
+      "osmType": "way",
+      "osmId": 49967706,
+      "sourceUrl": "https://www.openstreetmap.org/way/49967706",
+      "lat": 1.3432713,
+      "lon": 103.6814384,
+      "worldXZ": {
+        "x": 548,
+        "z": 692
+      },
+      "coordinateMeaning": "footprint bounding-box centre; not an entrance"
+    },
+    {
+      "name": "Chinese Heritage Centre",
+      "osmType": "way",
+      "osmId": 49968763,
+      "sourceUrl": "https://www.openstreetmap.org/way/49968763",
+      "lat": 1.3438048999999999,
+      "lon": 103.68400635,
+      "worldXZ": {
+        "x": 833,
+        "z": 633
+      },
+      "coordinateMeaning": "footprint bounding-box centre; not an entrance"
+    },
+    {
+      "name": "The Hive",
+      "osmType": "way",
+      "osmId": 389084380,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084380",
+      "lat": 1.34323345,
+      "lon": 103.6827198,
+      "worldXZ": {
+        "x": 690,
+        "z": 696
+      },
+      "coordinateMeaning": "footprint bounding-box centre; not an entrance"
+    }
+  ]
+}
