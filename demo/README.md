@@ -9,3 +9,9 @@ The event trace records source → delivered signal → decision/state effect. T
 Three.js r180 is vendored under `vendor/` with its MIT license. The 3D world is a small original game level assembled from geometry. `core.mjs` holds state transitions and the policy comparison; `world.mjs` renders the navigable level; `app.mjs` connects input, glasses HUD, persistence and framework trace.
 
 Run `node --test tests/*.test.mjs` from the site root. Core tests cover causal links, matching receipts, forgetting, validation gates and durable policy behavior; route tests check every landmark pair and free exploration starting positions.
+
+## Illustrated edition and languages
+
+The updated campus keeps navigable 3D geometry, with two-storey buildings, visible interiors, landscaping, courtyard objects and a first-person book. Repeated scenery uses instanced geometry; the static shadow map only refreshes when the visit changes. Camera bob and ambient movement respect reduced-motion preferences. The generated sky and paving maps, their prompts, and provenance are in `assets/art-provenance.md`.
+
+The demo supports English and Simplified Chinese. Language is a display preference saved separately from fictional story state; switching language preserves the visit, current interaction and player position. Event records remain canonical, so translating a trace cannot create or change evidence. The paper website outside this demo remains in English.
