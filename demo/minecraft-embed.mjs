@@ -18,7 +18,7 @@ if (root) {
   function start() {
     if (started) return;
     started = true;
-    frame.src = `game/?lang=${lang}&v=village-1`;
+    frame.src = `game/?lang=${lang}&v=village-2`;
   }
   const observer = new IntersectionObserver(entries => {
     if (entries.some(entry => entry.isIntersecting)) { start(); observer.disconnect(); }

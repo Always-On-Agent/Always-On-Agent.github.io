@@ -49168,12 +49168,12 @@ index 0000000..77e9c4a
 +}
 diff --git a/src/alwaysOnHud.tsx b/src/alwaysOnHud.tsx
 new file mode 100644
-index 0000000..83b9a8e
+index 0000000..c11bacf
 --- /dev/null
 +++ b/src/alwaysOnHud.tsx
-@@ -0,0 +1,377 @@
+@@ -0,0 +1,407 @@
 +import { useEffect, useRef } from 'react'
-+import { proxy, useSnapshot } from 'valtio'
++import { proxy, subscribe, useSnapshot } from 'valtio'
 +import type { Bot } from 'mineflayer'
 +import { Vec3 } from 'vec3'
 +import { activeModalStack, hideModal, isGameActive, miscUiState, showModal } from './globalState'
@@ -49206,7 +49206,8 @@ index 0000000..83b9a8e
 +    recalled: 'I remember your last visit. Let’s check today’s notice before relying on the old return point.',
 +    notice: 'Read the library notice', return: 'Return borrowed book', interact: 'E', panel: 'Open glasses',
 +    pause: 'Pause hints', resume: 'Resume hints', explore: 'Back to exploring',
-+    controls: 'WASD move · drag / mouse to look · E interact · H glasses',
++    controls: 'WASD move · R walk / stop · drag / mouse to look · E interact · H glasses',
++    walk: 'Walk', stop: 'Stop',
 +    mobile: 'Use the on-screen controls to explore. Tap a nearby prompt to interact.',
 +    tabNow: 'Right now', tabMemory: 'Memory', tabTrace: 'Framework',
 +    context: 'YOUR CONTEXT', carry: 'Borrowed library book', carryDetail: 'A commitment from before this visit.',
@@ -49241,7 +49242,8 @@ index 0000000..83b9a8e
 +    recalled: '我记得你上次来过。先确认今天的告示，再沿用之前的归还地点。',
 +    notice: '阅读图书馆告示', return: '归还借来的书', interact: 'E', panel: '打开眼镜面板',
 +    pause: '暂停提示', resume: '恢复提示', explore: '继续探索',
-+    controls: 'WASD 移动 · 拖动 / 鼠标转头 · E 交互 · H 眼镜',
++    controls: 'WASD 移动 · R 行走 / 停止 · 拖动 / 鼠标转头 · E 交互 · H 眼镜',
++    walk: '行走', stop: '停止',
 +    mobile: '通过屏幕上的控制探索村庄，靠近后点击提示即可交互。',
 +    tabNow: '此刻', tabMemory: '记忆', tabTrace: 'Framework',
 +    context: '你的上下文', carry: '借来的图书馆书籍', carryDetail: '一件延续到这次访问的待办。',
@@ -49290,7 +49292,7 @@ index 0000000..83b9a8e
 +}
 +
 +export const alwaysOnHudState = proxy({
-+  ready: false, language: initialLanguage(), visit: 1, quiet: false,
++  ready: false, language: initialLanguage(), visit: 1, quiet: false, walking: false,
 +  rememberedNotice: false, noticeObserved: false, complete: false, receipt: '',
 +  target: '' as '' | 'notice' | 'return', busy: false, error: '' as '' | 'failed' | 'moveCloser' | 'missing',
 +  tab: 'now' as 'now' | 'memory' | 'trace', journal: [] as JournalEntry[]
@@ -49315,7 +49317,8 @@ index 0000000..83b9a8e
 +export function isAlwaysOnTargetVisible (player: Bot, target: Position, maxDistance = 5.5): boolean {
 +  if (!player.entity?.position || !player.world) return false
 +  const eye = player.entity.position.offset(0, player.controlState.sneak ? 1.27 : 1.62, 0)
-+  const destination = new Vec3(target.x, target.y, target.z)
++  // Aim at the block's center; its corner can put the sight ray inside an adjacent wall.
++  const destination = new Vec3(target.x + 0.5, target.y + 0.5, target.z + 0.5)
 +  const offset = destination.minus(eye)
 +  const distance = offset.norm()
 +  if (distance > maxDistance || distance < 0.05) return false
@@ -49334,8 +49337,20 @@ index 0000000..83b9a8e
 +}
 +
 +function stopMovement () {
++  alwaysOnHudState.walking = false
 +  activeBot?.clearControlStates()
 +  activeBot?.mouse?.buttons?.fill(false)
++}
++
++function toggleWalking () {
++  if (alwaysOnHudState.walking) {
++    stopMovement()
++    return
++  }
++  if (!activeBot || !alwaysOnHudState.ready || !isGameActive(true) || document.hidden) return
++  stopMovement()
++  alwaysOnHudState.walking = true
++  activeBot.setControlState('forward', true)
 +}
 +
 +export function openAlwaysOnPanel (tab: 'now' | 'memory' | 'trace' = 'now') {
@@ -49409,7 +49424,7 @@ index 0000000..83b9a8e
 +  activeBot = player
 +  sceneOptions = options
 +  const memory = readMemory()
-+  Object.assign(alwaysOnHudState, { ready: true, visit: memory.visits + 1, quiet: memory.quiet, rememberedNotice: memory.knewNotice, noticeObserved: false, complete: false, receipt: '', target: '', busy: false, error: '', journal: memory.journal })
++  Object.assign(alwaysOnHudState, { ready: true, visit: memory.visits + 1, quiet: memory.quiet, walking: false, rememberedNotice: memory.knewNotice, noticeObserved: false, complete: false, receipt: '', target: '', busy: false, error: '', journal: memory.journal })
 +  addEntry(memory.visits ? 'recalled' : 'borrowed', 'M')
 +  const abort = new AbortController()
 +  const observer = setInterval(() => {
@@ -49421,7 +49436,12 @@ index 0000000..83b9a8e
 +  document.addEventListener('keydown', event => {
 +    const element = event.target as HTMLElement
 +    if (element?.closest('input, textarea, [contenteditable="true"]') || event.repeat) return
-+    if (event.code === 'KeyH' && (isGameActive(true) || activeModalStack.at(-1)?.reactType === MODAL)) {
++    if (alwaysOnHudState.walking && ['KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'KeyE', 'KeyH', 'Escape'].includes(event.code)) stopMovement()
++    if (event.code === 'KeyR' && isGameActive(true)) {
++      event.preventDefault()
++      event.stopImmediatePropagation()
++      toggleWalking()
++    } else if (event.code === 'KeyH' && (isGameActive(true) || activeModalStack.at(-1)?.reactType === MODAL)) {
 +      event.preventDefault()
 +      event.stopImmediatePropagation()
 +      if (activeModalStack.at(-1)?.reactType === MODAL) closePanel()
@@ -49432,12 +49452,21 @@ index 0000000..83b9a8e
 +      interact()
 +    }
 +  }, { capture: true, signal: abort.signal })
++  window.addEventListener('blur', stopMovement, { signal: abort.signal })
++  document.addEventListener('visibilitychange', () => {
++    if (document.hidden) stopMovement()
++  }, { signal: abort.signal })
++  const unsubscribeModal = subscribe(activeModalStack, () => {
++    if (activeModalStack.length) stopMovement()
++  })
 +  let cleaned = false
 +  const cleanup = () => {
 +    if (cleaned) return
 +    cleaned = true
 +    clearInterval(observer)
 +    abort.abort()
++    unsubscribeModal()
++    stopMovement()
 +    player.removeListener('end', cleanup)
 +    alwaysOnHudState.ready = false
 +    closePanel(false)
@@ -49488,6 +49517,7 @@ index 0000000..83b9a8e
 +        <span>{text.label}<small><i />{state.quiet ? text.quiet : text.connected}</small></span>
 +      </button>
 +      <div className='ao-hud-tools ao-interactive'>
++        <button className='ao-panel-button ao-walk-button' aria-pressed={state.walking} disabled={panelOpen} onClick={toggleWalking}>{state.walking ? text.stop : text.walk}<kbd>R</kbd></button>
 +        <div className='ao-language' aria-label='Language'>
 +          <button aria-pressed={state.language === 'en'} onClick={() => setLanguage('en')}>EN</button>
 +          <button aria-pressed={state.language === 'zh'} onClick={() => setLanguage('zh')}>中</button>

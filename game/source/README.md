@@ -4,7 +4,7 @@ The source archive contains the complete modified client tree, including the pin
 
 - Upstream: https://github.com/zardoy/minecraft-web-client
 - Upstream base: `637b62f9086d8d33844e7562d1e23a4b5ca408bb`
-- Modified client commit: `2cc5de3`
+- Modified client commit: `a055381`
 - Source archive: [always-on-village.zip](always-on-village.zip)
 - Changes only: [always-on.patch](always-on.patch)
 - GPL runtime dependency source: [gpl-dependency-source.zip](gpl-dependency-source.zip)
@@ -34,7 +34,7 @@ For the patch-only route, check out the upstream base commit and run `git apply 
 
 The demo is scripted. It illustrates context retention, evidence admission, memory-informed suggestions, user-authorized action, and receipt retention. It does not demonstrate a live learned policy or validated self-evolution. Each page load creates a new local world and book-return episode; only the journal and preferences survive reloads in browser storage.
 
-Desktop controls: WASD move, mouse/drag look, E interact, H glasses, Space jump. Touch devices use the client's touch movement/look controls; nearby interaction prompts and the glasses button can be tapped.
+Desktop controls: WASD move, mouse/drag look, E interact, H glasses, R walk/stop, Space jump. Touch devices use the client's touch movement/look controls; nearby interaction prompts and the glasses button can be tapped.
 
 ## Licenses and assets
 
