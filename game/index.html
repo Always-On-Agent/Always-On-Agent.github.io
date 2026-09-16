@@ -3,19 +3,20 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="darkreader-lock"><meta name="theme-color" content="#dcebe4">
 <title>Always-On · A world that remembers</title>
-<meta name="description" content="Explore a village through a pair of glasses. An interactive Always-On Agent framework demo.">
+<meta name="description" content="Explore an open village or an ECCV poster hall through a pair of glasses. Interactive Always-On Agent framework demos.">
 <script>window.startLoad=Date.now();Object.defineProperty(String.prototype,'format',{writable:false,configurable:false});Object.defineProperty(String.prototype,'replaceAll',{writable:false,configurable:false});</script>
 <style>
 @font-face{font-family:mojangles;src:url('./mojangles.ttf')}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dcebe4}
 .initial-loader{position:fixed;inset:0;z-index:10001;display:grid;place-content:center;text-align:center;gap:15px;color:#315348;font:15px/1.5 system-ui,sans-serif;background:linear-gradient(145deg,#f0f5ed,#dae8e1 55%,#b3cece);transition:opacity .4s}
 .initial-loader img{width:52px;height:52px;border-radius:13px;margin:auto}.initial-loader small{opacity:.7}
-</style><link href="./static/css/819.92543042.css" rel="stylesheet"><link href="./static/css/index.37dc1462.css" rel="stylesheet"><link rel="manifest" crossorigin="anonymous" href="manifest.json"><link rel="favicon" href="favicon.png"><link rel="icon" type="image/png" href="favicon.png"><meta property="og:image" content="favicon.png"></head><body>
-<div class="initial-loader"><img src="./favicon.png" alt=""><span id="initial-label">Preparing your village…</span><small id="initial-detail">A world that remembers.</small></div>
+</style><link href="./static/css/819.92543042.css" rel="stylesheet"><link href="./static/css/index.79b1d93a.css" rel="stylesheet"><link rel="manifest" crossorigin="anonymous" href="manifest.json"><link rel="favicon" href="favicon.png"><link rel="icon" type="image/png" href="favicon.png"><meta property="og:image" content="favicon.png"></head><body>
+<div class="initial-loader"><img src="./favicon.png" alt=""><span id="initial-label">Preparing your scene…</span><small id="initial-detail">A world that remembers.</small></div>
 <script>
-const zh=new URLSearchParams(location.search).get('lang')==='zh';
-if(zh){document.documentElement.lang='zh-CN';document.querySelector('#initial-label').textContent='正在准备你的村庄…';document.querySelector('#initial-detail').textContent='一个记得你的世界。'}
+const sceneParams=new URLSearchParams(location.search),zh=sceneParams.get('lang')==='zh',eccv=sceneParams.get('scene')==='eccv';
+if(zh){document.documentElement.lang='zh-CN';document.querySelector('#initial-label').textContent='正在准备你的场景…';document.querySelector('#initial-detail').textContent='一个记得你的世界。'}
+if(eccv){document.title='Always-On · ECCV EgoPoster';document.querySelector('#initial-detail').textContent='ECCV · EgoPoster · Booth 44'}
 window.addEventListener('error',event=>{const loader=document.querySelector('.initial-loader');if(loader&&loader.style.opacity!=='0'){document.querySelector('#initial-label').textContent=zh?'加载遇到问题，请刷新重试':'Loading failed. Please refresh to try again.';console.error(event.error)}});
 </script>
 <div id="react-root"></div><div id="ui-root"></div><div id="next-console-root"></div>
-<script defer src="./static/js/lib-polyfill.3b2a8d42.js"></script><script defer src="./static/js/lib-react.2ae75c39.js"></script><script defer src="./static/js/819.de892b07.js"></script><script defer src="./static/js/index.9267da2e.js"></script></body></html>
+<script defer src="./static/js/lib-polyfill.3b2a8d42.js"></script><script defer src="./static/js/lib-react.2ae75c39.js"></script><script defer src="./static/js/819.de892b07.js"></script><script defer src="./static/js/index.b738db47.js"></script></body></html>

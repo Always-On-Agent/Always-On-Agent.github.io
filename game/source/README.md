@@ -1,10 +1,10 @@
-# Always-On Village: source and deployment
+# Always-On Experiences: source and deployment
 
 The source archive contains the complete modified client tree, including the pinned dependency lockfile and build configuration.
 
 - Upstream: https://github.com/zardoy/minecraft-web-client
 - Upstream base: `637b62f9086d8d33844e7562d1e23a4b5ca408bb`
-- Modified client commit: `a055381`
+- Modified client commit: `05feedb`
 - Source archive: [always-on-village.zip](always-on-village.zip)
 - Changes only: [always-on.patch](always-on.patch)
 - GPL runtime dependency source: [gpl-dependency-source.zip](gpl-dependency-source.zip)
@@ -20,7 +20,7 @@ DISABLE_SERVICE_WORKER=true CONFIG_JSON_SOURCE=BUNDLED LOCAL_CONFIG_FILE=config.
 python3 -m http.server 8876 --bind 127.0.0.1 --directory dist
 ```
 
-Open `http://127.0.0.1:8876/?lang=en` or `?lang=zh`. The published build is in `/game/` and the homepage embeds it through `/demo/minecraft-embed.mjs`. Static HTTPS hosting is sufficient; no backend or Minecraft account is required for this prescribed local scenario.
+Open `http://127.0.0.1:8876/?scene=village&lang=zh` for the open village, or `http://127.0.0.1:8876/?scene=eccv&lang=zh` for ECCV. Use `lang=en` for English. The published build is in `/game/` and the homepage embeds it through `/demo/minecraft-embed.mjs`. Static HTTPS hosting is sufficient; no backend or Minecraft account is required for this prescribed local scenario.
 
 For the patch-only route, check out the upstream base commit and run `git apply always-on.patch` before installing and building.
 
@@ -29,12 +29,30 @@ For the patch-only route, check out the upstream base commit and run `git apply 
 - `src/alwaysOnWorld.ts`: deterministic village geometry, spawn and landmarks, tagged book inventory, verified return transaction.
 - `src/alwaysOnHud.tsx`: bilingual copy, visibility checks, interaction handlers, persistent journal, framework trace.
 - `src/alwaysOnHud.css`: glass interface, mobile layout, paper module colors.
+- `src/eccvWorld.ts`: condensed exhibition hall, five poster stations, Booth 44 and report station.
+- `src/eccvHud.tsx` / `.css`: poster dwell, cumulative cards, carried context, inspection, feedback and local journey export.
+- `src/alwaysOnScene.ts`: scene selection via `scene=village` or `scene=eccv`.
 - `config.always-on.json`: fixed demo settings.
 - `src/index.ts`: direct startup and scene/HUD integration.
 
-The demo is scripted. It illustrates context retention, evidence admission, memory-informed suggestions, user-authorized action, and receipt retention. It does not demonstrate a live learned policy or validated self-evolution. Each page load creates a new local world and book-return episode; only the journal and preferences survive reloads in browser storage.
+The demo is scripted. It illustrates context retention, evidence admission, memory-informed suggestions, user-authorized action, and receipt retention. It does not demonstrate a live learned policy or validated self-evolution. Each page load creates a new local world and visit; the two scenes retain separate memories in browser storage. Village book-return episodes start fresh. ECCV preserves cards and preferences, but marks earlier observations as historical until the relevant poster is seen again.
 
 Desktop controls: WASD move, mouse/drag look, E interact, H glasses, R walk/stop, Space jump. Touch devices use the client's touch movement/look controls; nearby interaction prompts and the glasses button can be tapped.
+
+## Verification
+
+```sh
+node scripts/testEccvHud.cjs
+npm exec --yes --package=pnpm@10.32.1 -- pnpm exec tsx scripts/testEccvWorld.ts
+```
+
+The first test runs the real HUD and visibility logic with isolated UI boundaries. It covers stationary gaze, occlusion, card progression, close inspection, five channels, history, and report gating. The second checks actual generated geometry and every interaction route. These checks complement browser interaction testing.
+
+## ECCV scenario basis
+
+Based on the EgoPoster workflow and its five-poster demonstration: GaGA, OmniMapBench, CFG-Bench, LaGen, and 360CityArena. The hall, abstract boards, and booth are original condensed geometry, not an exact venue replica. The client contains no private operational data, live camera/audio, model inference, or email workflow. Research prompts are scripted. Public paper links and the scene boundary are listed in [source and credits](../credits.html).
+
+Desktop interaction: pause while facing a poster to retain its identity, then press E to open its card. Cards accumulate a question, context and suggested next stop. Requesting detail inspection requires a changed viewpoint and a close, unobstructed view. Return to Booth 44 to preview the observed posters and explicitly download an HTML report. H opens the glasses memory and actual-event trace.
 
 ## Licenses and assets
 
