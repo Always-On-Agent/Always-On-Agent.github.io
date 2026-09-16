@@ -16,6 +16,8 @@ export type SingaporeScene = {
   bbox: [number, number, number, number]
   origin: { lat: number, lon: number }
   scale: number
+  architectureOffset?: SingaporePosition
+  tourStops?: Array<{ id: string; name: { en: string; zh: string }; position: SingaporePosition; approach: SingaporeApproach }>
   spawn: SingaporeApproach
   stations: Array<{
     id: 'plaza' | 'library' | 'return' | 'meetup'
@@ -81,12 +83,44 @@ async function fetchJson (url: URL) {
 }
 
 /**
+ * Arnis omits default-valued block properties from some Anvil palette entries.
+ * prismarine-chunk interprets missing properties as the first state variant,
+ * which can mean snowy grass or waterlogged stairs instead of the default.
+ * Complete only missing properties before the named palette becomes state IDs.
+ */
+export function createSingaporePaletteNormalizer (registry: any) {
+  const Block = require('prismarine-block')(registry)
+  const defaults = new Map<string, Record<string, string>>()
+  return (tag: any) => {
+    const root = tag?.value?.Level?.value ?? tag?.value
+    const sections = (root?.sections ?? root?.Sections)?.value?.value ?? []
+    for (const section of sections) {
+      const palette = (section.block_states?.value?.palette ?? section.Palette)?.value?.value ?? []
+      for (const entry of palette) {
+        const name = entry.Name?.value?.replace(/^minecraft:/, '')
+        const definition = registry.blocksByName[name]
+        if (!definition?.states?.length) continue
+        if (!defaults.has(name)) {
+          defaults.set(name, Object.fromEntries(Object.entries(Block.fromStateId(definition.defaultState, 0).getProperties())
+            .map(([key, value]) => [key, String(value)])))
+        }
+        entry.Properties ??= { type: 'compound', value: {} }
+        for (const [key, value] of Object.entries(defaults.get(name)!)) {
+          if (!Object.hasOwn(entry.Properties.value, key)) entry.Properties.value[key] = { type: 'string', value }
+        }
+      }
+    }
+    return tag
+  }
+}
+
+/**
  * Mount a static Anvil directory and enter the existing singleplayer pipeline.
  * The host must wait for fsReady and call installSingaporeMap immediately after
  * startLocalServer, instead of installing either procedural demo generator.
  * Index format: {"level.dat":null,"region":{"r.0.0.mca":null},"playerdata":{}}.
  */
-export async function loadSingaporeMap ({ indexUrl = './maps/ntu/index.json', sceneUrl }: { indexUrl?: string, sceneUrl?: string } = {}) {
+export async function loadSingaporeMap ({ indexUrl = './maps/ntu-campus-v2/index.json', sceneUrl }: { indexUrl?: string, sceneUrl?: string } = {}) {
   if (httpWorld) throw new Error('The NTU map is already mounted; change scenes by reloading the game frame.')
   const indexLocation = new URL(indexUrl, window.location.href)
   const sceneLocation = new URL(sceneUrl ?? 'scene.json', sceneUrl ? window.location.href : indexLocation)
@@ -133,13 +167,15 @@ export async function loadSingaporeMap ({ indexUrl = './maps/ntu/index.json', sc
     httpWorld = mounted
     const oldDisablePrompts = options.disableLoadPrompts
     options.disableLoadPrompts = true
+    const campusViewDistance = window.matchMedia?.('(pointer: coarse)').matches ? 3 : 5
+    options.renderDistance = campusViewDistance
     try {
       await loadSave(WORLD_PATH, {
         ignoreQs: true,
         serverOverridesFlat: {
           worldFolder: WORLD_PATH, version: scene.version, versionMajor: '1.21', worldSaveVersion: scene.version,
           generation: { name: 'empty', options: {} }, gameMode: 2, difficulty: 0,
-          'view-distance': 3, 'max-entities': 0, savingInterval: 0, noWarpsLoad: true
+          'view-distance': campusViewDistance, 'max-entities': 0, savingInterval: 0, noWarpsLoad: true
         }
       })
     } finally {
@@ -196,6 +232,9 @@ export function installSingaporeMap (server: any, { decorateChunk, maxCachedRegi
     const cacheLimit = Math.max(1, Math.floor(maxCachedRegions))
     const getRegion = provider.getRegion.bind(provider)
     const load = provider.load.bind(provider)
+    const loadRaw = provider.loadRaw.bind(provider)
+    const normalizePalette = createSingaporePaletteNormalizer(require('minecraft-data')(scene.version))
+    provider.loadRaw = async (x: number, z: number) => normalizePalette(await loadRaw(x, z))
     // Anvil inserts a region handle before initialize() completes. Share that
     // promise so simultaneous neighboring chunk reads cannot use a partial file.
     provider.getRegion = (x: number, z: number) => {

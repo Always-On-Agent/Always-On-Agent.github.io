@@ -36,11 +36,11 @@ export function installSingaporeMarkers (renderer: Renderer, stations: readonly 
       ctx.font = '500 42px system-ui,sans-serif'; ctx.fillText(station.name.zh, 512, 232, 925)
       ctx.fillStyle = '#748277'; ctx.font = '400 30px system-ui,sans-serif'; ctx.fillText('FICTIONAL DEMO STATION · 虚构试玩站点', 512, 335, 925)
       const texture = new CanvasTexture(canvas); texture.colorSpace = SRGBColorSpace; texture.anisotropy = 4
-      const panel = new Mesh(new PlaneGeometry(3.6, 1.52), new MeshBasicMaterial({ map: texture, side: DoubleSide, toneMapped: false }))
+      const panel = new Mesh(new PlaneGeometry(1.9, .8), new MeshBasicMaterial({ map: texture, side: DoubleSide, toneMapped: false }))
       panel.rotation.y = station.approach.yaw ?? 0
-      add(panel, { x: station.position.x + .5, y: station.position.y + 1.1, z: station.position.z + .5 }, texture)
-      const pole = new Mesh(new BoxGeometry(.12, 1.7, .12), new MeshBasicMaterial({ color: '#577565' }))
-      add(pole, { x: station.position.x + .5, y: station.position.y - .05, z: station.position.z + .5 })
+      add(panel, { x: station.position.x + .5, y: station.position.y + .5, z: station.position.z + .5 }, texture)
+      const pole = new Mesh(new BoxGeometry(.09, 1.1, .09), new MeshBasicMaterial({ color: '#577565' }))
+      add(pole, { x: station.position.x + .5, y: station.position.y - .3, z: station.position.z + .5 })
       const base = new Mesh(new BoxGeometry(.9, .12, .9), new MeshBasicMaterial({ color: '#73897a' }))
       add(base, { x: station.position.x + .5, y: station.position.y - .85, z: station.position.z + .5 })
     }

@@ -6,6 +6,7 @@ import { activeModalStack, hideModal, isGameActive, miscUiState, showModal } fro
 import { useIsModalActive } from './react/utilsApp'
 import { pointerLock } from './utils'
 import { SINGAPORE_LOOPS, SINGAPORE_STORY, type SingaporeLanguage, type SingaporeStation, type SingaporeText } from './singaporeStory'
+import SingaporeMinimap from './singaporeMinimap'
 import './alwaysOnHud.css'
 import './singaporeHud.css'
 
@@ -18,10 +19,11 @@ type Entry = { code: LogCode; channel: Channel; time: number; visit: number; rec
 type Tab = 'now' | 'memory' | 'travel' | 'trace'
 export type SingaporeSceneOptions = {
   stations: ReadonlyArray<{ id: SingaporeStation; name: SingaporeText; position: Position; approach: Position & { yaw: number } }>
+  tourStops?: ReadonlyArray<{ id: string; name: SingaporeText; position: Position; approach: Position & { yaw: number } }>
   acceptLoan: () => Promise<Result>
   returnLoan: () => Promise<Result>
   collectKit: () => Promise<Result>
-  shuttle: (id: SingaporeStation) => Promise<Result>
+  shuttle: (id: string) => Promise<Result>
 }
 export type SingaporeMemory = {
   visits: number; accepted: boolean; quiet: boolean; bookReceipt: string; meetupReceipt: string; kitReceipt: string
@@ -324,7 +326,7 @@ function collectKit () {
     log('kit', 'A → M', result.receiptId)
   })
 }
-function takeShuttle (id: SingaporeStation) {
+function takeShuttle (id: string) {
   if (!scene) return
   const currentScene = scene
   void transaction(async () => currentScene.shuttle(id), () => {
@@ -408,7 +410,7 @@ export default function SingaporeHud () {
     const url = new URL(location.href); url.searchParams.set('lang', language); history.replaceState(null, '', url)
   }
   const toggleQuiet = () => { singaporeHudState.quiet = !singaporeHudState.quiet; log(singaporeHudState.quiet ? 'quiet' : 'resumed', 'A → M') }
-  const mapCredits = <span className='sg-map-credits ao-interactive' onPointerDown={event => event.stopPropagation()} onClick={stopWalking}><a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener noreferrer'>© OpenStreetMap contributors · ODbL</a><a href='./maps/ntu/SOURCES.md' target='_blank' rel='noopener noreferrer'>{text.mapSources} ↗</a></span>
+  const mapCredits = <span className='sg-map-credits ao-interactive' onPointerDown={event => event.stopPropagation()} onClick={stopWalking}><a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener noreferrer'>© OpenStreetMap contributors · ODbL</a><a href='./maps/ntu-campus-v2/SOURCES.md' target='_blank' rel='noopener noreferrer'>{text.mapSources} ↗</a></span>
   const planCards = <div className='sg-plan-list'>{[text.book, text.group, ...(state.pickupAccepted || state.kitReceipt ? [text.kit] : [])].map((label, index) => <div className='ao-context-card' key={label}><span className={`ao-module ${receipts[index] ? 'ao-a' : 'ao-m'}`}>{receipts[index] ? '✓' : String(index + 1).padStart(2, '0')}</span><div><strong>{label}</strong><p>{receipts[index] ? text.complete : text.pending}</p></div></div>)}</div>
   return <div className='ao-glasses sg-glasses' lang={state.language === 'zh' ? 'zh-CN' : 'en'}>
     <div className='ao-glasses-rim' aria-hidden='true' />
@@ -421,6 +423,7 @@ export default function SingaporeHud () {
       </div>
     </header>
     {!panelOpen && !state.quiet && <button className='ao-mission ao-interactive' onClick={() => openSingaporePanel()}><span className='ao-eyebrow'>NTU · {state.language === 'zh' ? `第 ${state.visit} 次访问` : `VISIT ${state.visit}`}</span><strong>{title}</strong><span>{description}</span><span className='ao-mission-progress'>{receipts.map((receipt, index) => <i key={index} className={receipt ? 'is-active' : ''} />)}</span>{!allDone && <small className='sg-focus'>{text.focus} · {stationName(state.focus)}</small>}</button>}
+    {!panelOpen && activeBot && scene && <SingaporeMinimap player={activeBot} stations={scene.stations} tourStops={scene.tourStops} language={state.language} focus={state.focus} touch={currentTouch} />}
     {!panelOpen && state.target && <button className='ao-interact ao-interactive' onClick={interact}><kbd>{currentTouch ? '↗' : 'E'}</kbd>{stationName(state.target)}<span>↗</span></button>}
     {!panelOpen && <div className='ao-bottom-note'><span className='sg-map-boundary'>{localized(SINGAPORE_STORY.geographyNote)}{mapCredits}</span><span>{currentTouch ? text.mobile : text.controls}</span></div>}
     {panelOpen && <div className='ao-panel-layer ao-interactive' onPointerDown={event => event.stopPropagation()}><div
@@ -463,7 +466,7 @@ export default function SingaporeHud () {
           {receipts.filter(Boolean).map(receipt => <div className='ao-receipt' key={receipt}><span>{text.receipt}</span><code>{receipt}</code></div>)}
           <div className='ao-preference'><div><strong>{text.quietTitle}</strong><p>{text.quietText}</p></div><button className={`ao-toggle ${state.quiet ? 'is-on' : ''}`} role='switch' aria-checked={state.quiet} aria-label={text.quietTitle} onClick={toggleQuiet}><i /></button></div><p className='ao-footnote'>{text.memoryNote}</p>
         </>}
-        {state.tab === 'travel' && <><h3>{text.travelTitle}</h3><p className='ao-footnote'>{text.travelText}</p><div className='sg-station-list'>{scene?.stations.map(station => <button key={station.id} disabled={state.busy} className='sg-station' onClick={() => takeShuttle(station.id)}><span><strong>{localized(station.name)}</strong><small>{localized(SINGAPORE_STORY.stations[station.id])}</small></span><span>{text.travelButton} ↗</span></button>)}</div>{state.error && <p className='ao-error' role='alert'>{text[state.error]}</p>}</>}
+        {state.tab === 'travel' && <><h3>{text.travelTitle}</h3><p className='ao-footnote'>{text.travelText}</p><div className='sg-station-list'>{scene?.stations.map(station => <button key={station.id} disabled={state.busy} className='sg-station' onClick={() => takeShuttle(station.id)}><span><strong>{localized(station.name)}</strong><small>{localized(SINGAPORE_STORY.stations[station.id])}</small></span><span>{text.travelButton} ↗</span></button>)}</div>{Boolean(scene?.tourStops?.length) && <><h3>{state.language === 'zh' ? '探索整个校园' : 'Explore the campus'}</h3><p className='ao-footnote'>{state.language === 'zh' ? '快速前往其他校区，继续自由探索。' : 'Travel to another area and keep exploring freely.'}</p><div className='sg-station-list'>{scene?.tourStops?.map(stop => <button key={stop.id} disabled={state.busy} className='sg-station' onClick={() => takeShuttle(stop.id)}><strong>{localized(stop.name)}</strong><span>{text.travelButton} ↗</span></button>)}</div></>}{state.error && <p className='ao-error' role='alert'>{text[state.error]}</p>}</>}
         {state.tab === 'trace' && <><h3>{text.traceTitle}</h3><p className='ao-footnote'>{text.traceText}</p><div className='ao-module-legend'><span><i className='ao-s'>S</i>{text.visible}</span><span><i className='ao-m'>M</i>{text.retained}</span><span><i className='ao-a'>A</i>{text.confirmed}</span></div><ol className='ao-timeline'>{[...state.journal].reverse().map((entry, index) => <li key={`${entry.time}-${index}`}><div><span>{entry.channel}</span><time>{new Date(entry.time).toLocaleTimeString(state.language === 'zh' ? 'zh-CN' : 'en-GB', { hour: '2-digit', minute: '2-digit' })}</time></div><p>{text.logs[entry.code]}</p>{entry.receipt && <code>{entry.receipt}</code>}</li>)}</ol></>}
       </div>
       <footer className='ao-panel-footer'><p><span>{localized(SINGAPORE_STORY.geographyNote)}</span>{localized(SINGAPORE_STORY.simulationNote)}{mapCredits}</p><button className='ao-continue' onClick={() => closePanel()}>{text.explore}<span>↗</span></button></footer>

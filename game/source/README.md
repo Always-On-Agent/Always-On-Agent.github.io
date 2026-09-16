@@ -4,7 +4,7 @@ The source archive contains the complete modified client tree, including the pin
 
 - Upstream: https://github.com/zardoy/minecraft-web-client
 - Upstream base: `637b62f9086d8d33844e7562d1e23a4b5ca408bb`
-- Modified client commit: `f9ad6f0`
+- Modified client commit: `c39e726`
 - Source archive: [always-on-experiences.zip](always-on-experiences.zip)
 - Changes only: [always-on.patch](always-on.patch)
 - GPL runtime dependency source: [gpl-dependency-source.zip](gpl-dependency-source.zip)
@@ -22,13 +22,16 @@ python3 -m http.server 8876 --bind 127.0.0.1 --directory dist
 
 Open `http://127.0.0.1:8876/?scene=singapore&lang=zh` for the NTU prototype, or `http://127.0.0.1:8876/?scene=eccv&lang=zh` for ECCV. Use `lang=en` for English. The published build is in `/game/` and the homepage embeds it through `/demo/minecraft-embed.mjs`. Static HTTPS hosting is sufficient; no backend or Minecraft account is required for this prescribed local scenario.
 
-For the patch-only route, check out the upstream base commit and run `git apply always-on.patch` before installing and building.
+The patch contains code and metadata changes; generated map-region binaries are supplied in the complete source archive and published under `/game/maps/ntu-campus-v2/`. For patch-only reconstruction, check out the upstream base, apply `always-on.patch`, and restore the map regions into `assets/maps/ntu/region/` before building.
 
 ## Main customization points
 
 - `src/singaporeMap.ts`: real NTU map loading and bounded read-only region caching.
 - `src/singaporeHud.tsx` / `.css` / `src/singaporeStory.ts`: bilingual glasses, three fictional activity loops, memory freshness, explicit user choices and framework trace.
 - `src/singaporeActions.ts`: tagged inventory transactions and safe simulated shuttle stops.
+- `src/ntuCampusArchitecture.ts`, `ntuLandmarkArchitecture.ts`, `ntuSpineArchitecture.ts`, `ntuCampusPalette.ts`: footprint-based building corrections.
+- `src/singaporeMinimap.tsx`: live minimap and same-page campus map.
+- `src/singaporeLife.ts` / `singaporeLifeMath.ts`: original ambient actors, route following and signal-controlled traffic.
 - `src/singaporeMarkers.ts`: in-world bilingual demo station signs.
 - `assets/maps/ntu/`: Anvil region files, geographic metadata, safe approaches, source data and provenance.
 - `src/alwaysOnHud.css`: shared glass interface styling and paper module colors.
@@ -48,6 +51,9 @@ Desktop controls: WASD move, mouse/drag look, E interact, H glasses, R walk/stop
 node scripts/testSingaporeMap.cjs
 node scripts/testSingaporeActions.cjs
 node scripts/testSingaporeHud.cjs
+node scripts/testSingaporeMinimap.cjs
+node scripts/testSingaporeLife.cjs
+node scripts/testNtuArchitecture.cjs
 node scripts/testEccvHud.cjs
 npm exec --yes --package=pnpm@10.32.1 -- pnpm exec tsx scripts/testEccvWorld.ts
 ```
@@ -56,7 +62,7 @@ The NTU tests cover real HTTP/Anvil map loading, safe stops, modern inventory it
 
 ## NTU scenario basis
 
-The 1.5 km² geographic sample uses OpenStreetMap and Mapterhorn through Arnis at one block per metre. Building exteriors and vegetation are procedural approximations; interiors are not reconstructed. It does not contain MazeMap or NTUniverse assets. See `assets/maps/ntu/README.md` for source attribution, licenses and reconstruction instructions. All activities and stations are fictional. NTU is a preview; it is not a whole-Singapore model or a representation of live NTU services.
+The 2,548 × 2,927 block map covers NTU academic areas, residences, NIE and sports facilities, using OpenStreetMap and Mapterhorn through Arnis. The 7.453 km² bounding rectangle includes surrounding land. Eleven principal buildings and two garden landmarks have authored exterior geometry; 313 mapped building footprints receive conservative material corrections. These are photo-informed voxel approximations, not surveyed digital twins or room-level reconstructions. It does not contain MazeMap or NTUniverse assets. See `assets/maps/ntu/README.md` for source attribution, licenses and reconstruction instructions. All activities and stations are fictional. Ambient students, teachers, private cars, traffic lights and a campus bus are simulated, non-colliding scenery. The live minimap and expandable campus map use actual geographic coordinates; the travel panel offers four activity stations and four further campus areas. This is not a whole-Singapore model or a live NTU service.
 
 ## ECCV scenario basis
 

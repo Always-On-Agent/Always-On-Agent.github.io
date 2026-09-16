@@ -1,0 +1,366 @@
+[
+  {
+    "name": "Hive approach",
+    "old": {
+      "x": 726,
+      "z": 674,
+      "top": {
+        "y": -38,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -39,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1494,
+      "z": 2210,
+      "top": {
+        "y": -28,
+        "name": "cracked_stone_bricks"
+      },
+      "terrain": {
+        "y": -29,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "Hive west",
+    "old": {
+      "x": 649,
+      "z": 696,
+      "top": {
+        "y": -25,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -31,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1417,
+      "z": 2232,
+      "top": {
+        "y": 3,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -21,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "Hive east",
+    "old": {
+      "x": 732,
+      "z": 696,
+      "top": {
+        "y": -41,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -42,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1500,
+      "z": 2232,
+      "top": {
+        "y": -31,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -32,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "Hive south",
+    "old": {
+      "x": 690,
+      "z": 737,
+      "top": {
+        "y": -38,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -39,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1458,
+      "z": 2273,
+      "top": {
+        "y": -28,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -29,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "Library approach",
+    "old": {
+      "x": 461,
+      "z": 161,
+      "top": {
+        "y": -22,
+        "name": "gray_concrete_powder"
+      },
+      "terrain": {
+        "y": -23,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1229,
+      "z": 1697,
+      "top": {
+        "y": -12,
+        "name": "cyan_terracotta"
+      },
+      "terrain": {
+        "y": -13,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "NorthSpine north",
+    "old": {
+      "x": 447,
+      "z": 211,
+      "top": {
+        "y": -17,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -18,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1215,
+      "z": 1747,
+      "top": {
+        "y": -7,
+        "name": "cracked_stone_bricks"
+      },
+      "terrain": {
+        "y": -8,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "NorthSpine centre",
+    "old": {
+      "x": 440,
+      "z": 334,
+      "top": {
+        "y": -21,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -22,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1208,
+      "z": 1870,
+      "top": {
+        "y": -11,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -12,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "NorthSpine south",
+    "old": {
+      "x": 446,
+      "z": 487,
+      "top": {
+        "y": -3,
+        "name": "smooth_sandstone_stairs"
+      },
+      "terrain": {
+        "y": -21,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1214,
+      "z": 2023,
+      "top": {
+        "y": 6,
+        "name": "smooth_sandstone_stairs"
+      },
+      "terrain": {
+        "y": -11,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "SouthSpine north",
+    "old": {
+      "x": 432,
+      "z": 586,
+      "top": {
+        "y": -2,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -19,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1200,
+      "z": 2122,
+      "top": {
+        "y": 8,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -9,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "SouthSpine middle",
+    "old": {
+      "x": 540,
+      "z": 702,
+      "top": {
+        "y": -3,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -25,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1308,
+      "z": 2238,
+      "top": {
+        "y": 7,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -15,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "SouthSpine south",
+    "old": {
+      "x": 643,
+      "z": 813,
+      "top": {
+        "y": -34,
+        "name": "gray_concrete"
+      },
+      "terrain": {
+        "y": -34,
+        "name": "gray_concrete"
+      }
+    },
+    "next": {
+      "x": 1411,
+      "z": 2349,
+      "top": {
+        "y": -24,
+        "name": "gray_concrete"
+      },
+      "terrain": {
+        "y": -24,
+        "name": "gray_concrete"
+      }
+    },
+    "terrainYShift": 10
+  },
+  {
+    "name": "Quad approach",
+    "old": {
+      "x": 416,
+      "z": 518,
+      "top": {
+        "y": -19,
+        "name": "stone_bricks"
+      },
+      "terrain": {
+        "y": -20,
+        "name": "stone"
+      }
+    },
+    "next": {
+      "x": 1184,
+      "z": 2054,
+      "top": {
+        "y": -10,
+        "name": "cracked_stone_bricks"
+      },
+      "terrain": {
+        "y": -11,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 9
+  },
+  {
+    "name": "Garden approach",
+    "old": {
+      "x": 953,
+      "z": 713,
+      "top": {
+        "y": -53,
+        "name": "smooth_stone"
+      },
+      "terrain": {
+        "y": -54,
+        "name": "sand"
+      }
+    },
+    "next": {
+      "x": 1722,
+      "z": 2249,
+      "top": {
+        "y": -43,
+        "name": "smooth_stone"
+      },
+      "terrain": {
+        "y": -44,
+        "name": "stone"
+      }
+    },
+    "terrainYShift": 10
+  }
+]

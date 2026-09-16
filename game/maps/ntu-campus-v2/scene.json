@@ -1,0 +1,189 @@
+{
+  "version": "1.21.4",
+  "bbox": [
+    103.66958674304419,
+    1.337,
+    103.6925,
+    1.3633152085036795
+  ],
+  "origin": {
+    "lat": 1.3633152085036795,
+    "lon": 103.66958674304419
+  },
+  "scale": 1,
+  "width": 2548,
+  "depth": 2927,
+  "areaKm2": 7.453,
+  "spawn": {
+    "x": 1510.5,
+    "y": -32,
+    "z": 2236.5,
+    "yaw": 1.4925251862736186
+  },
+  "stations": [
+    {
+      "id": "plaza",
+      "name": {
+        "en": "The Hive · Demo hub",
+        "zh": "The Hive · 体验起点"
+      },
+      "position": {
+        "x": 1509,
+        "y": -30,
+        "z": 2232
+      },
+      "approach": {
+        "x": 1510.5,
+        "y": -32,
+        "z": 2236.5,
+        "yaw": 0.24497866312686414
+      }
+    },
+    {
+      "id": "library",
+      "name": {
+        "en": "Library · Demo notice",
+        "zh": "图书馆旁 · 试玩告示"
+      },
+      "position": {
+        "x": 1231,
+        "y": -10,
+        "z": 1695
+      },
+      "approach": {
+        "x": 1231.5,
+        "y": -11,
+        "z": 1698.5,
+        "yaw": 0
+      }
+    },
+    {
+      "id": "return",
+      "name": {
+        "en": "The Quad · Demo return",
+        "zh": "The Quad · 试玩归还点"
+      },
+      "position": {
+        "x": 1192,
+        "y": -8,
+        "z": 2051
+      },
+      "approach": {
+        "x": 1192.5,
+        "y": -9,
+        "z": 2054.5,
+        "yaw": 0
+      }
+    },
+    {
+      "id": "meetup",
+      "name": {
+        "en": "Yunnan Garden · Meetup",
+        "zh": "云南园 · 虚构会合点"
+      },
+      "position": {
+        "x": 1720,
+        "y": -41,
+        "z": 2246
+      },
+      "approach": {
+        "x": 1722.5,
+        "y": -42,
+        "z": 2249.5,
+        "yaw": 0.5880026035475675
+      }
+    }
+  ],
+  "boundary": {
+    "en": "NTU campus and surroundings from public geographic data; landmark exteriors are approximate, hand-authored voxel reconstructions and remaining buildings are procedural. Demo activities and transport are fictional.",
+    "zh": "以公开地理数据覆盖 NTU 校园与周边；地标外观为手工编写的近似方块重建，其余建筑为程序生成。试玩活动与交通均为虚构。"
+  },
+  "areaMeaning": "Generated bounding rectangle including NTU campus and its surroundings; not official campus land area",
+  "architectureOffset": {
+    "x": 768,
+    "y": 10,
+    "z": 1536
+  },
+  "tourStops": [
+    {
+      "id": "tour-nie",
+      "name": {
+        "en": "NIE · Campus exploration",
+        "zh": "NIE · 国立教育学院"
+      },
+      "position": {
+        "x": 973,
+        "y": -13,
+        "z": 1608
+      },
+      "approach": {
+        "x": 971.5,
+        "y": -14,
+        "z": 1611.5,
+        "yaw": -0.5880026035475675
+      },
+      "realPoiSource": "https://www.openstreetmap.org/node/4094613072",
+      "purpose": "Fictional quick-travel landing spot near the mapped real place, not a real transport service."
+    },
+    {
+      "id": "tour-residences",
+      "name": {
+        "en": "Nanyang Crescent · Residences",
+        "zh": "南洋 Crescent · 宿舍区"
+      },
+      "position": {
+        "x": 1597,
+        "y": -39,
+        "z": 933
+      },
+      "approach": {
+        "x": 1594.5,
+        "y": -40,
+        "z": 935.5,
+        "yaw": -0.982793723247329
+      },
+      "realPoiSource": "https://www.openstreetmap.org/node/4903036625",
+      "purpose": "Fictional quick-travel landing spot near the mapped real place, not a real transport service."
+    },
+    {
+      "id": "tour-sports",
+      "name": {
+        "en": "Sports and Recreation Centre",
+        "zh": "体育与康乐中心"
+      },
+      "position": {
+        "x": 2109,
+        "y": -35,
+        "z": 1633
+      },
+      "approach": {
+        "x": 2109.5,
+        "y": -36,
+        "z": 1636.5,
+        "yaw": 0
+      },
+      "realPoiSource": "https://www.openstreetmap.org/way/49989240",
+      "purpose": "Fictional quick-travel landing spot near the mapped real place, not a real transport service."
+    },
+    {
+      "id": "tour-adm",
+      "name": {
+        "en": "School of Art, Design and Media",
+        "zh": "ADM · 艺术设计媒体学院"
+      },
+      "position": {
+        "x": 1602,
+        "y": -20,
+        "z": 1559
+      },
+      "approach": {
+        "x": 1600.5,
+        "y": -20,
+        "z": 1562.5,
+        "yaw": -0.5880026035475675
+      },
+      "realPoiSource": "https://www.openstreetmap.org/way/49968559",
+      "purpose": "Fictional quick-travel landing spot near the mapped real place, not a real transport service."
+    }
+  ]
+}

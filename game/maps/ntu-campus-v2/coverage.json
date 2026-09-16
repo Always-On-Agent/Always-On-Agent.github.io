@@ -1,0 +1,2780 @@
+{
+  "sourceTimestamp": "2026-09-16T13:23:36Z",
+  "sourceElements": 33327,
+  "bboxSouthWestNorthEast": [
+    1.337,
+    103.66958674304419,
+    1.3633152085036795,
+    103.6925
+  ],
+  "pois": [
+    {
+      "name": "Opposite Yunnan Garden",
+      "type": "node",
+      "id": 2011798243,
+      "tags": {
+        "bench": "yes",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "name": "Opposite Yunnan Garden",
+        "public_transport": "platform",
+        "shelter": "yes"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3416175,
+        103.6844327,
+        1.3416175,
+        103.6844327
+      ],
+      "centerLatLon": [
+        1.3416175,
+        103.6844327
+      ],
+      "worldXZ": {
+        "x": 1650,
+        "z": 2412
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/2011798243"
+    },
+    {
+      "name": "opp Graduate Hall",
+      "type": "node",
+      "id": 2011836050,
+      "tags": {
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "opp Graduate Hall",
+        "public_transport": "platform"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3559797,
+        103.68609,
+        1.3559797,
+        103.68609
+      ],
+      "centerLatLon": [
+        1.3559797,
+        103.68609
+      ],
+      "worldXZ": {
+        "x": 1834,
+        "z": 815
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/2011836050"
+    },
+    {
+      "name": "Koufu @ the South Spine",
+      "type": "node",
+      "id": 3405194137,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Koufu @ the South Spine",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3424541,
+        103.6823317,
+        1.3424541,
+        103.6823317
+      ],
+      "centerLatLon": [
+        1.3424541,
+        103.6823317
+      ],
+      "worldXZ": {
+        "x": 1416,
+        "z": 2319
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/3405194137"
+    },
+    {
+      "name": "North Spine Food Court",
+      "type": "node",
+      "id": 3922461048,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:housenumber": "76",
+        "addr:postcode": "637331",
+        "addr:street": "Nanyang Drive",
+        "air_conditioning": "yes",
+        "amenity": "food_court",
+        "level": "2",
+        "name": "North Spine Food Court",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3470031,
+        103.6800715,
+        1.3470031,
+        103.6800715
+      ],
+      "centerLatLon": [
+        1.3470031,
+        103.6800715
+      ],
+      "worldXZ": {
+        "x": 1165,
+        "z": 1813
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/3922461048"
+    },
+    {
+      "name": "National Institute of Education, Singapore",
+      "type": "node",
+      "id": 4094613072,
+      "tags": {
+        "amenity": "college",
+        "name": "National Institute of Education, Singapore",
+        "name:en": "National Institute of Education, Singapore",
+        "name:zh": "新加坡国立教育学院",
+        "wikidata": "Q6973642",
+        "wikimedia_commons": "Category:National Institute of Education",
+        "wikipedia": "en:National Institute of Education"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3487577,
+        103.6784309,
+        1.3487577,
+        103.6784309
+      ],
+      "centerLatLon": [
+        1.3487577,
+        103.6784309
+      ],
+      "worldXZ": {
+        "x": 983,
+        "z": 1618
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/4094613072"
+    },
+    {
+      "name": "Binjai Hall (19A, 19B)",
+      "type": "node",
+      "id": 4751154964,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:postcode": "636958",
+        "addr:street": "62 Nanyang Crescent",
+        "building": "yes",
+        "name": "Binjai Hall (19A, 19B)"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3538741,
+        103.6877257,
+        1.3538741,
+        103.6877257
+      ],
+      "centerLatLon": [
+        1.3538741,
+        103.6877257
+      ],
+      "worldXZ": {
+        "x": 2016,
+        "z": 1049
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/4751154964"
+    },
+    {
+      "name": "Banyan Hall (21A, 21B)",
+      "type": "node",
+      "id": 4751154965,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:postcode": "636960",
+        "addr:street": "66 Nanyang Crescent",
+        "building": "yes",
+        "name": "Banyan Hall (21A, 21B)"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3538813,
+        103.6885382,
+        1.3538813,
+        103.6885382
+      ],
+      "centerLatLon": [
+        1.3538813,
+        103.6885382
+      ],
+      "worldXZ": {
+        "x": 2106,
+        "z": 1048
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/4751154965"
+    },
+    {
+      "name": "Tanjong Hall (20A, 20B)",
+      "type": "node",
+      "id": 4751154966,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:postcode": "636959",
+        "addr:street": "64 Nanyang Crescent",
+        "building": "yes",
+        "name": "Tanjong Hall (20A, 20B)"
+      },
+      "bboxSouthWestNorthEast": [
+        1.353797,
+        103.6881,
+        1.353797,
+        103.6881
+      ],
+      "centerLatLon": [
+        1.353797,
+        103.6881
+      ],
+      "worldXZ": {
+        "x": 2057,
+        "z": 1058
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/4751154966"
+    },
+    {
+      "name": "Nanyang Crescent Hall",
+      "type": "node",
+      "id": 4903036625,
+      "tags": {
+        "bus": "yes",
+        "highway": "bus_stop",
+        "location": "Nanyang Cresent",
+        "name": "Nanyang Crescent Hall",
+        "public_transport": "platform",
+        "ref": "27071",
+        "route_ref": "199"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3547919,
+        103.6840781,
+        1.3547919,
+        103.6840781
+      ],
+      "centerLatLon": [
+        1.3547919,
+        103.6840781
+      ],
+      "worldXZ": {
+        "x": 1610,
+        "z": 947
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/4903036625"
+    },
+    {
+      "name": "Sport Hall",
+      "type": "node",
+      "id": 4909958857,
+      "tags": {
+        "leisure": "pitch",
+        "name": "Sport Hall"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3499651,
+        103.6770347,
+        1.3499651,
+        103.6770347
+      ],
+      "centerLatLon": [
+        1.3499651,
+        103.6770347
+      ],
+      "worldXZ": {
+        "x": 827,
+        "z": 1484
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/4909958857"
+    },
+    {
+      "name": "Opposite Nanyang Crescent Halls",
+      "type": "node",
+      "id": 5197288044,
+      "tags": {
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Opposite Nanyang Crescent Halls",
+        "public_transport": "platform"
+      },
+      "bboxSouthWestNorthEast": [
+        1.354897,
+        103.6839911,
+        1.354897,
+        103.6839911
+      ],
+      "centerLatLon": [
+        1.354897,
+        103.6839911
+      ],
+      "worldXZ": {
+        "x": 1601,
+        "z": 936
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/5197288044"
+    },
+    {
+      "name": "Pioneer Hall Music Room",
+      "type": "node",
+      "id": 12882735108,
+      "tags": {
+        "amenity": "studio",
+        "check_date": "2025-06-03",
+        "fixme:type": "music_room",
+        "internet_access": "no",
+        "level": "0",
+        "name": "Pioneer Hall Music Room",
+        "wheelchair": "yes"
+      },
+      "bboxSouthWestNorthEast": [
+        1.34627,
+        103.6890636,
+        1.34627,
+        103.6890636
+      ],
+      "centerLatLon": [
+        1.34627,
+        103.6890636
+      ],
+      "worldXZ": {
+        "x": 2165,
+        "z": 1895
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/12882735108"
+    },
+    {
+      "name": "Crescent Hall Music Room",
+      "type": "node",
+      "id": 12882735109,
+      "tags": {
+        "amenity": "studio",
+        "check_date": "2025-06-03",
+        "fixme:type": "music_room",
+        "internet_access": "no",
+        "level": "0",
+        "name": "Crescent Hall Music Room",
+        "wheelchair": "yes"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3462898,
+        103.6890548,
+        1.3462898,
+        103.6890548
+      ],
+      "centerLatLon": [
+        1.3462898,
+        103.6890548
+      ],
+      "worldXZ": {
+        "x": 2164,
+        "z": 1893
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/12882735109"
+    },
+    {
+      "name": "Pioneer Hall SCRC Room",
+      "type": "node",
+      "id": 12883412287,
+      "tags": {
+        "amenity": "events_venue",
+        "check_date": "2025-06-03",
+        "level": "1",
+        "name": "Pioneer Hall SCRC Room",
+        "wheelchair": "yes"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3463935,
+        103.6892737,
+        1.3463935,
+        103.6892737
+      ],
+      "centerLatLon": [
+        1.3463935,
+        103.6892737
+      ],
+      "worldXZ": {
+        "x": 2188,
+        "z": 1881
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/12883412287"
+    },
+    {
+      "name": "Pioneer Hall Meeting Room",
+      "type": "node",
+      "id": 12883412288,
+      "tags": {
+        "amenity": "events_venue",
+        "check_date": "2025-06-03",
+        "level": "1",
+        "name": "Pioneer Hall Meeting Room"
+      },
+      "bboxSouthWestNorthEast": [
+        1.346377,
+        103.6892476,
+        1.346377,
+        103.6892476
+      ],
+      "centerLatLon": [
+        1.346377,
+        103.6892476
+      ],
+      "worldXZ": {
+        "x": 2185,
+        "z": 1883
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/12883412288"
+    },
+    {
+      "name": "Yunnan Garden",
+      "type": "way",
+      "id": 49967616,
+      "tags": {
+        "leisure": "park",
+        "name": "Yunnan Garden",
+        "name:en": "Yunnan Garden",
+        "name:zh": "云南园"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3415172,
+        103.6837018,
+        1.346693,
+        103.6864728
+      ],
+      "centerLatLon": [
+        1.3441051,
+        103.68508729999999
+      ],
+      "worldXZ": {
+        "x": 1723,
+        "z": 2135
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49967616"
+    },
+    {
+      "name": "North Spine",
+      "type": "way",
+      "id": 49967705,
+      "tags": {
+        "building": "university",
+        "building:levels": "5",
+        "layer": "1",
+        "name": "North Spine"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3450526,
+        103.680554,
+        1.3478332,
+        103.6812229
+      ],
+      "centerLatLon": [
+        1.3464429,
+        103.68088845
+      ],
+      "worldXZ": {
+        "x": 1256,
+        "z": 1876
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49967705"
+    },
+    {
+      "name": "South Spine",
+      "type": "way",
+      "id": 49967706,
+      "tags": {
+        "building": "university",
+        "name": "South Spine"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3422803,
+        103.6803567,
+        1.3442623,
+        103.6825201
+      ],
+      "centerLatLon": [
+        1.3432713,
+        103.6814384
+      ],
+      "worldXZ": {
+        "x": 1317,
+        "z": 2228
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49967706"
+    },
+    {
+      "name": "Chinese Heritage Centre",
+      "type": "way",
+      "id": 49968763,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:housename": "Chinese Heritage Centre",
+        "addr:housenumber": "12",
+        "addr:postcode": "637721",
+        "addr:street": "Nanyang Drive",
+        "building": "yes",
+        "charge": "Adult SGD12;Student SGD8",
+        "fee:conditional": "yes @ foreigner",
+        "name": "Chinese Heritage Centre",
+        "name:en": "Chinese Heritage Centre",
+        "name:zh": "华裔馆",
+        "name:zh-Hans": "华裔馆",
+        "name:zh-Hant": "華裔館",
+        "operator": "Nanyang Technological University",
+        "phone": "+65 6790 6176",
+        "source": "http://chc.ntu.edu.sg/",
+        "tourism": "museum",
+        "website": "https://www.ntu.edu.sg/chc"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3434348,
+        103.6835841,
+        1.344175,
+        103.6844286
+      ],
+      "centerLatLon": [
+        1.3438048999999999,
+        103.68400635
+      ],
+      "worldXZ": {
+        "x": 1602,
+        "z": 2169
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49968763"
+    },
+    {
+      "name": "Hall of Residence 5",
+      "type": "way",
+      "id": 49988683,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 5",
+        "name:en": "Hall of Residence 5",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3437892,
+        103.686558,
+        1.3449746,
+        103.6879989
+      ],
+      "centerLatLon": [
+        1.3443819000000001,
+        103.68727845000001
+      ],
+      "worldXZ": {
+        "x": 1966,
+        "z": 2105
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988683"
+    },
+    {
+      "name": "Hall of Residence 4",
+      "type": "way",
+      "id": 49988684,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 4",
+        "name:en": "Hall of Residence 4",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3437892,
+        103.6851872,
+        1.3446545,
+        103.6869041
+      ],
+      "centerLatLon": [
+        1.34422185,
+        103.68604565000001
+      ],
+      "worldXZ": {
+        "x": 1829,
+        "z": 2122
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988684"
+    },
+    {
+      "name": "Hall of Residence 6",
+      "type": "way",
+      "id": 49988687,
+      "tags": {
+        "addr:housename": "Hall of Residence 6",
+        "addr:housenumber": "21",
+        "addr:postcode": "637296",
+        "addr:street": "Lien Ying Chow Drive",
+        "landuse": "residential",
+        "name": "Hall of Residence 6",
+        "name:en": "Hall of Residence 6",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3467392,
+        103.686666,
+        1.3486888,
+        103.68792
+      ],
+      "centerLatLon": [
+        1.3477139999999999,
+        103.68729300000001
+      ],
+      "worldXZ": {
+        "x": 1968,
+        "z": 1734
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988687"
+    },
+    {
+      "name": "Hall of Residence 2",
+      "type": "way",
+      "id": 49988688,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 2",
+        "name:en": "Hall of Residence 2",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.347237,
+        103.6837509,
+        1.3491478,
+        103.6864415
+      ],
+      "centerLatLon": [
+        1.3481923999999998,
+        103.6850962
+      ],
+      "worldXZ": {
+        "x": 1724,
+        "z": 1681
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988688"
+    },
+    {
+      "name": "Hall of Residence 1",
+      "type": "way",
+      "id": 49988821,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 1",
+        "name:en": "Hall of Residence 1",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3443717,
+        103.6852689,
+        1.3468338,
+        103.6881598
+      ],
+      "centerLatLon": [
+        1.3456027499999998,
+        103.68671434999999
+      ],
+      "worldXZ": {
+        "x": 1903,
+        "z": 1969
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988821"
+    },
+    {
+      "name": "Hall of Residence 8",
+      "type": "way",
+      "id": 49988846,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 8",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3501607,
+        103.6842968,
+        1.3520165,
+        103.6856973
+      ],
+      "centerLatLon": [
+        1.3510886,
+        103.68499704999999
+      ],
+      "worldXZ": {
+        "x": 1712,
+        "z": 1359
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988846"
+    },
+    {
+      "name": "Hall of Residence 9",
+      "type": "way",
+      "id": 49988849,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 9",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3517301,
+        103.6844913,
+        1.35343,
+        103.6860071
+      ],
+      "centerLatLon": [
+        1.3525800499999998,
+        103.6852492
+      ],
+      "worldXZ": {
+        "x": 1741,
+        "z": 1193
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988849"
+    },
+    {
+      "name": "Hall of Residence 10",
+      "type": "way",
+      "id": 49988850,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 10",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3535169,
+        103.6847522,
+        1.3547727,
+        103.6860986
+      ],
+      "centerLatLon": [
+        1.3541448,
+        103.6854254
+      ],
+      "worldXZ": {
+        "x": 1760,
+        "z": 1019
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988850"
+    },
+    {
+      "name": "Hall of Residence 11",
+      "type": "way",
+      "id": 49988865,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 11",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3540572,
+        103.6856019,
+        1.3558744,
+        103.6872372
+      ],
+      "centerLatLon": [
+        1.3549658,
+        103.68641955
+      ],
+      "worldXZ": {
+        "x": 1871,
+        "z": 928
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988865"
+    },
+    {
+      "name": "Hall of Residence 15",
+      "type": "way",
+      "id": 49988884,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 15",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3527223,
+        103.6820578,
+        1.3544463,
+        103.6839455
+      ],
+      "centerLatLon": [
+        1.3535843,
+        103.68300165
+      ],
+      "worldXZ": {
+        "x": 1491,
+        "z": 1081
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988884"
+    },
+    {
+      "name": "Hall of Residence 14",
+      "type": "way",
+      "id": 49988886,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 14",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3517626,
+        103.6813102,
+        1.353223,
+        103.6831125
+      ],
+      "centerLatLon": [
+        1.3524928,
+        103.68221134999999
+      ],
+      "worldXZ": {
+        "x": 1403,
+        "z": 1203
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49988886"
+    },
+    {
+      "name": "Hall of Residence 13",
+      "type": "way",
+      "id": 49989106,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 13",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3510683,
+        103.6806023,
+        1.3526546,
+        103.682103
+      ],
+      "centerLatLon": [
+        1.35186145,
+        103.68135265000001
+      ],
+      "worldXZ": {
+        "x": 1307,
+        "z": 1273
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49989106"
+    },
+    {
+      "name": "Hall of Residence 12",
+      "type": "way",
+      "id": 49989107,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 12",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3503726,
+        103.6799131,
+        1.3518806,
+        103.6814739
+      ],
+      "centerLatLon": [
+        1.3511266000000002,
+        103.68069349999999
+      ],
+      "worldXZ": {
+        "x": 1234,
+        "z": 1355
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49989107"
+    },
+    {
+      "name": "Hall of Residence 16",
+      "type": "way",
+      "id": 49989163,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 16",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3495132,
+        103.6808476,
+        1.3507831,
+        103.6817325
+      ],
+      "centerLatLon": [
+        1.3501481499999999,
+        103.68129005
+      ],
+      "worldXZ": {
+        "x": 1300,
+        "z": 1464
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49989163"
+    },
+    {
+      "name": "Hall of Residence 3",
+      "type": "way",
+      "id": 49989164,
+      "tags": {
+        "landuse": "residential",
+        "name": "Hall of Residence 3",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.350245,
+        103.681348,
+        1.35148,
+        103.6823989
+      ],
+      "centerLatLon": [
+        1.3508624999999999,
+        103.68187345
+      ],
+      "worldXZ": {
+        "x": 1365,
+        "z": 1384
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49989164"
+    },
+    {
+      "name": "Sports and Recreation Centre",
+      "type": "way",
+      "id": 49989240,
+      "tags": {
+        "leisure": "sports_centre",
+        "name": "Sports and Recreation Centre"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3465566,
+        103.6873461,
+        1.3506887,
+        103.6897778
+      ],
+      "centerLatLon": [
+        1.34862265,
+        103.68856195000001
+      ],
+      "worldXZ": {
+        "x": 2109,
+        "z": 1633
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/49989240"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 107935439,
+      "tags": {
+        "leisure": "pitch"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3372889,
+        103.6872448,
+        1.3381896,
+        103.6882213
+      ],
+      "centerLatLon": [
+        1.3377392499999998,
+        103.68773304999999
+      ],
+      "worldXZ": {
+        "x": 2017,
+        "z": 2843
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/107935439"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 115096958,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3407941,
+        103.6796752,
+        1.3411394,
+        103.6799902
+      ],
+      "centerLatLon": [
+        1.3409667500000002,
+        103.6798327
+      ],
+      "worldXZ": {
+        "x": 1138,
+        "z": 2484
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/115096958"
+    },
+    {
+      "name": "Nanyang Technological University",
+      "type": "way",
+      "id": 115105262,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:country": "SG",
+        "addr:full": "50 Nanyang Avenue, Singapore 639798",
+        "addr:housenumber": "50",
+        "addr:postcode": "639798",
+        "addr:street": "Nanyang Avenue",
+        "amenity": "university",
+        "facebook": "https://www.facebook.com/NTUsg/",
+        "name": "Nanyang Technological University",
+        "name:de": "Technische Universität Nanyang",
+        "name:en": "Nanyang Technological University",
+        "name:ja": "南洋理工大学",
+        "name:ms": "Universiti Teknologi Nanyang",
+        "name:nan": "Lâm-iûⁿ Lí-kang Tāi-ha̍k",
+        "name:nan-Hant": "南洋理工大学",
+        "name:nan-Latn-pehoeji": "Lâm-iûⁿ Lí-kang Tāi-ha̍k",
+        "name:nan-Latn-tailo": "Lâm-iûnn Lí-kang Tāi-ha̍k",
+        "name:ta": "நன்யாங் தொழில்நுட்பப் பல்கலைக்கழகம்",
+        "name:zh": "南洋理工大学",
+        "name:zh-Hans": "南洋理工大学",
+        "name:zh-Hant": "南洋理工大學",
+        "name:zh-Latn-pinyin": "Nányáng Lǐgōng Dàxué",
+        "old_name": "Nanyang Technological Institute",
+        "phone": "+65 6791 1744",
+        "short_name": "NTU",
+        "start_date": "1955",
+        "website": "https://www.ntu.edu.sg/",
+        "wheelchair": "yes",
+        "wikidata": "Q721064",
+        "wikipedia": "en:Nanyang Technological University"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3396504,
+        103.6760092,
+        1.3569922,
+        103.6900716
+      ],
+      "centerLatLon": [
+        1.3483213,
+        103.6830404
+      ],
+      "worldXZ": {
+        "x": 1495,
+        "z": 1667
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/115105262"
+    },
+    {
+      "name": "Crescent Hall (Hall 17)",
+      "type": "way",
+      "id": 188334448,
+      "tags": {
+        "landuse": "residential",
+        "name": "Crescent Hall (Hall 17)",
+        "name:en": "Crescent Hall (Hall 17)",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3453541,
+        103.6874877,
+        1.3467144,
+        103.6886448
+      ],
+      "centerLatLon": [
+        1.34603425,
+        103.68806625
+      ],
+      "worldXZ": {
+        "x": 2054,
+        "z": 1921
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/188334448"
+    },
+    {
+      "name": "swimming_pool",
+      "type": "way",
+      "id": 255746802,
+      "tags": {
+        "covered": "no",
+        "leisure": "swimming_pool",
+        "sport": "swimming"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3497553,
+        103.6877045,
+        1.3502631,
+        103.6880317
+      ],
+      "centerLatLon": [
+        1.3500092000000001,
+        103.6878681
+      ],
+      "worldXZ": {
+        "x": 2032,
+        "z": 1479
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/255746802"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 255747036,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3480215,
+        103.6881329,
+        1.3484631,
+        103.6887396
+      ],
+      "centerLatLon": [
+        1.3482423,
+        103.68843625
+      ],
+      "worldXZ": {
+        "x": 2095,
+        "z": 1675
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/255747036"
+    },
+    {
+      "name": "Sport Hall",
+      "type": "way",
+      "id": 255774307,
+      "tags": {
+        "addr:city": "Singapore",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sport Hall",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3487462,
+        103.6874184,
+        1.3496831,
+        103.6880016
+      ],
+      "centerLatLon": [
+        1.34921465,
+        103.68771000000001
+      ],
+      "worldXZ": {
+        "x": 2014,
+        "z": 1567
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/255774307"
+    },
+    {
+      "name": "swimming_pool",
+      "type": "way",
+      "id": 255774308,
+      "tags": {
+        "covered": "no",
+        "leisure": "swimming_pool",
+        "sport": "swimming"
+      },
+      "bboxSouthWestNorthEast": [
+        1.349828,
+        103.6880454,
+        1.3499069,
+        103.688177
+      ],
+      "centerLatLon": [
+        1.34986745,
+        103.6881112
+      ],
+      "worldXZ": {
+        "x": 2059,
+        "z": 1495
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/255774308"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 255774309,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3501188,
+        103.6891472,
+        1.3505144,
+        103.6894157
+      ],
+      "centerLatLon": [
+        1.3503166,
+        103.68928145
+      ],
+      "worldXZ": {
+        "x": 2189,
+        "z": 1445
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/255774309"
+    },
+    {
+      "name": "swimming_pool",
+      "type": "way",
+      "id": 255774310,
+      "tags": {
+        "covered": "no",
+        "leisure": "swimming_pool",
+        "sport": "swimming"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3499198,
+        103.6879982,
+        1.3500774,
+        103.6881636
+      ],
+      "centerLatLon": [
+        1.3499986,
+        103.68808089999999
+      ],
+      "worldXZ": {
+        "x": 2055,
+        "z": 1480
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/255774310"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 255774312,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3478391,
+        103.6887554,
+        1.3486107,
+        103.6894025
+      ],
+      "centerLatLon": [
+        1.3482249,
+        103.68907895000001
+      ],
+      "worldXZ": {
+        "x": 2166,
+        "z": 1677
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/255774312"
+    },
+    {
+      "name": "Yunnan Gardens",
+      "type": "way",
+      "id": 256160618,
+      "tags": {
+        "landuse": "residential",
+        "name": "Yunnan Gardens",
+        "name:zh": "云南园",
+        "place": "neighbourhood",
+        "residential": "landed"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3353587,
+        103.6891157,
+        1.3404168,
+        103.6929211
+      ],
+      "centerLatLon": [
+        1.3378877500000002,
+        103.6910184
+      ],
+      "worldXZ": {
+        "x": 2382,
+        "z": 2827
+      },
+      "entireFootprintInsideBbox": false,
+      "sourceUrl": "https://www.openstreetmap.org/way/256160618"
+    },
+    {
+      "name": "Graduate Hall 2",
+      "type": "way",
+      "id": 313939352,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:housenumber": "48",
+        "addr:postcode": "637121",
+        "addr:street": "Nanyang Crescent",
+        "landuse": "residential",
+        "name": "Graduate Hall 2",
+        "residential": "dormitory",
+        "source": "http://www.ntu.edu.sg/has/Graduate/Pages/GH2.aspx"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3551968,
+        103.6851972,
+        1.3558577,
+        103.6862772
+      ],
+      "centerLatLon": [
+        1.3555272500000002,
+        103.6857372
+      ],
+      "worldXZ": {
+        "x": 1795,
+        "z": 865
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/313939352"
+    },
+    {
+      "name": "Graduate Hall 1",
+      "type": "way",
+      "id": 313939353,
+      "tags": {
+        "landuse": "residential",
+        "name": "Graduate Hall 1",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3553301,
+        103.6865192,
+        1.3558754,
+        103.6875219
+      ],
+      "centerLatLon": [
+        1.35560275,
+        103.68702055
+      ],
+      "worldXZ": {
+        "x": 1937,
+        "z": 857
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/313939353"
+    },
+    {
+      "name": "Pioneer Hall (Hall 18)",
+      "type": "way",
+      "id": 313940711,
+      "tags": {
+        "landuse": "residential",
+        "name": "Pioneer Hall (Hall 18)",
+        "name:en": "Pioneer Hall (Hall 18)",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3453738,
+        103.6885309,
+        1.3468154,
+        103.6896307
+      ],
+      "centerLatLon": [
+        1.3460946,
+        103.6890808
+      ],
+      "worldXZ": {
+        "x": 2166,
+        "z": 1914
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/313940711"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 328558813,
+      "tags": {
+        "access": "yes",
+        "layer": "1",
+        "leisure": "pitch",
+        "sport": "badminton",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3427172,
+        103.690901,
+        1.3429292,
+        103.6910765
+      ],
+      "centerLatLon": [
+        1.3428232,
+        103.69098875
+      ],
+      "worldXZ": {
+        "x": 2379,
+        "z": 2278
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/328558813"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 328564191,
+      "tags": {
+        "building": "construction",
+        "leisure": "pitch",
+        "lit": "yes",
+        "sport": "skateboard",
+        "surface": "ground"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3455405,
+        103.6911097,
+        1.3457231,
+        103.6912427
+      ],
+      "centerLatLon": [
+        1.3456318,
+        103.6911762
+      ],
+      "worldXZ": {
+        "x": 2399,
+        "z": 1966
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/328564191"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 328564192,
+      "tags": {
+        "building": "construction",
+        "hoops": "2",
+        "leisure": "pitch",
+        "lit": "yes",
+        "sport": "basketball",
+        "surface": "ground"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3454466,
+        103.6912262,
+        1.3457552,
+        103.6914246
+      ],
+      "centerLatLon": [
+        1.3456009,
+        103.69132540000001
+      ],
+      "worldXZ": {
+        "x": 2416,
+        "z": 1969
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/328564192"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 335717702,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer",
+        "surface": "asphalt"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3481988,
+        103.6879753,
+        1.3484555,
+        103.6881658
+      ],
+      "centerLatLon": [
+        1.34832715,
+        103.68807054999999
+      ],
+      "worldXZ": {
+        "x": 2054,
+        "z": 1666
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/335717702"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 335717765,
+      "tags": {
+        "building": "construction",
+        "leisure": "pitch",
+        "lit": "yes",
+        "sport": "futsal",
+        "surface": "paved"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3458703,
+        103.6911925,
+        1.346199,
+        103.69151
+      ],
+      "centerLatLon": [
+        1.34603465,
+        103.69135125
+      ],
+      "worldXZ": {
+        "x": 2419,
+        "z": 1921
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/335717765"
+    },
+    {
+      "name": "Binjai/Tanjong/Banyan Halls",
+      "type": "way",
+      "id": 368764524,
+      "tags": {
+        "alt_name": "North Hill Halls",
+        "landuse": "residential",
+        "name": "Binjai/Tanjong/Banyan Halls",
+        "residential": "dormitory"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3528146,
+        103.6873827,
+        1.3547433,
+        103.6891834
+      ],
+      "centerLatLon": [
+        1.3537789500000001,
+        103.68828305
+      ],
+      "worldXZ": {
+        "x": 2078,
+        "z": 1060
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/368764524"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 384645949,
+      "tags": {
+        "leisure": "pitch"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3502981,
+        103.6886199,
+        1.3505045,
+        103.6889199
+      ],
+      "centerLatLon": [
+        1.3504013000000001,
+        103.68876990000001
+      ],
+      "worldXZ": {
+        "x": 2132,
+        "z": 1435
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/384645949"
+    },
+    {
+      "name": "The Hive",
+      "type": "way",
+      "id": 389084380,
+      "tags": {
+        "building": "university",
+        "name": "The Hive",
+        "wikidata": "Q54321647",
+        "wikimedia_commons": "Category:The Hive, Nanyang Technological University",
+        "wikipedia": "en:The Hive, Singapore"
+      },
+      "bboxSouthWestNorthEast": [
+        1.342971,
+        103.6824256,
+        1.3434959,
+        103.683014
+      ],
+      "centerLatLon": [
+        1.34323345,
+        103.6827198
+      ],
+      "worldXZ": {
+        "x": 1459,
+        "z": 2232
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084380"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084384,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer"
+      },
+      "bboxSouthWestNorthEast": [
+        1.349426,
+        103.67748,
+        1.3503414,
+        103.6780366
+      ],
+      "centerLatLon": [
+        1.3498837,
+        103.6777583
+      ],
+      "worldXZ": {
+        "x": 908,
+        "z": 1493
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084384"
+    },
+    {
+      "name": "NIE Swimming Pool",
+      "type": "way",
+      "id": 389084386,
+      "tags": {
+        "access": "permissive",
+        "leisure": "swimming_pool",
+        "lit": "no",
+        "location": "outdoor",
+        "name": "NIE Swimming Pool",
+        "opening_hours": "Mo,Tu,Th 08:30-10:30, 12:00-14:00, 17:00-19:00; Fr 08:30-10:30,17:00-19:00"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3500417,
+        103.6772366,
+        1.3502959,
+        103.6774422
+      ],
+      "centerLatLon": [
+        1.3501688,
+        103.6773394
+      ],
+      "worldXZ": {
+        "x": 861,
+        "z": 1461
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084386"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084387,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3503046,
+        103.6780542,
+        1.3507052,
+        103.6782519
+      ],
+      "centerLatLon": [
+        1.3505049,
+        103.67815305
+      ],
+      "worldXZ": {
+        "x": 952,
+        "z": 1424
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084387"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084388,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3503921,
+        103.6783629,
+        1.3506874,
+        103.6785154
+      ],
+      "centerLatLon": [
+        1.35053975,
+        103.67843915
+      ],
+      "worldXZ": {
+        "x": 984,
+        "z": 1420
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084388"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084389,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3503922,
+        103.6785152,
+        1.3506876,
+        103.6786681
+      ],
+      "centerLatLon": [
+        1.3505399,
+        103.67859165
+      ],
+      "worldXZ": {
+        "x": 1000,
+        "z": 1420
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084389"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084390,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3503924,
+        103.6786679,
+        1.3506876,
+        103.6788346
+      ],
+      "centerLatLon": [
+        1.35054,
+        103.67875125
+      ],
+      "worldXZ": {
+        "x": 1018,
+        "z": 1420
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084390"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084391,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3500289,
+        103.6783497,
+        1.3503558,
+        103.6785115
+      ],
+      "centerLatLon": [
+        1.35019235,
+        103.6784306
+      ],
+      "worldXZ": {
+        "x": 983,
+        "z": 1459
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084391"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084392,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3500298,
+        103.6785098,
+        1.3503566,
+        103.6786728
+      ],
+      "centerLatLon": [
+        1.3501932,
+        103.6785913
+      ],
+      "worldXZ": {
+        "x": 1000,
+        "z": 1459
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084392"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 389084393,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3500306,
+        103.6786711,
+        1.3503575,
+        103.6788329
+      ],
+      "centerLatLon": [
+        1.35019405,
+        103.678752
+      ],
+      "worldXZ": {
+        "x": 1018,
+        "z": 1458
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/389084393"
+    },
+    {
+      "name": "sports_centre",
+      "type": "way",
+      "id": 428426534,
+      "tags": {
+        "access": "permissive",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "swimming"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3496623,
+        103.6879113,
+        1.349855,
+        103.6881696
+      ],
+      "centerLatLon": [
+        1.34975865,
+        103.68804044999999
+      ],
+      "worldXZ": {
+        "x": 2051,
+        "z": 1507
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/428426534"
+    },
+    {
+      "name": "The Wave Sport Hall",
+      "type": "way",
+      "id": 480561924,
+      "tags": {
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "The Wave Sport Hall",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3486616,
+        103.6890581,
+        1.3496021,
+        103.6896472
+      ],
+      "centerLatLon": [
+        1.34913185,
+        103.68935264999999
+      ],
+      "worldXZ": {
+        "x": 2197,
+        "z": 1577
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/480561924"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 494313879,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.347794,
+        103.6844593,
+        1.3481456,
+        103.6846724
+      ],
+      "centerLatLon": [
+        1.3479698,
+        103.68456585
+      ],
+      "worldXZ": {
+        "x": 1665,
+        "z": 1706
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/494313879"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 494313880,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3479829,
+        103.684623,
+        1.3483334,
+        103.6848367
+      ],
+      "centerLatLon": [
+        1.3481581500000002,
+        103.68472985
+      ],
+      "worldXZ": {
+        "x": 1683,
+        "z": 1685
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/494313880"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 494471330,
+      "tags": {
+        "leisure": "pitch",
+        "lit": "yes",
+        "sport": "soccer",
+        "surface": "grass"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3466976,
+        103.6884115,
+        1.3476973,
+        103.6892111
+      ],
+      "centerLatLon": [
+        1.34719745,
+        103.6888113
+      ],
+      "worldXZ": {
+        "x": 2136,
+        "z": 1792
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/494471330"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 494471331,
+      "tags": {
+        "leisure": "pitch",
+        "lit": "yes",
+        "sport": "soccer",
+        "surface": "grass"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3469506,
+        103.6877978,
+        1.3479504,
+        103.6885974
+      ],
+      "centerLatLon": [
+        1.3474504999999999,
+        103.6881976
+      ],
+      "worldXZ": {
+        "x": 2068,
+        "z": 1764
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/494471331"
+    },
+    {
+      "name": "North Spine",
+      "type": "way",
+      "id": 533741380,
+      "tags": {
+        "building": "university",
+        "layer": "1",
+        "name": "North Spine"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3443144,
+        103.680507,
+        1.3450551,
+        103.6808437
+      ],
+      "centerLatLon": [
+        1.3446847499999999,
+        103.68067535
+      ],
+      "worldXZ": {
+        "x": 1232,
+        "z": 2071
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/533741380"
+    },
+    {
+      "name": "Hall of Residence 7",
+      "type": "way",
+      "id": 535632984,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:housenumber": "38",
+        "addr:postcode": "636866",
+        "addr:street": "Nanyang Crescent",
+        "building": "yes",
+        "building:levels": "13",
+        "name": "Hall of Residence 7"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3542999,
+        103.6838061,
+        1.3548453,
+        103.6845755
+      ],
+      "centerLatLon": [
+        1.3545726,
+        103.6841908
+      ],
+      "worldXZ": {
+        "x": 1623,
+        "z": 972
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/535632984"
+    },
+    {
+      "name": "Saraca Hall",
+      "type": "way",
+      "id": 535632986,
+      "tags": {
+        "building": "yes",
+        "name": "Saraca Hall"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3548268,
+        103.6846469,
+        1.3553902,
+        103.6853164
+      ],
+      "centerLatLon": [
+        1.3551085,
+        103.68498165
+      ],
+      "worldXZ": {
+        "x": 1711,
+        "z": 912
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/535632986"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 541021648,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3495627,
+        103.6783666,
+        1.3499792,
+        103.6785279
+      ],
+      "centerLatLon": [
+        1.34977095,
+        103.67844725
+      ],
+      "worldXZ": {
+        "x": 984,
+        "z": 1505
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/541021648"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 541021649,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.349825,
+        103.6786754,
+        1.3499529,
+        103.678765
+      ],
+      "centerLatLon": [
+        1.34988895,
+        103.6787202
+      ],
+      "worldXZ": {
+        "x": 1015,
+        "z": 1492
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/541021649"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 541021652,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3498241,
+        103.6787733,
+        1.349952,
+        103.6788629
+      ],
+      "centerLatLon": [
+        1.3498880500000001,
+        103.6788181
+      ],
+      "worldXZ": {
+        "x": 1026,
+        "z": 1492
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/541021652"
+    },
+    {
+      "name": "Tamarind Hall",
+      "type": "way",
+      "id": 592155556,
+      "tags": {
+        "building": "yes",
+        "name": "Tamarind Hall"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3541144,
+        103.6839841,
+        1.355106,
+        103.6853796
+      ],
+      "centerLatLon": [
+        1.3546102,
+        103.68468185
+      ],
+      "worldXZ": {
+        "x": 1677,
+        "z": 967
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/592155556"
+    },
+    {
+      "name": "swimming_pool",
+      "type": "way",
+      "id": 612980277,
+      "tags": {
+        "access": "permit",
+        "leisure": "swimming_pool",
+        "lit": "yes",
+        "location": "outdoor",
+        "swimming_pool": "swimming"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3388664,
+        103.6841905,
+        1.3393569,
+        103.6845367
+      ],
+      "centerLatLon": [
+        1.33911165,
+        103.6843636
+      ],
+      "worldXZ": {
+        "x": 1642,
+        "z": 2691
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/612980277"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 758378290,
+      "tags": {
+        "access": "yes",
+        "hoops": "2",
+        "leisure": "pitch",
+        "lit": "yes",
+        "sport": "basketball",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3396981,
+        103.6857201,
+        1.339989,
+        103.6859148
+      ],
+      "centerLatLon": [
+        1.3398435499999999,
+        103.68581745
+      ],
+      "worldXZ": {
+        "x": 1804,
+        "z": 2609
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/758378290"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 758378296,
+      "tags": {
+        "access": "yes",
+        "layer": "1",
+        "leisure": "pitch",
+        "sport": "badminton",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3449171,
+        103.6904335,
+        1.3450513,
+        103.6905118
+      ],
+      "centerLatLon": [
+        1.3449841999999999,
+        103.69047265
+      ],
+      "worldXZ": {
+        "x": 2321,
+        "z": 2038
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/758378296"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 758378297,
+      "tags": {
+        "access": "yes",
+        "leisure": "pitch",
+        "sport": "basketball",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3446402,
+        103.6902717,
+        1.3449355,
+        103.6904448
+      ],
+      "centerLatLon": [
+        1.34478785,
+        103.69035825
+      ],
+      "worldXZ": {
+        "x": 2308,
+        "z": 2060
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/758378297"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1165077094,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3409922,
+        103.6814066,
+        1.3412849,
+        103.6815928
+      ],
+      "centerLatLon": [
+        1.3411385500000002,
+        103.6814997
+      ],
+      "worldXZ": {
+        "x": 1324,
+        "z": 2465
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1165077094"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1384005752,
+      "tags": {
+        "access": "private",
+        "building:levels": "5",
+        "hoops": "2",
+        "layer": "1",
+        "leisure": "pitch",
+        "lit": "no",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.342785,
+        103.6871112,
+        1.343036,
+        103.6872658
+      ],
+      "centerLatLon": [
+        1.3429105,
+        103.6871885
+      ],
+      "worldXZ": {
+        "x": 1956,
+        "z": 2268
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1384005752"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1384005753,
+      "tags": {
+        "access": "private",
+        "building:levels": "5",
+        "hoops": "2",
+        "layer": "1",
+        "leisure": "pitch",
+        "lit": "no",
+        "sport": "volleyball",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3427492,
+        103.6872653,
+        1.3430433,
+        103.6874266
+      ],
+      "centerLatLon": [
+        1.34289625,
+        103.68734595000001
+      ],
+      "worldXZ": {
+        "x": 1974,
+        "z": 2270
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1384005753"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1384005754,
+      "tags": {
+        "access": "private",
+        "building:levels": "5",
+        "hoops": "2",
+        "layer": "1",
+        "leisure": "pitch",
+        "lit": "no",
+        "sport": "soccer",
+        "surface": "grass"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3432388,
+        103.687741,
+        1.3435475,
+        103.6881118
+      ],
+      "centerLatLon": [
+        1.3433931499999998,
+        103.68792640000001
+      ],
+      "worldXZ": {
+        "x": 2038,
+        "z": 2215
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1384005754"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1384005755,
+      "tags": {
+        "access": "private",
+        "layer": "1",
+        "leisure": "pitch",
+        "sport": "badminton",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3428383,
+        103.6870145,
+        1.3430151,
+        103.6871186
+      ],
+      "centerLatLon": [
+        1.3429267,
+        103.68706655
+      ],
+      "worldXZ": {
+        "x": 1943,
+        "z": 2267
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1384005755"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1384005756,
+      "tags": {
+        "access": "private",
+        "athletics": "long_jump",
+        "building:levels": "5",
+        "hoops": "2",
+        "layer": "1",
+        "leisure": "pitch",
+        "lit": "no",
+        "sport": "athletics"
+      },
+      "bboxSouthWestNorthEast": [
+        1.343095,
+        103.6872031,
+        1.3433156,
+        103.6874697
+      ],
+      "centerLatLon": [
+        1.3432053,
+        103.68733639999999
+      ],
+      "worldXZ": {
+        "x": 1973,
+        "z": 2236
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1384005756"
+    },
+    {
+      "name": "Yunnan Garden No 1",
+      "type": "way",
+      "id": 1386469493,
+      "tags": {
+        "addr:city": "Singapore",
+        "addr:country": "SG",
+        "addr:street": "Yunnan Road",
+        "building": "substation",
+        "name": "Yunnan Garden No 1",
+        "operator": "SP Group",
+        "power": "substation",
+        "substation": "minor_distribution",
+        "voltage": "6600"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3377031,
+        103.6903838,
+        1.3378406,
+        103.690512
+      ],
+      "centerLatLon": [
+        1.33777185,
+        103.69044790000001
+      ],
+      "worldXZ": {
+        "x": 2318,
+        "z": 2840
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1386469493"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1391756731,
+      "tags": {
+        "access": "permissive",
+        "hoops": "1",
+        "leisure": "pitch",
+        "lit": "yes",
+        "sport": "basketball",
+        "surface": "acrylic"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3460267,
+        103.6889993,
+        1.3461716,
+        103.6891495
+      ],
+      "centerLatLon": [
+        1.34609915,
+        103.68907440000001
+      ],
+      "worldXZ": {
+        "x": 2166,
+        "z": 1914
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1391756731"
+    },
+    {
+      "name": "Nanyang Lake Pavilion",
+      "type": "way",
+      "id": 1466470682,
+      "tags": {
+        "building": "yes",
+        "name": "Nanyang Lake Pavilion"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3438966,
+        103.6845934,
+        1.3442571,
+        103.68491
+      ],
+      "centerLatLon": [
+        1.34407685,
+        103.68475169999999
+      ],
+      "worldXZ": {
+        "x": 1685,
+        "z": 2139
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1466470682"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1477388465,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3532972,
+        103.6888211,
+        1.3535568,
+        103.6890654
+      ],
+      "centerLatLon": [
+        1.353427,
+        103.68894325
+      ],
+      "worldXZ": {
+        "x": 2151,
+        "z": 1099
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1477388465"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1478554186,
+      "tags": {
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3500657,
+        103.6893373,
+        1.3504613,
+        103.6896059
+      ],
+      "centerLatLon": [
+        1.3502635,
+        103.6894716
+      ],
+      "worldXZ": {
+        "x": 2210,
+        "z": 1451
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1478554186"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1548815304,
+      "tags": {
+        "access": "private",
+        "building:levels": "5",
+        "hoops": "2",
+        "layer": "1",
+        "leisure": "pitch",
+        "lit": "no",
+        "sport": "chess"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3427839,
+        103.6867979,
+        1.3428617,
+        103.6868755
+      ],
+      "centerLatLon": [
+        1.3428228,
+        103.6868367
+      ],
+      "worldXZ": {
+        "x": 1917,
+        "z": 2278
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1548815304"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1550488153,
+      "tags": {
+        "area": "yes",
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3392591,
+        103.6823101,
+        1.3395403,
+        103.6825281
+      ],
+      "centerLatLon": [
+        1.3393997,
+        103.6824191
+      ],
+      "worldXZ": {
+        "x": 1426,
+        "z": 2659
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1550488153"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1550869189,
+      "tags": {
+        "access": "yes",
+        "layer": "1",
+        "leisure": "pitch",
+        "sport": "badminton",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3406058,
+        103.6894272,
+        1.34074,
+        103.6895055
+      ],
+      "centerLatLon": [
+        1.3406729,
+        103.68946635
+      ],
+      "worldXZ": {
+        "x": 2209,
+        "z": 2517
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1550869189"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1550869190,
+      "tags": {
+        "access": "yes",
+        "layer": "1",
+        "leisure": "pitch",
+        "sport": "badminton",
+        "surface": "clay"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3408417,
+        103.6875334,
+        1.3409759,
+        103.6876117
+      ],
+      "centerLatLon": [
+        1.3409088,
+        103.68757255
+      ],
+      "worldXZ": {
+        "x": 1999,
+        "z": 2491
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1550869190"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1557542474,
+      "tags": {
+        "area": "yes",
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3374914,
+        103.6805355,
+        1.3377418,
+        103.6806687
+      ],
+      "centerLatLon": [
+        1.3376166,
+        103.6806021
+      ],
+      "worldXZ": {
+        "x": 1224,
+        "z": 2857
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1557542474"
+    },
+    {
+      "name": "pitch",
+      "type": "way",
+      "id": 1557542475,
+      "tags": {
+        "area": "yes",
+        "leisure": "pitch",
+        "sport": "basketball"
+      },
+      "bboxSouthWestNorthEast": [
+        1.3374925,
+        103.6803679,
+        1.337743,
+        103.6805011
+      ],
+      "centerLatLon": [
+        1.33761775,
+        103.68043449999999
+      ],
+      "worldXZ": {
+        "x": 1205,
+        "z": 2857
+      },
+      "entireFootprintInsideBbox": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1557542475"
+    }
+  ]
+}

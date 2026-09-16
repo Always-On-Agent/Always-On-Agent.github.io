@@ -50,12 +50,12 @@ export const SINGAPORE_STORY = {
     zh: '还一本书，再和学习小组碰面。路线由你决定，看看途中还有什么安排。'
   },
   geographyNote: {
-    en: 'NTU prototype · Real layout, simplified buildings',
-    zh: 'NTU 原型预览 · 真实布局，简化建筑'
+    en: 'NTU campus · Geographic reconstruction',
+    zh: 'NTU 校园 · 地理重建'
   },
   simulationNote: {
-    en: 'Based on real NTU geography, with simplified procedural buildings. This is not a precise campus replica. Demo stations, notices, appointments, and receipts are fictional; no real service is contacted.',
-    zh: '依据 NTU 真实地理布局生成，建筑为程序化简化模型，并非精确校园复刻。试玩站点、告示、预约和凭证均为虚构，不连接实际校园服务。'
+    en: 'Campus geography covers the academic areas, residences, NIE and sports facilities. Key exteriors follow map footprints and reference photographs; other buildings remain simplified. People, traffic and activities are simulated.',
+    zh: '地理范围覆盖教学区、宿舍、NIE 和体育设施。主要建筑依据地图轮廓与照片重建，其余建筑仍为简化模型。人物、交通与活动均为模拟。'
   },
   rememberAction: { en: 'Remember these plans', zh: '记住这些安排' },
   quietAction: { en: 'Only tell me when it matters', zh: '有必要时再提醒我' },

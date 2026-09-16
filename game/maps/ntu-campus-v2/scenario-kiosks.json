@@ -1,0 +1,101 @@
+{
+  "version": "1.21.4",
+  "kiosks": [
+    {
+      "id": "plaza",
+      "marker": {
+        "x": 1509,
+        "y": -30,
+        "z": 2232
+      },
+      "markerGroundPosition": {
+        "x": 1509.5,
+        "y": -31,
+        "z": 2232.5,
+        "yaw": 1.5707963267948966
+      },
+      "approach": {
+        "x": 1510.5,
+        "y": -32,
+        "z": 2236.5,
+        "yaw": 0.24497866312686414,
+        "surface": "stone_bricks",
+        "skyLight": 15,
+        "blockLight": 0
+      },
+      "verified": "3x3 safe approach, <=1m floor height difference, unobstructed sampled air ray to marker centre"
+    },
+    {
+      "id": "library",
+      "marker": {
+        "x": 1231,
+        "y": -10,
+        "z": 1695
+      },
+      "markerGroundPosition": {
+        "x": 1231.5,
+        "y": -11,
+        "z": 1695.5,
+        "yaw": -2.5372871467235636
+      },
+      "approach": {
+        "x": 1231.5,
+        "y": -11,
+        "z": 1698.5,
+        "yaw": 0,
+        "surface": "cyan_terracotta",
+        "skyLight": 15,
+        "blockLight": 0
+      },
+      "verified": "3x3 safe approach, <=1m floor height difference, unobstructed sampled air ray to marker centre"
+    },
+    {
+      "id": "return",
+      "marker": {
+        "x": 1192,
+        "y": -8,
+        "z": 2051
+      },
+      "markerGroundPosition": {
+        "x": 1192.5,
+        "y": -9,
+        "z": 2051.5,
+        "yaw": 1.4711276743037347
+      },
+      "approach": {
+        "x": 1192.5,
+        "y": -9,
+        "z": 2054.5,
+        "yaw": 0,
+        "surface": "cracked_stone_bricks",
+        "skyLight": 15,
+        "blockLight": 0
+      },
+      "verified": "3x3 safe approach, <=1m floor height difference, unobstructed sampled air ray to marker centre"
+    },
+    {
+      "id": "meetup",
+      "marker": {
+        "x": 1720,
+        "y": -41,
+        "z": 2246
+      },
+      "markerGroundPosition": {
+        "x": 1720.5,
+        "y": -42,
+        "z": 2246.5,
+        "yaw": -0.02702044918726479
+      },
+      "approach": {
+        "x": 1722.5,
+        "y": -42,
+        "z": 2249.5,
+        "yaw": 0.5880026035475675,
+        "surface": "smooth_stone",
+        "skyLight": 15,
+        "blockLight": 0
+      },
+      "verified": "3x3 safe approach, <=1m floor height difference, unobstructed sampled air ray to marker centre"
+    }
+  ]
+}
