@@ -1,0 +1,676 @@
+{
+  "version": 1,
+  "mapId": "ntumap-local-v1",
+  "description": "Named area entry zones for the local demo. Names come from NTUMap labels; radii approximate source footprint extents and are not legal or navigational boundaries.",
+  "regions": [
+    {
+      "id": "ntu-area-5d2399b67e",
+      "name": {
+        "en": "The Hive",
+        "zh": "The Hive"
+      },
+      "x": 23.8,
+      "z": 477.2,
+      "radius": 65,
+      "priority": 80,
+      "sourceName": "UOB Innovation Hub, formerly The Hive",
+      "sourceIds": [
+        "ntumap:app:places:4358",
+        "osm:way:389084380"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-825e80ea0f",
+      "name": {
+        "en": "North Spine",
+        "zh": "North Spine"
+      },
+      "x": -178.1,
+      "z": 105.6,
+      "radius": 183,
+      "priority": 30,
+      "sourceName": "North Spine",
+      "sourceIds": [
+        "ntumap:app:places:2992",
+        "osm:way:49967705"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-3c949c835f",
+      "name": {
+        "en": "South Spine",
+        "zh": "South Spine"
+      },
+      "x": -90.2,
+      "z": 485.6,
+      "radius": 196,
+      "priority": 30,
+      "sourceName": "South Spine",
+      "sourceIds": [
+        "ntumap:app:places:3889",
+        "osm:way:49967706"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-43d3ce6019",
+      "name": {
+        "en": "School of Art, Design and Media",
+        "zh": "School of Art, Design and Media"
+      },
+      "x": 149.1,
+      "z": -210.6,
+      "radius": 114,
+      "priority": 50,
+      "sourceName": "School of Art, Design and Media",
+      "sourceIds": [
+        "ntumap:app:places:3737",
+        "osm:way:49968559"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-6946f6bb97",
+      "name": {
+        "en": "The Wave",
+        "zh": "The Wave"
+      },
+      "x": 762.3,
+      "z": -165.3,
+      "radius": 81,
+      "priority": 80,
+      "sourceName": "The Wave Sports and Recreation Centre (SRC)",
+      "sourceIds": [
+        "ntumap:app:places:4022",
+        "osm:way:480561924"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-21674bc9d1",
+      "name": {
+        "en": "Chinese Heritage Centre",
+        "zh": "Chinese Heritage Centre"
+      },
+      "x": 167.4,
+      "z": 411.4,
+      "radius": 69,
+      "priority": 80,
+      "sourceName": "Chinese Heritage Centre",
+      "sourceIds": [
+        "ntumap:app:places:1151",
+        "osm:way:49968763"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-a9db74c31f",
+      "name": {
+        "en": "Gaia · Wee Cho Yaw Plaza",
+        "zh": "Gaia · Wee Cho Yaw Plaza"
+      },
+      "x": 94.2,
+      "z": 609,
+      "radius": 82,
+      "priority": 50,
+      "sourceName": "Nanyang Business School at Wee Cho Yaw Plaza",
+      "sourceIds": [
+        "ntumap:app:places:2920"
+      ],
+      "boundaryBasis": "source label with radius from source building area"
+    },
+    {
+      "id": "ntu-area-e4e4f6464d",
+      "name": {
+        "en": "National Institute of Education",
+        "zh": "National Institute of Education"
+      },
+      "x": -434.3,
+      "z": -176.7,
+      "radius": 258,
+      "priority": 30,
+      "sourceName": "National Institute of Education (AUTONOMOUS INSTITUTE)",
+      "sourceIds": [
+        "ntumap:app:places:4418",
+        "osm:way:407413186",
+        "osm:way:500015539",
+        "osm:way:500015538",
+        "osm:way:500015543",
+        "osm:way:500015542",
+        "osm:way:500015541",
+        "osm:way:407413566"
+      ],
+      "boundaryBasis": "Union of source NIE BLK1–7 footprints"
+    },
+    {
+      "id": "ntu-area-13616be96e",
+      "name": {
+        "en": "The Arc",
+        "zh": "The Arc"
+      },
+      "x": -95,
+      "z": -16.6,
+      "radius": 75,
+      "priority": 80,
+      "sourceName": "The Arc - Learning Hub North",
+      "sourceIds": [
+        "ntumap:app:places:4009",
+        "osm:way:83889958"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-2b79518565",
+      "name": {
+        "en": "Nanyang Lake",
+        "zh": "Nanyang Lake"
+      },
+      "x": 255.6,
+      "z": 305.1,
+      "radius": 126,
+      "priority": 60,
+      "sourceName": "Nanyang Lake",
+      "sourceIds": [
+        "ntumap:app:places:2931",
+        "osm:way:49967549",
+        "osm:way:830628791"
+      ],
+      "boundaryBasis": "Nanyang Lake central and southern OSM basin footprints"
+    },
+    {
+      "id": "ntu-area-018003d96b",
+      "name": {
+        "en": "Maple Residences",
+        "zh": "Maple Residences"
+      },
+      "x": -81,
+      "z": 795.5,
+      "radius": 59,
+      "priority": 80,
+      "sourceName": "Maple Residences",
+      "sourceIds": [
+        "ntumap:app:places:2658",
+        "osm:way:322643975"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-ca293ed580",
+      "name": {
+        "en": "Hall 1 · Temporary site",
+        "zh": "Hall 1 · Temporary site"
+      },
+      "x": -228.2,
+      "z": 769.8,
+      "radius": 59,
+      "priority": 80,
+      "sourceName": "Hall of Residence 1 (30 Nanyang Link) - TEMPORARY SITE",
+      "sourceIds": [
+        "ntumap:app:places:4417"
+      ],
+      "boundaryBasis": "source label with radius from source building area"
+    },
+    {
+      "id": "ntu-area-6c8f69094d",
+      "name": {
+        "en": "Hall 1 · Under renovation",
+        "zh": "Hall 1 · Under renovation"
+      },
+      "x": 472.4,
+      "z": 245.7,
+      "radius": 175,
+      "priority": 80,
+      "sourceName": "UNDER RENOVATION - Hall of Residence 1 (21 NANYANG CIRCLE)",
+      "sourceIds": [
+        "ntumap:app:places:4253",
+        "osm:way:494471327",
+        "osm:way:433835345",
+        "osm:way:494471326",
+        "osm:way:433828843",
+        "osm:way:433829079",
+        "osm:way:433828842",
+        "osm:way:494471325"
+      ],
+      "boundaryBasis": "Union of source Hall 1 block footprints"
+    },
+    {
+      "id": "ntu-area-7302220a38",
+      "name": {
+        "en": "Yunnan Garden",
+        "zh": "Yunnan Garden"
+      },
+      "x": 283.9,
+      "z": 547.3,
+      "radius": 170,
+      "priority": 30,
+      "sourceName": "Yunnan Garden (YNG)",
+      "sourceIds": [
+        "ntumap:app:places:4414",
+        "osm:way:49967616"
+      ],
+      "boundaryBasis": "OSM Yunnan Garden footprint"
+    },
+    {
+      "id": "ntu-area-d86e5e40a7",
+      "name": {
+        "en": "Tamarind Hall",
+        "zh": "Tamarind Hall"
+      },
+      "x": 251.8,
+      "z": -792.3,
+      "radius": 111,
+      "priority": 80,
+      "sourceName": "Tamarind Hall",
+      "sourceIds": [
+        "ntumap:app:places:3969",
+        "osm:way:592155556"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-84ac473a93",
+      "name": {
+        "en": "Saraca Hall",
+        "zh": "Saraca Hall"
+      },
+      "x": 282.7,
+      "z": -850.7,
+      "radius": 63,
+      "priority": 80,
+      "sourceName": "Saraca Hall",
+      "sourceIds": [
+        "ntumap:app:places:3729",
+        "osm:way:535632986"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-938ea338cd",
+      "name": {
+        "en": "Hall of Residence 7",
+        "zh": "Hall of Residence 7"
+      },
+      "x": 187,
+      "z": -790.1,
+      "radius": 63,
+      "priority": 80,
+      "sourceName": "Hall of Residence 7",
+      "sourceIds": [
+        "ntumap:app:places:1997",
+        "osm:way:535632984"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-a4977de8d5",
+      "name": {
+        "en": "School of Biological Sciences",
+        "zh": "School of Biological Sciences"
+      },
+      "x": -336.6,
+      "z": 308.9,
+      "radius": 102,
+      "priority": 50,
+      "sourceName": "School of Biological Sciences",
+      "sourceIds": [
+        "ntumap:app:places:3739",
+        "osm:way:49968067"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-5c0318e8c7",
+      "name": {
+        "en": "School of Physical and Mathematical Sciences",
+        "zh": "School of Physical and Mathematical Sciences"
+      },
+      "x": -47,
+      "z": 619.1,
+      "radius": 132,
+      "priority": 50,
+      "sourceName": "School of Physical and Mathematical Sciences",
+      "sourceIds": [
+        "ntumap:app:places:3754",
+        "osm:way:49967807"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-7974daf4f9",
+      "name": {
+        "en": "Nanyang Auditorium",
+        "zh": "Nanyang Auditorium"
+      },
+      "x": -268.9,
+      "z": 376.2,
+      "radius": 81,
+      "priority": 50,
+      "sourceName": "Nanyang Auditorium",
+      "sourceIds": [
+        "ntumap:app:places:2917",
+        "osm:way:49968619"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-5944c5cd7b",
+      "name": {
+        "en": "Nanyang Executive Center",
+        "zh": "Nanyang Executive Center"
+      },
+      "x": 627.2,
+      "z": -429.8,
+      "radius": 100,
+      "priority": 50,
+      "sourceName": "Nanyang Executive Center",
+      "sourceIds": [
+        "ntumap:app:places:2925",
+        "osm:way:83889023"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-cc97715e00",
+      "name": {
+        "en": "Research Techno Plaza",
+        "zh": "Research Techno Plaza"
+      },
+      "x": -349.1,
+      "z": 452,
+      "radius": 86,
+      "priority": 50,
+      "sourceName": "Research Techno Plaza",
+      "sourceIds": [
+        "ntumap:app:places:3673",
+        "osm:way:49967874"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-537eff8f5c",
+      "name": {
+        "en": "Singapore Hokkien Huay Kuan Building (SHHK)",
+        "zh": "Singapore Hokkien Huay Kuan Building (SHHK)"
+      },
+      "x": 111.6,
+      "z": 399.6,
+      "radius": 88,
+      "priority": 50,
+      "sourceName": "Singapore Hokkien Huay Kuan Building (SHHK)",
+      "sourceIds": [
+        "ntumap:app:places:3867",
+        "osm:way:49967856"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-503cb3b87b",
+      "name": {
+        "en": "Wee Kim Wee School of Communication and Information (WKWSCI)",
+        "zh": "Wee Kim Wee School of Communication and Information (WKWSCI)"
+      },
+      "x": -308.3,
+      "z": 616.4,
+      "radius": 87,
+      "priority": 50,
+      "sourceName": "Wee Kim Wee School of Communication and Information (WKWSCI)",
+      "sourceIds": [
+        "ntumap:app:places:4399",
+        "osm:way:49967851"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-91916538ac",
+      "name": {
+        "en": "Lee Kong Chian School of Medicine (Yunan Campus)",
+        "zh": "Lee Kong Chian School of Medicine (Yunan Campus)"
+      },
+      "x": -453.5,
+      "z": 341.6,
+      "radius": 79,
+      "priority": 50,
+      "sourceName": "Lee Kong Chian School of Medicine (Yunan Campus)",
+      "sourceIds": [
+        "ntumap:app:places:2328",
+        "osm:way:405664349"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-6ae5a71836",
+      "name": {
+        "en": "Student Services Centre",
+        "zh": "Student Services Centre"
+      },
+      "x": 101.7,
+      "z": 234.5,
+      "radius": 56,
+      "priority": 50,
+      "sourceName": "Student Services Centre",
+      "sourceIds": [
+        "ntumap:app:places:3951",
+        "osm:way:49968776"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-31ba4a3755",
+      "name": {
+        "en": "Nanyang House",
+        "zh": "Nanyang House"
+      },
+      "x": 488.3,
+      "z": -266.3,
+      "radius": 58,
+      "priority": 50,
+      "sourceName": "Nanyang House",
+      "sourceIds": [
+        "ntumap:app:places:2929",
+        "osm:way:49989264"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-3cac8439fa",
+      "name": {
+        "en": "School of Civil and Environmental Engineering",
+        "zh": "School of Civil and Environmental Engineering"
+      },
+      "x": -311.2,
+      "z": 196.2,
+      "radius": 108,
+      "priority": 50,
+      "sourceName": "School of Civil and Environmental Engineering",
+      "sourceIds": [
+        "ntumap:app:places:3746",
+        "osm:way:49967975"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-62034e78ca",
+      "name": {
+        "en": "Asian School of the Environment",
+        "zh": "Asian School of the Environment"
+      },
+      "x": -341.1,
+      "z": 96.3,
+      "radius": 138,
+      "priority": 50,
+      "sourceName": "Asian School of the Environment",
+      "sourceIds": [
+        "ntumap:app:places:466",
+        "osm:way:49968075"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-f9ac4cf698",
+      "name": {
+        "en": "College of Computing and Data Science",
+        "zh": "College of Computing and Data Science"
+      },
+      "x": -23.4,
+      "z": 143,
+      "radius": 132,
+      "priority": 50,
+      "sourceName": "College of Computing and Data Science",
+      "sourceIds": [
+        "ntumap:app:places:1208",
+        "osm:way:49967883"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-1f880e166c",
+      "name": {
+        "en": "School of Materials Science and Engineering",
+        "zh": "School of Materials Science and Engineering"
+      },
+      "x": 45.8,
+      "z": 95.3,
+      "radius": 61,
+      "priority": 50,
+      "sourceName": "School of Materials Science and Engineering",
+      "sourceIds": [
+        "ntumap:app:places:3751",
+        "osm:way:49967895"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-09f6a741da",
+      "name": {
+        "en": "School of Electrical and Electronic Engineering (S1)",
+        "zh": "School of Electrical and Electronic Engineering (S1)"
+      },
+      "x": -289.7,
+      "z": 525.1,
+      "radius": 154,
+      "priority": 50,
+      "sourceName": "School of Electrical and Electronic Engineering (S1)",
+      "sourceIds": [
+        "ntumap:app:places:3747",
+        "osm:way:49967822"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-8c385353fd",
+      "name": {
+        "en": "School of Electrical and Electronic Engineering (S2)",
+        "zh": "School of Electrical and Electronic Engineering (S2)"
+      },
+      "x": -193.2,
+      "z": 566.2,
+      "radius": 110,
+      "priority": 50,
+      "sourceName": "School of Electrical and Electronic Engineering (S2)",
+      "sourceIds": [
+        "ntumap:app:places:3748",
+        "osm:way:49967820"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-981621295c",
+      "name": {
+        "en": "SIMTECH Valley Block",
+        "zh": "SIMTECH Valley Block"
+      },
+      "x": 32.5,
+      "z": -140.2,
+      "radius": 55,
+      "priority": 50,
+      "sourceName": "SIMTECH Valley Block",
+      "sourceIds": [
+        "ntumap:app:places:3860",
+        "osm:way:49968849"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-13ebb3537e",
+      "name": {
+        "en": "Sport Hall (SRC)",
+        "zh": "Sport Hall (SRC)"
+      },
+      "x": 579.8,
+      "z": -190.9,
+      "radius": 65,
+      "priority": 80,
+      "sourceName": "Sport Hall (SRC)",
+      "sourceIds": [
+        "ntumap:app:places:3900",
+        "osm:way:255774307"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-f1749f0ef4",
+      "name": {
+        "en": "SAF-NTU Academy",
+        "zh": "SAF-NTU Academy"
+      },
+      "x": -28.2,
+      "z": 400.1,
+      "radius": 49,
+      "priority": 50,
+      "sourceName": "SAF-NTU Academy",
+      "sourceIds": [
+        "ntumap:app:places:3723",
+        "osm:way:494471328"
+      ],
+      "boundaryBasis": "OSM building footprint"
+    },
+    {
+      "id": "ntu-area-hall-3",
+      "name": {
+        "en": "Hall 3",
+        "zh": "Hall 3"
+      },
+      "x": -69.25,
+      "z": -385.1,
+      "radius": 67,
+      "priority": 75,
+      "sourceName": "Hall 3",
+      "sourceIds": [
+        "ntumap:app:places:684",
+        "ntumap:app:places:685",
+        "ntumap:app:places:686",
+        "ntumap:app:places:687",
+        "osm:way:536528540",
+        "osm:way:536528541",
+        "osm:way:536528539",
+        "osm:way:536528542"
+      ],
+      "boundaryBasis": "Area grouped from source block labels explicitly naming Hall 3"
+    },
+    {
+      "id": "ntu-area-hall-16",
+      "name": {
+        "en": "Hall 16",
+        "zh": "Hall 16"
+      },
+      "x": -119.3,
+      "z": -288.6,
+      "radius": 76,
+      "priority": 75,
+      "sourceName": "Hall 16",
+      "sourceIds": [
+        "ntumap:app:places:629",
+        "ntumap:app:places:630",
+        "ntumap:app:places:631",
+        "ntumap:app:places:632",
+        "osm:way:536528538",
+        "osm:way:536531444",
+        "osm:way:536531445",
+        "osm:way:536531446"
+      ],
+      "boundaryBasis": "Area grouped from source block labels explicitly naming Hall 16"
+    }
+  ]
+}

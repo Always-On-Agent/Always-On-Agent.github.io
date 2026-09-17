@@ -17,11 +17,11 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css?v=framework-high-channels-20260915">
   <script src="script.js?v=framework-high-channels-20260915" defer></script>
-  <link rel="stylesheet" href="research.css?v=paper-index-20260915">
-  <link rel="stylesheet" href="application-space.css?v=glass-reveal-20260916">
-  <script type="module" src="research.js?v=glass-reveal-20260916"></script>
-  <link rel="stylesheet" href="demo/minecraft-embed.css?v=ntu-campus-2">
-  <script type="module" src="demo/minecraft-embed.mjs?v=ntu-campus-2"></script>
+  <link rel="stylesheet" href="research.css?v=glass-only-20260917">
+  <link rel="stylesheet" href="application-space.css?v=glass-only-20260917">
+  <script type="module" src="research.js?v=glass-only-20260917"></script>
+  <link rel="stylesheet" href="demo/minecraft-embed.css?v=minecraft-ready-20260917">
+  <script type="module" src="demo/minecraft-embed.mjs?v=minecraft-ready-20260917"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -299,14 +299,11 @@
       <div class="container">
         <div class="section-heading"><span class="section-number">05 / APPLICATIONS</span><h2 id="applications-title">A shared loop.<br><span class="muted">Different worlds to operate in.</span></h2><p class="section-deck">The observation domain, people involved, and outcome horizon change what reliable assistance requires.</p></div>
         <div class="application-explorer" id="application-explorer">
-          <div class="application-explorer-top"><div><h3>Where do the systems operate?</h3><p>Interaction domain × participant scope × outcome horizon.<br>Rotate the space, switch its glass panels, or browse every work.</p></div><div class="application-view" role="group" aria-label="Application view"><button type="button" data-application-view="3d" aria-pressed="true">3D space</button><button type="button" data-application-view="planes" aria-pressed="false">Glass panels</button><button type="button" data-application-view="map" aria-pressed="false">2D map</button><button type="button" data-application-view="table" aria-pressed="false">Table</button></div></div>
+          <div class="application-explorer-top"><div><h3>Where do the systems operate?</h3><p>Interaction domain × participant scope × outcome horizon.<br>Explore every work through three glass panels.</p></div></div>
           <div class="application-families" id="application-families" role="group" aria-label="Application family"></div>
           <div class="application-filters"><label>Find a system<input id="application-search" type="search" placeholder="Name, mechanism, or bottleneck…" autocomplete="off"></label><label>Participant scope<select id="application-participants"><option value="">All participants</option><option>Individual</option><option>Group</option><option>Public</option></select></label><button type="button" id="application-reset">Reset</button><p id="application-count" role="status">Loading application cases…</p></div>
-          <div id="application-space" class="application-space" hidden></div>
-          <div id="application-map" class="application-map-wrap"></div>
-          <div id="application-table-view" class="research-table-wrap" hidden><table class="research-table application-case-table"><caption class="sr-only">All application cases matching the filters</caption><thead><tr><th scope="col">System</th><th scope="col">Domain / participants</th><th scope="col">Outcome horizon</th><th scope="col">Mechanism and bottleneck</th></tr></thead><tbody id="application-rows"></tbody></table></div>
-          <section id="application-detail" class="application-detail" aria-label="Selected application case" tabindex="-1" hidden></section>
-          <p class="application-map-note">Coordinates describe the selected case and evaluated outcome. “Within-session” includes immediate endpoints; “Unmeasured” has no measured outcome horizon. Cases spanning several categories appear at each matching location and are counted once in the work list.</p>
+          <div id="application-space" class="application-space"></div>
+          <p class="application-panels-note">Coordinates describe the selected case and evaluated outcome. “Within-session” includes immediate endpoints; “Unmeasured” has no measured outcome horizon. Cases spanning several categories appear at each matching location and are counted once in the work list.</p>
         </div>
 
         <details class="figure-disclosure application-paper-figure"><summary>View the paper’s application landscape <span aria-hidden="true">+</span></summary><figure class="paper-figure"><button type="button" class="figure-zoom" data-zoom-image="assets/applications.png" aria-label="Enlarge the application landscape" aria-haspopup="dialog" aria-controls="image-lightbox"><img src="assets/applications.webp" width="2400" height="1289" alt="Application landscape for always-on personal AI across everyday assistance, conversation, digital workspaces, and physical collaboration." loading="lazy"></button><figcaption><span>THE APPLICATION LANDSCAPE</span> Service settings expose different sensing, memory, and action bottlenecks.</figcaption></figure></details>

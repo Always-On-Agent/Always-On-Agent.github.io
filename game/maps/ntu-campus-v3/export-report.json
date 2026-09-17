@@ -1,0 +1,33 @@
+{
+  "version": "1.21.4",
+  "dataVersion": 4189,
+  "bounds": {
+    "min": [
+      -1183,
+      6,
+      -1517
+    ],
+    "max": [
+      1732,
+      98,
+      1333
+    ]
+  },
+  "chunks": 32757,
+  "voxelRecords": 5144638,
+  "regionFiles": 42,
+  "elapsedSeconds": 33.008,
+  "terrain": {
+    "nx": 486,
+    "nz": 476,
+    "step": 6,
+    "minX": -1182.3527341761444,
+    "minZ": -1516.6668705079057,
+    "sourceFile": "/Users/bytedance/Downloads/NTUMap-Assets/decoded/terrain-metadata.json",
+    "paved": true,
+    "surfaceMaterialMask": "/Users/bytedance/Downloads/NTUMap-Assets/staging/surface-materials-v2/generated/terrain-surface-metadata.json"
+  },
+  "sourceMetadata": "/Users/bytedance/Downloads/NTUMap-Assets/staging/surface-materials-v2/generated/voxel-metadata.json",
+  "freshWorld": true,
+  "oldMapImported": false
+}

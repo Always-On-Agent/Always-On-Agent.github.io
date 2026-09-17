@@ -1,5 +1,5 @@
-import { MODULES, DOMAINS, HORIZONS, unique, channelCode, selectWorks, selectCases, applicationCells, worksCSV } from "./research-core.mjs";
-import { createApplicationSpace } from "./application-space.mjs?v=glass-reveal-20260916";
+import { MODULES, unique, channelCode, selectWorks, selectCases, worksCSV } from "./research-core.mjs";
+import { createApplicationSpace } from "./application-space.mjs?v=glass-only-20260917";
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
@@ -12,9 +12,7 @@ const tag = (value, type = "") => `<span class="research-tag ${esc(type)}">${esc
 const prettyChannel = value => channelCode(value).replace("→", " → ");
 const motion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 
-let data, tables, applicationSpace, filteredWorks = [], page = 1, applicationFamily = "", applicationView = window.matchMedia("(max-width: 760px)").matches ? "map" : "3d", selectedCase = "";
-const requestedApplicationView = new URLSearchParams(location.search).get('view');
-if (["3d", "planes", "map", "table"].includes(requestedApplicationView)) applicationView = requestedApplicationView;
+let data, tables, applicationSpace, filteredWorks = [], page = 1, applicationFamily = "", selectedCase = "";
 const expandedReferences = new Set();
 const pageSize = 12;
 
@@ -96,27 +94,15 @@ function renderApplications() {
   const familyLabels = ["Daily assistance", "Conversation & meetings", "Digital workspaces", "Physical collaboration"];
   $("#application-families").innerHTML = `<button type="button" data-application-family="" aria-pressed="${!applicationFamily}">All families <span>${data.applications.length}</span></button>` + families.map((family,index) => `<button type="button" data-application-family="${esc(family)}" aria-pressed="${family === applicationFamily}">${familyLabels[index]} <span>${data.applications.filter(item => item.family === family).length}</span></button>`).join("");
   $("#application-count").textContent = `${cases.length} of ${data.applications.length} cases`;
-  $("#application-map").innerHTML = `<table class="application-matrix"><caption>Interaction domain → <span>Outcome horizon ↓</span></caption><thead><tr><td></td>${DOMAINS.map(domain => `<th scope="col">${domain}</th>`).join("")}</tr></thead><tbody>${applicationCells(cases).map(row => `<tr><th scope="row">${row.horizon}<small>${({"Within-session":"Including immediate", "Cross-session":"Across interactions", "Longitudinal":"Later outcomes", "Unmeasured":"No measured endpoint"})[row.horizon]}</small></th>${row.cells.map(cell => `<td><div class="map-cell-works">${cell.cases.map(item => `<button type="button" data-application-case="${esc(item.id)}" aria-pressed="${selectedCase === item.id}">${esc(item.name)}${item.domains.length > 1 ? '<span title="Appears in multiple domains" aria-label="Cross-domain">↔</span>' : ""}</button>`).join("") || '<span class="map-cell-empty" aria-label="No coded case in this selection">—</span>'}</div></td>`).join("")}</tr>`).join("")}</tbody></table>`;
-  $("#application-rows").innerHTML = cases.map(item => `<tr><th scope="row"><button type="button" data-application-case="${esc(item.id)}" aria-pressed="${selectedCase === item.id}">${esc(item.name)}</button><small>${esc(item.family)}</small></th><td>${esc(item.domains.join(" + "))}<small>${esc(item.participants.join(" + "))}</small></td><td>${esc(item.horizon)}${item.context ? `<small>${esc(item.context)}</small>` : ""}</td><td><p>${esc(item.mechanism)}</p><small><strong>Bottleneck:</strong> ${esc(item.bottleneck)}</small></td></tr>`).join("") || '<tr><td colspan="4" class="research-empty">No application cases match these filters.</td></tr>';
-  $("#application-map").hidden = applicationView !== "map";
-  $("#application-table-view").hidden = applicationView !== "table";
-  document.querySelectorAll("[data-application-view]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.applicationView === applicationView)));
-  const current = cases.find(item => item.id === selectedCase);
-  if (!current) selectedCase = "";
-  const spatial = ["3d", "planes"].includes(applicationView);
-  $("#application-space").hidden = !spatial;
-  $("#application-detail").hidden = !current || spatial;
-  $("#application-detail").innerHTML = current && !spatial ? caseDetail(current) : "";
-  applicationSpace.update({ cases, selectedCase, view: applicationView });
+  if (!cases.some(item => item.id === selectedCase)) selectedCase = "";
+  applicationSpace.update({ cases, selectedCase });
 }
 
 function selectApplication(id) {
   selectedCase = id;
   renderApplications();
   if (!id) return;
-  const detail = ["3d", "planes"].includes(applicationView) ? applicationSpace.detailElement : $("#application-detail");
-  detail?.focus({ preventScroll: true });
-  if (applicationView !== "planes") detail?.scrollIntoView({ behavior: motion(), block: "nearest" });
+  applicationSpace.detailElement?.focus({ preventScroll: true });
 }
 
 function wireEvents() {
@@ -148,8 +134,6 @@ function wireEvents() {
   for (const id of ["#application-search", "#application-participants"]) $(id).addEventListener(id.includes("search") ? "input" : "change", renderApplications);
   $("#application-reset").addEventListener("click", () => { applicationFamily = ""; selectedCase = ""; applicationSpace.clearLocation(); $("#application-search").value = ""; $("#application-participants").value = ""; renderApplications(); });
   $("#application-explorer").addEventListener("click", event => {
-    const view = event.target.closest("[data-application-view]");
-    if (view) { applicationView = view.dataset.applicationView; renderApplications(); }
     const family = event.target.closest("[data-application-family]");
     if (family) { applicationFamily = family.dataset.applicationFamily; renderApplications(); [...document.querySelectorAll("[data-application-family]")].find(button => button.dataset.applicationFamily === applicationFamily)?.focus({ preventScroll: true }); }
     const work = event.target.closest("[data-application-case]");

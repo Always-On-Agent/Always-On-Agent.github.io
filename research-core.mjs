@@ -32,10 +32,6 @@ export function selectCases(cases, filters = {}) {
   );
 }
 
-export function applicationCells(cases) {
-  return HORIZONS.map(horizon => ({ horizon, cells: DOMAINS.map(domain => ({ domain, cases: cases.filter(item => item.horizon === horizon && item.domains.includes(domain)) })) }));
-}
-
 export function csvValue(value) {
   const text = String(value ?? "");
   // Preserve spreadsheet text instead of interpreting research labels as formulas.

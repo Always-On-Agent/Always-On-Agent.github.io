@@ -1,0 +1,17 @@
+{
+  "name": "Always-On Village",
+  "short_name": "Always-On",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "any"
+    }
+  ],
+  "background_color": "#dcebe4",
+  "theme_color": "#dcebe4",
+  "lang": "en-US",
+  "orientation": "landscape",
+  "display": "standalone"
+}

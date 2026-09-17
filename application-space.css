@@ -1,55 +1,11 @@
 .application-explorer {
   background:radial-gradient(ellipse at 12% 42%,#e2ebe3 0,transparent 51%),radial-gradient(ellipse at 95% 75%,#f0e7e1 0,transparent 48%),#f5f8f5;
 }
-.application-view { flex-shrink:0; background:#ffffffb3; box-shadow:inset 0 1px 0 #fff; }
-.application-view button { padding-inline:11px; }
 .application-space { margin-top:5px; }
 .application-space [hidden],.application-space[hidden] { display:none; }
-.space-workspace { display:grid; grid-template-columns:minmax(0,1fr) 270px; gap:18px; align-items:start; }
-.glass-panel {
-  background:linear-gradient(135deg,#ffffffa8,#ffffff59 55%,#f8fcf978);
-  border:1px solid #ffffffed;
-  border-radius:17px;
-  box-shadow:0 12px 35px -19px #36584447,0 2px 5px #3658440a,inset 0 1px 0 #fff,inset 0 -1px 0 #ffffff8c;
-  -webkit-backdrop-filter:blur(22px) saturate(145%);
-  backdrop-filter:blur(22px) saturate(145%);
-}
-.space-visuals { min-width:0; }
-.space-orbit-panel { overflow:hidden; }
-.space-stage-toolbar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; padding:19px 20px 0; }
+.space-workspace { min-width:0; }
 .space-eyebrow { color:#526a5d; font-size:9px; font-weight:600; letter-spacing:.12em; }
-.space-stage-toolbar p { margin:5px 0 0; color:#63736b; font-size:11px; line-height:1.6; }
-.space-camera-controls { display:flex; gap:3px; padding:3px; border:1px solid #dce5dd; border-radius:8px; background:#ffffff94; }
-.space-camera-controls button { min-width:28px; height:28px; padding:0 7px; border:0; border-radius:5px; color:#4a6456; background:transparent; font-size:15px; line-height:1; }
-.space-camera-controls button:last-child { border-left:1px solid #dce5dd; border-radius:0 5px 5px 0; padding-inline:10px; font-size:10px; }
-.space-camera-controls button:hover { background:#e5eee7; }
-.space-camera-controls button:disabled { opacity:.35; cursor:default; }
-.space-stage { position:relative; background:radial-gradient(ellipse at 46% 70%,#dbe7dd52,transparent 65%); }
-.space-svg { display:block; width:100%; height:auto; overflow:hidden; cursor:grab; touch-action:none; user-select:none; }
-.space-svg.is-dragging { cursor:grabbing; }
-.space-glass-plane { fill:url(#space-glass); stroke:#fff; stroke-width:1.8; stroke-linejoin:round; filter:url(#space-plane-shadow); }
-.space-grid-line { stroke:#8ba794; stroke-opacity:.27; stroke-width:1; }
-.space-axis-label { fill:#52675a; font:500 14px var(--sans); paint-order:stroke; stroke:#f7faf7; stroke-width:3px; }
-.space-layer-label { fill:#45634f; font:600 14px var(--sans); paint-order:stroke; stroke:#f7faf7; stroke-width:4px; }
-.space-cluster { cursor:pointer; outline:none; }
-.space-cluster-body { fill:url(#space-point-fill); stroke:#73937f; stroke-width:1.5; }
-.space-cluster-halo { fill:#83aa9021; stroke:transparent; stroke-width:2; }
-.space-cluster-count { fill:#31573e; font:600 17px var(--sans); pointer-events:none; }
-.space-single-core { fill:#568366; pointer-events:none; }
-.space-work-label { fill:#3e5c49; font:500 13px var(--sans); paint-order:stroke; stroke:#f7faf7; stroke-width:4px; stroke-linejoin:round; pointer-events:none; }
-.space-cluster:hover .space-cluster-body,.space-cluster.is-selected .space-cluster-body { fill:#d5e8d9; stroke:#356b48; stroke-width:2; }
-.space-cluster.is-selected .space-cluster-halo,.space-cluster:focus-visible .space-cluster-halo { fill:#83aa9033; stroke:#467657; }
-.space-axis-key { display:flex; justify-content:center; flex-wrap:wrap; gap:9px 18px; padding:0 15px 17px; color:#63736b; font-size:10px; }
-.space-axis-key span { display:flex; gap:5px; align-items:center; }
-.space-axis-key b { display:grid; place-items:center; width:20px; height:20px; border-radius:5px; border:1px solid #cddcd0; background:#ffffff9c; color:#4d6c55; font-size:9px; font-weight:600; }
-.space-unmeasured { padding:15px 19px 18px; border-top:1px dashed #cbd9cf; background:#ffffff4d; }
-.space-unmeasured>div:first-child { display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 10px; margin-bottom:10px; }
-.space-unmeasured strong { color:#58685f; font-size:11px; font-weight:600; }
-.space-unmeasured span { font-size:10px; color:#6d7b72; }
-.space-unmeasured-works { display:flex; flex-wrap:wrap; gap:6px; }
-.space-unmeasured-works button { padding:4px 7px; border:1px solid #d4dfd6; border-radius:5px; background:#ffffffa8; color:#53665a; font-size:10px; text-align:left; }
-.space-unmeasured-works button:hover,.space-unmeasured-works button[aria-pressed=true] { border-color:#789d84; background:#e3eee5; }
-.space-projection-note,.space-unfold-note { margin:15px 3px 0; color:#69786e; font-size:10px; line-height:1.7; }
+.space-unfold-note { margin:15px 3px 0; color:#69786e; font-size:10px; line-height:1.7; }
 .space-inspector { min-width:0; padding:21px 18px; }
 .space-list-heading { padding-bottom:16px; }
 .space-list-heading h4 { margin:4px 0; font-size:26px; font-weight:500; line-height:1.4; color:#324f3c; }
@@ -75,10 +31,9 @@
 .space-case-detail .application-detail-body h5 { font-size:11px; }
 .space-case-detail .application-detail-links { font-size:10px; gap:10px 16px; }
 /* Keep depth on the outer cards and backdrop effects on their leaf surfaces. */
-.application-space[data-space-mode=planes] .space-workspace { grid-template-columns:1fr; gap:0; }
-.space-inspector-dock { min-width:0; }
 
-.space-unfold-heading { padding:2px 3px 12px; }
+.space-unfold-heading { position:relative; padding:2px 3px 12px; }
+.space-browse-all { margin-top:12px; padding:6px 0; border:0; background:transparent; color:#426851; font-size:12px; }
 .space-unfold-heading p { font-size:12px; color:#617368; margin-top:5px; max-width:490px; }
 .space-deck-scene { position:relative; }
 .space-deck-glow { position:absolute; inset:9% 3% 5%; border-radius:45%; background:radial-gradient(ellipse at 18% 28%,#b5d8cb 0,transparent 52%),radial-gradient(ellipse at 87% 55%,#e3ccb1 0,transparent 48%),radial-gradient(ellipse at 49% 85%,#bbcedb 0,transparent 56%); filter:blur(25px); pointer-events:none; }
@@ -151,7 +106,6 @@
 .space-panel-slot .space-back-list { margin-bottom:15px; font-size:12px; }
 .space-panel-slot .space-case-detail .research-tag { font-size:11px; }
 @media(max-width:1050px) {
-  .space-workspace { grid-template-columns:minmax(0,1fr) 235px; gap:13px; }
   .space-inspector { padding:18px 15px; }
   .space-plane-handle { padding-inline:17px; gap:10px; }
   .space-plane-content { padding-inline:13px; }
@@ -159,7 +113,6 @@
   .space-plane-state { font-size:9px; }
 }
 @media(max-width:860px) {
-  .space-workspace,.application-space[data-space-mode=planes] .space-workspace { grid-template-columns:1fr; }
   .space-inspector-content:has(.space-work-list) { display:grid; grid-template-columns:150px minmax(0,1fr); gap:20px; }
   .space-work-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-content:start; gap:7px; max-height:230px; }
   .space-work-list button { margin:0; }
@@ -169,14 +122,6 @@
   .space-plane-state { font-size:10px; }
 }
 @media(max-width:540px) {
-  .application-view { width:100%; justify-content:space-between; }
-  .application-view button { flex:1; padding-inline:6px; font-size:11px; }
-  .space-stage-toolbar { padding:16px 14px 0; }
-  .space-stage-toolbar p { font-size:10px; }
-  .space-camera-controls { margin-top:2px; }
-  .space-svg { min-height:275px; }
-  .space-axis-key { justify-content:flex-start; gap:5px 10px; font-size:9px; }
-  .space-unmeasured { padding-inline:13px; }
   .space-inspector-content:has(.space-work-list) { display:block; }
   .space-unfold-heading p { font-size:11px; }
   .space-depth-deck { height:654px; perspective:1000px; }
@@ -219,7 +164,7 @@
   .space-depth-card,.space-plane-content,.space-plane-table,.space-panel-works { transition:none; }
 }
 @media(prefers-reduced-transparency:reduce) {
-  .glass-panel,.space-depth-card[data-depth] .space-card-glass,.space-panel-works { background:#f9fcf9; backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .space-depth-card[data-depth] .space-card-glass,.space-panel-works { background:#f9fcf9; backdrop-filter:none; -webkit-backdrop-filter:none; }
   .space-card-glass::after { background:none; }
   .space-deck-glow { display:none; }
 }

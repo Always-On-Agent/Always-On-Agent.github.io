@@ -10,15 +10,17 @@ Live site: https://always-on-agent.github.io/
 - `styles.css` — responsive visual design
 - `script.js` — accessible channel explorer, citation copy, and section navigation
 - `assets/` — project icon, paper figures, and the current paper PDF
-- `demo/` — first-person campus simulation, glasses HUD, persistent story and live framework trace
+- `demo/` — Minecraft iframe, scene switching and page-level game mode
+- `game-src/` — complete editable Minecraft client, bilingual HUD, NPCs, continuous demo and developer guide
+- `game/` — deployed client and versioned NTU map assets
 - `citation.bib` — downloadable citation for the working draft
 - `reading-list.md` — curated snapshot of the survey’s reading list
 - `halo/` — public evidence explorer, local analysis-task builder, and local report viewer
-- `research.js`, `research-core.mjs`, `research.css` — searchable table index and application map/table
-- `application-space.mjs`, `application-space-core.mjs`, `application-space.css` — draggable 3D application space, glass projection panels, and linked work inspector
+- `research.js`, `research-core.mjs`, `research.css` — searchable research index and application filters
+- `application-space.mjs`, `application-space-core.mjs`, `application-space.css` — three glass projection panels with work lists and inline details
 - `data/research-index.json` — public export of all cited rows in the 11 module/application tables
 
-This is a static website. The campus demo vendors Three.js under its MIT license; no package installation or build step is required.
+This is a static website, including a Minecraft client with an in-browser single-player server. No build step is needed to preview the checked-in website. To develop the game, follow [game-src/README.MD](game-src/README.MD).
 
 ## Preview locally
 
@@ -40,19 +42,23 @@ The website summarizes the September 2026 working draft. The HALO count refers t
 
 The visual identity and figures belong to this research project. The reading order was inspired by the [Long-Horizon Agents survey website](https://long-horizon-agents.github.io/); its text, figures, and source code were not copied.
 
-## Research index and application map
+## Research index and application glass panels
 
 The September 15 snapshot contains 195 distinct bibliography references across 208 source table rows (241 citation placements). Entries retain their module, category, subgroup, channel where explicit, original column text, and source table/page. The five channel implementation tables contain 49 works/placements: S→M 4, M→A 8, A→S 17, M→S 11, A→M 9. Additional evaluation entries can also carry a channel tag.
 
 Sources are the citation-bearing tables in `sec/04_sensing.tex`, `sec/05_memory.tex`, `sec/06_action.tex`, and `sec/table_system_landscape.tex` in the survey checkout. Titles and years come from `custom.bib` and `position_refs.bib`; missing links were filled from the existing HALO inventory, reading list, or matching primary publication pages. PDF links use the compiled document's named destinations.
 
-The application map preserves all 36 cases from the application table. Domains and participant scopes are arrays. Cross-domain cases appear in both matrix columns and count once. Outcome horizons describe the chosen evaluated consequence: `s` combines immediate/within-session results, and `--` remains Unmeasured. These are categorical coordinates, not numerical performance scores. Product/preview/demonstration/synthetic-history notes are retained only where the manuscript states them. The application cases and HALO configurations are separate selections.
+The application explorer preserves all 36 cases from the application table. Domains and participant scopes are arrays. Cross-domain cases appear in each matching cell and count once in a work list. Outcome horizons describe the chosen evaluated consequence: `s` combines immediate/within-session results, and `--` remains Unmeasured. These are categorical coordinates, not numerical performance scores. Product/preview/demonstration/synthetic-history notes are retained only where the manuscript states them. The application cases and HALO configurations are separate selections.
 
-The desktop application explorer opens in a draggable 3D view. Its categorical axes are interaction domain, participant scope, and measured outcome horizon. A location groups works sharing those categories; selecting a cluster opens its work list. Unmeasured cases stay on a separate shelf. “Glass panels” stacks Domain × People, Domain × Horizon, and People × Horizon along visual depth. Click a panel title, exposed rear edge, or card background to open that projection at its initial matrix, clearing the location and selected work. Clicking the front card resets it to its matrix as well. Drag the title or empty card area sideways to switch to an adjacent layer; a short drag settles back. Vertical gestures retain native page scrolling, and the works pane keeps its own scrolling and controls. Selecting a matrix cell replaces the matrix with its matching works in the same fixed-height card. A translucent in-card view holds the list and details, with internal scrolling and a persistent Back to matrix control; Escape also returns to the matrix. Work details, sources, and Back/Close controls stay in that same card. There are no separate arrow controls or side inspector in this view. Only the front table is interactive; inactive tables are inert and their buttons disabled. The same case highlights every matching cell. Switching panels clears the location and selected case; changing explorer views retains a selected case. The 2D map and full table remain available, with the 2D map as the initial mobile view. A `?view=planes#applications` link opens the glass panels directly on any screen; `3d`, `map`, and `table` are also supported.
+The explorer uses glass panels on desktop and mobile. Domain × People, Domain × Horizon, and People × Horizon stack along visual depth. Their totals are 39, 38, and 37 placements, each retaining all 36 distinct works and deduplicating within every cell. Unmeasured cases remain in the horizon panels and are included in the Domain × People panel. Open `#applications` directly; legacy `view` query parameters have no effect.
 
-The three glass planes preserve all 36 cases, including multiple domains or participant scopes, and deduplicate within each cell. Their totals are 39, 38, and 37 placements; the measured 3D space contains 32 placements for 29 works in 9 clusters, plus 7 Unmeasured works. Dragging and arrow keys rotate the 3D view; +/− controls zoom and Home resets it. On a panel title, arrow keys switch projections and Home/End select the first/last projection. Panel DOM nodes stay mounted so depth transitions and focus remain continuous. One inspector moves between stable panel slots and the 3D dock; table refreshes do not replace it. Matrix and works occupy the same fixed footprint. A selected cell reveals the glass works surface with a soft blur-to-clear fade over 1.1 seconds, without scaling; its contents fade in over 1 second, without changing the deck or page height. Only the visible pane is interactive. Returning from a detail restores the work list scroll position; returning to the matrix restores the source cell focus. CSS perspective and translation are separated from the backdrop blur surfaces; transparent rear bodies do not intercept clicks. The front glass is less transparent for readable content. Panel changes ease forward and unfold into their initial matrix over 1.1 seconds, with reduced motion respected. The page keeps normal scrolling over the card deck; long lists and details scroll inside the active card, and reduced transparency or missing backdrop-filter support receives an opaque glass fallback.
+Click a panel title, exposed rear edge, or card background to open that projection at its initial matrix, clearing the location and selected work. Clicking the front card resets it to its matrix as well. Drag the title or empty card area sideways to switch layers; a short drag settles back. Vertical gestures retain native page scrolling. On a panel title, arrow keys switch projections and Home/End select the first/last projection.
 
-When the manuscript tables change, regenerate the table records and application cases together, preserve multi-citation rows, refresh the PDF destinations, and check source links. `node --test tests/research.test.mjs tests/application-space.test.mjs` checks completeness, filters, projection counting, horizon semantics, camera bounds, and CSV output.
+Select a matrix cell to browse its matching works inside the same card, or use **Browse all works** to list every filtered case. Family, participant, and text filters apply to all panels and work lists. Selecting a work opens its mechanism, bottleneck, and source links inside the panel. **Back to matrix** or Escape returns to the matrix; Back/Close inside a detail returns to the work list. Only the front panel and its visible pane accept input. Returning from a detail restores the work list scroll position, and returning to the matrix restores the source cell focus.
+
+Stable panel elements preserve depth transitions and keyboard focus. Matrix, work list, and details share a fixed footprint; long content scrolls inside the card. Panel changes and the blur-to-clear reveal take about 1.1 seconds, with reduced motion respected. The front glass is less transparent for readability. Reduced transparency or missing backdrop-filter support receives an opaque fallback.
+
+When the manuscript tables change, regenerate the table records and application cases together, preserve multi-citation rows, refresh the PDF destinations, and check source links. Run `node --test tests/research.test.mjs tests/application-space.test.mjs` to check reference completeness, filters, projection counting, multi-domain/participant placement, Unmeasured cases, and spreadsheet-safe CSV output. Browser checks cover panel clicks and dragging, matrix/list/detail navigation, search, all-work access, and legacy query fallback.
 
 ## HALO workspace
 
